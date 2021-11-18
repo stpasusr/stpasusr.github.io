@@ -1001,16 +1001,20 @@ textarea {
 	/*font-family: 'Open Sans', sans-serif;*/
 }
 
-
 body {
 	background-color: #E5E5E5;
 	font-style: normal;
 	letter-spacing: -0.02em;
 }
 
-header, #head-space, #slider_parent, .logo-menu, #colophon {
-	max-width: 1440px;
+header, #head-space, .logo-menu, #colophon {
+	max-width: 2560px;
+	width: 100%;
 	margin: 0 auto 0 auto;
+}
+
+h1 {
+	text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 .block-box-level-1 {
@@ -1024,6 +1028,12 @@ header, #head-space, #slider_parent, .logo-menu, #colophon {
 	max-width: 1260px;
 	width: 92vw;
 	margin: 0 auto 0 auto;
+}
+
+.line-height-1 {
+	line-height: 1;
+	margin-top: 0;
+	margin-bottom: 0;
 }
 
 .font-one {
@@ -1052,60 +1062,67 @@ header, #head-space, #slider_parent, .logo-menu, #colophon {
 }
 
 .size-15 {
-	font-size: 15px;
+	font-size: clamp(8px, 1.0417vw, 15px);
+}
+
+.size-18 {
+	font-size: clamp(9px, 1.25vw, 18px);
 }
 
 .size-25 {
-	font-size: 25px;
+	font-size: clamp(13px, 1.7361vw, 25px);
 }
 
 .size-28 {
-	font-size: 28px;
+	font-size: clamp(14px, 1.9444vw, 28px);
 }
 
 
 .size-29 {
-	font-size: 29px;
+	font-size: clamp(15px, 2.0139vw, 29px);
 }
 
 .size-30 {
-	font-size: 30px;
+	font-size: clamp(15px, 2.0833vw, 30px);
 }
 
 .size-34 {
-	font-size: 34px;
+	font-size: clamp(12px, 2.3611vw, 34px);
 }
 
 .size-35 {
-    font-size: 35px;
+    font-size: clamp(17px, 2.4306vw, 35px);
 }
 
 .size-40 {
-    font-size: 40px;
+    font-size: clamp(20px, 2.7777vw, 40px);
 }
 
 
 .size-45 {
-    font-size: 45px;
+    font-size: clamp(22px, 3.125vw, 45px);
 }
 
 .size-57 {
-	font-size: 57px;
+	font-size: clamp(28px, 3.9583vw, 57px);
 }
 
 
 .size-60 {
-	font-size: 60px;
+	font-size: clamp(30px, 4.17vw, 60px);
 }
 
 .size-88 {
-	font-size: 88px;
+	font-size: clamp(44px, 6.1111vw, 88px);
 }
 
 .size-90 {
-	font-size: 90px;
+	font-size: clamp(45px, 6.25vw, 90px);
 }
 
+.weight-bold {
+	font-weight: bold;
+}
 
 .contact-buttons {
   display: inline-flex;
@@ -1149,11 +1166,53 @@ header, #head-space, #slider_parent, .logo-menu, #colophon {
 /* ------ HEADER SLIDER ------ */
 
 #slider_parent {
-	max-height: 543px;
-	height: 37.71vw;
+	max-height: 700px;
+	height: 48.6111vw;
+	max-width: 2560px;
+	width: 100%;
+	display: grid;
+	grid-template-columns: 100%;
+	grid-template-rows: 100%;
+}
+
+.slider-buttons {
+	grid-row: 1 ;
+  grid-column: 1;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	z-index: 1;
+}
+
+.slider-button {
+	width: 1.6666vw;
+  height: 100%;
+  background-color: transparent;
+  border: none;
+  padding: 0 0 0 0;
+  opacity: 0.5;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.slider-button:hover {
+	cursor: pointer;
+}
+
+.slider-button-left {
+	background-image: url(../../index_files/toleft.png);
+	margin-left: 1.1111vw;
+}
+
+.slider-button-right {
+	background-image: url(../../index_files/toright.png);
+	margin-right: 1.1111vw;
 }
 		   
 #slider_banners {
+	grid-row: 1 ;
+  grid-column: 1;
   display: grid; 
 	grid-template-columns: 100%;
 	grid-template-rows: 100%;
@@ -1173,8 +1232,8 @@ header, #head-space, #slider_parent, .logo-menu, #colophon {
 }
 
 .background-slider-banner-one {
-	background: linear-gradient(270deg, rgba(14, 1, 84, 0.57) 5.23%, rgba(0, 0, 0, 0) 70.03%), rgba(0, 0, 0, 0.2);
 	z-index: 2;
+	background: linear-gradient(270deg, rgb(13, 48, 74) 5.23%, rgba(13, 48, 74, 0.81) 22.3268%, rgba(255, 255, 255, 0) 45%, rgba(255, 255, 255, 0)) repeat scroll 0% 0%, rgba(196, 196, 196, 0) none repeat scroll 0% 0%;
 }
 
 		 .background-slider-banner-one, .back_slider_banner_one, .front_slider_banner_one {
@@ -1182,12 +1241,12 @@ header, #head-space, #slider_parent, .logo-menu, #colophon {
 		     grid-column: 1;
 		     }
 			 
-.slider_banner_one_2, .slider_banner_one_3 {
+.slider_banner_one_2, .slider_banner_one_3, .slider_banner_one_4 {
   display: none;
 }
 			 
 .slider_banner_one_1 {
-  opacity: 0.99;
+  opacity: 0.99; /* 0.99 */
 }
 			 
 	     .back_slider_banner_one {
@@ -1206,29 +1265,52 @@ header, #head-space, #slider_parent, .logo-menu, #colophon {
   background-color: transparent;
   z-index: 3;
   position: relative;
+	/*max-width: 1440px;
+	width: 100vw;*/
 }
 			 
 .back_img_slider_banner_one {
-  width: 100%;
-	max-height: 543px;
-  height: 37.71vw;
+  max-height: 700px;
+	height: 48.6111vw;
+	max-width: 2560px;
+	width: 100%;
   margin: 0 auto 0 auto;
 	opacity: 1;
+	object-fit: cover;
+  object-position: center;
 }
 
 .slider-h2 {
-	padding-right: 53px;
+	padding-right: max(3.88vmax, (50vw - 720px));
+	padding-top: 2vmax;
 	position: absolute;
-  top: 100px;
-  width: 40%;
+  top: min(6.95vw, 100px);
+  width: 100%;
 }
 
-.slider-h2>h2 {
+.slider-h2>div {
+	display: inline-block;
+}
+
+.golden-line {
+	background-color: #d6b556;
+	height: min(8px, 0.5555vw);
+	border-radius: 10px;
+	margin-top: min(32px, 2.2222vw);
+	margin-bottom: min(32px, 2.2222vw);
+}
+
+.slider-h2 h2, .slider-h2>p, .slider-h2>ul {
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
+.slider-h2 h2 {
 	font-family: 'RubikBlack', sans-serif;
   font-weight: 900;
-  font-size: 50px;
-  line-height: 59px;
-  color: #FFFFFF;
+  font-size: clamp(28px, 3.48vw, 50px);
+  line-height: 1.18;
+  color: #ffffff;
 }
 
 .slider-h2>p, .slider-h2>ul {
@@ -1240,7 +1322,8 @@ header, #head-space, #slider_parent, .logo-menu, #colophon {
 }
 
 .slider-h2>ul {
-	list-style: none;
+	list-style-position: inside;
+	color: white;
 	padding-right: 0;
 }
 /* ---- HEADER SLIDER END ---- */
@@ -1255,6 +1338,41 @@ header .logo-menu {
 #head-space {
 	height: 0px;
 }
+
+/*не виводити sub-menu за межі вліво*/
+/*header .menu-menu-in-main-container {
+	overflow: hidden;
+	padding-bottom: 100px;
+  padding-top: 100px;
+}*/
+
+/* в мобільній версії при нажиманні бутерброду вискакує меню, яке при переході на десктоп не дівається, якщо воно не було закрите бутербродом в мобільній версії - тому не виводимо це меню на дисплей при переході на десктоп*/
+/*header .main-navigation.toggled .menu-menu-in-main-container {
+	display: none;
+}*/
+
+/* ------- var.1 -------- */
+/*.main-navigation ul ul {
+    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
+    float: left;
+    position: absolute;
+    top: 100%;
+    left: -999em;
+    z-index: 99999;
+    background-color: #d2a82f;
+    border-top: solid 1px #aa965c;
+    text-align: right;
+}*/
+
+/* ------- var.2 -------- */
+/*.main-navigation ul ul {
+    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
+    float: none;
+    position: static;
+    background-color: #d6b556;
+    text-align: right;
+	  padding-right: 0;
+}*/
 
 /* -- LOGO-HEADER-MENU END -- */
 
@@ -1274,6 +1392,9 @@ header .logo-menu {
 main .logo-menu {
 	  max-height: 93px;
 	  height: 6.458333vw; 
+	  background-color: white;
+	  border-top: 4px solid #d6b556;
+	  border-bottom: 4px solid #d6b556;
     display: grid;
     grid-template-rows: 100%;
     grid-template-columns: 100%;
@@ -1318,11 +1439,8 @@ main .custom-logo {
 main #site-navigation-in-main {
 	max-width: 1440px;
 	margin: 0 auto 0 auto;
-	background-color: white;
 	max-height: 93px;
 	height: 6.458333vw;
-	border-top: 4px solid #d6b556;
-	border-bottom: 4px solid #d6b556;
   box-sizing: border-box;
   grid-row: 1;
 	grid-column: 1;
@@ -1331,6 +1449,12 @@ main #site-navigation-in-main {
 	justify-content: flex-start;
 	align-items: center;
 }
+
+/*main .menu-menu-in-main-container {
+	overflow: hidden;
+	padding-bottom: 100px;
+  padding-top: 100px;
+}*/
 
 main #primary-menu-in-main {
 	padding-right: 20px;
@@ -1351,21 +1475,18 @@ main #primary-menu-in-main>li>a {
   font-weight: normal;
   line-height: 1.92;
 	border: solid 3px #C8A133;
-	background-color: #D6B556;
+	background-color: #0d304a;
 	border-radius: 10px;
 	width: 100%;
-	color: white;
+	color: #d6b556;
 	position: relative;
 	z-index: 11;
 }
 
-main #primary-menu-in-main li>a:hover {
-	background-color: #C8A133;
-}
-
-main #primary-menu-in-main li>a:visited {
+main #primary-menu-in-main li>a:hover, main .main-navigation ul ul a:hover {
 	color: white;
 }
+
 
 main .main-navigation ul ul {
     box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
@@ -1375,7 +1496,7 @@ main .main-navigation ul ul {
     top: 86%;
     left: 0;
     z-index: 10;
-    background-color: #D6B556E5;
+    background-color: #0d304aE5;
     text-align: right;
 	  flex-direction: column;
 	  max-width: 142px;
@@ -1397,7 +1518,7 @@ main .main-navigation ul ul>li:last-child {
 }
 
 main .main-navigation ul ul a {
-	color: white;
+	color: #d6b556;
 	width: 100%;
 }
 
@@ -1501,45 +1622,21 @@ main .main-navigation ul ul a {
 	margin-top: 30px;
 }
 
-.block-about-photo figure, .block-about-photo-grid figure {
+.block-about-photo figure {
 	display: inline-block;
-	margin: 0 0 36px 0;
+	margin: 0 0 0 -3.5vw;
 	padding: 0 0 0 0;
 	line-height: 0;
-}
-
-.block-about-photo1 {
-  background: #C4C4C4;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 26px;
-}
-
-.block-about-photo-grid>.wp-block-group__inner-container {
-	display: grid;
-	grid-template-columns: repeat(10, 1fr);
-	grid-template-rows: repeat(10, 1fr);
-}
-
-.block-about-photo2 {
-	grid-row: 1 / span 4;
-	grid-column: 1 / span 7;
-  border-radius: 7px;
-}
-
-.block-about-photo3 {
-	grid-row: 3 / span 8;
-	grid-column: 6 / span 5;
-  border-radius: 22px;
-}
-
-.block-about-photo2, .block-about-photo3 {
-	filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 }
 
 /* block-about-photo END*/
 
 
 /* --- block-about-text --- */
+
+.block-about-text {
+	width: 53%;
+}
 
 .block-about-text li::marker {
 	color: #D6B556;
@@ -1554,7 +1651,12 @@ main .main-navigation ul ul a {
 	margin: 0 0 0 0;
 }
 
-.block-about-text-header, .block-about-text-list-ext, .block-about-text-list {
+#text-list-ext-1 {
+	margin-top: 8.5em;
+}
+
+.block-about-text-header, 
+.block-about-text-list-ext, .block-about-text-list {
 	margin-bottom: 34px;
 }
 
@@ -1581,12 +1683,21 @@ main .main-navigation ul ul a {
 
 .block-about-text-list {
 	list-style-position: inside;
-  /*list-style-image: none;*/
-  list-style-type: none;
+  list-style-type: square;
   line-height: 1.17241;
   font-weight: 400;
-	padding-right: 0;
-	margin-left: 0;
+	padding: 15px;
+  margin-left: 0;
+  background-color: #d6b556;
+  display: inline-block;
+	border-radius: 8px;
+	border: solid 2px #c8a133;
+	position: absolute;
+  z-index: 1;
+}
+
+.block-about-text-list>li::marker {
+	color: black;
 }
 
 .block-about-text-list-ext h2 {
@@ -1664,15 +1775,33 @@ main .main-navigation ul ul a {
 }
 
 .block-home-help-branches-branch {
-	max-width: 285px;
-	max-height: 485px;
-	width: 22.79vw;
+	max-width: 300px;
+  max-height: 600px;
+  width: 22.1vw;
+	height: 36vw;
 	padding: 0 0 0 0;
-	border-radius: 9px;
+	border-radius: 3px;
 	align-items: flex-end;
 	background-color: #1A18319E !important;
 	background-image: linear-gradient(180deg, rgba(0, 0, 0, 0) 39.06%, #0a090d 100%);
 	overflow: hidden;
+	transition-property: box-shadow;
+	transition-duration: 0.3s;
+}
+
+.block-home-help-branches-branch:hover {
+	cursor: pointer;
+	box-shadow: 0 10px 20px rgba(0,0,0,0.19),0 6px 6px rgba(0,0,0,0.23);
+}
+
+.block-home-help-branches-branch>img {
+	/*image-rendering: optimizespeed;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: -o-crisp-edges;*/
+  image-rendering: -webkit-optimize-contrast;
+  /*image-rendering: pixelated;
+  image-rendering: optimize-contrast;
+  -ms-interpolation-mode: nearest-neighbor;*/
 }
 
 .home-help-branches-branch-background {
@@ -1692,25 +1821,38 @@ main .main-navigation ul ul a {
   outline: none;
   border: none;
   box-shadow: none;
-	background-color: #1A183129 !important;
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 39.06%, #12256991 100%), #C4C4C4;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 40%, #000000c4 80%, #000000e8 100%), #C4C4C40A;
   opacity: 1;
 }
 	
 	.block-home-help-branches-branch-text {
 		z-index: 10;
 		position: relative;
+		margin-bottom: 1.5em;
+		user-select: none;
 	}
 
 
 .block-home-help-branches-branch-text h2 {
   font-weight: normal;
   line-height: 1.25;
+	margin-bottom: 1em;
 }
 
 .block-home-help-branches-branch-text p {
-  font-weight: normal;
-  line-height: 1.2;
+  font-weight: 400;
+  line-height: 1.5;
+	padding-right: 30px;
+  text-align: justify;
+  padding-left: 30px;
+	margin-top: 0;
+	margin-bottom: 0;
+	max-height: 0;
+	height: auto;
+	visibility: hidden;
+	transition-property: max-height, visibility;
+	transition-delay: 0.4s;
+	transition-duration: 0.6s, 0.5s;
 }
 
 /*BLOCK-HOME-HELP-BRANCHES-END*/
@@ -1719,8 +1861,8 @@ main .main-navigation ul ul a {
 /* ---- BLOCK-HOME-CALC ---- */
 
 .home-calcs {
-	max-height: 490px;
-	height: 34.03vw;
+	max-height: 576px;
+	height: 40vw;
 	box-sizing: content-box;
 	padding-top: 20px;
 	padding-bottom: 20px;
@@ -1740,16 +1882,12 @@ main .main-navigation ul ul a {
 	align-self: center;
 }
 
-.for-small-screen {
-	display: none;
-}
-
 .home-calcs-rotateblock {
 	max-width: 1500px;
 	max-height: 370px;
 	width: 104.2vw;
 	height: 25.694444vw;
-	background-color: #D6B556;
+	background-color: #0d304a;
 	transform-origin: bottom;
   transform: rotate(2.91deg);
 	grid-row: 1;
@@ -1781,6 +1919,13 @@ main .main-navigation ul ul a {
   border: 6px solid #D6B556;
   box-sizing: border-box;
   box-shadow: 0px 4px 17px rgba(0, 0, 0, 0.57);
+	transition-property: box-shadow;
+	transition-duration: 0.5s;
+}
+
+.home-calc:hover {
+	box-shadow: 8px 26px 27px 2px rgb(0, 0, 0), -6px 26px 27px 1px rgb(0, 0, 0);
+	cursor: pointer;
 }
 
 .home-calc-header {
@@ -1790,18 +1935,13 @@ main .main-navigation ul ul a {
 
 .home-calc-header h2 {
   font-weight: normal;
-  line-height: 1.176471;
+  line-height: 1.52;
   text-align: right;
 	margin-top: 3px;
 	margin-bottom: 0;
 }
 
-.home-calc-3 h2 {
-  line-height: 1.52;
-}
-
 .calc-1 {
-	margin-top: 12px;
 	display: inline-grid;
 	grid-template-columns: 70px 70px;
 	grid-template-rows: 70px 70px;
@@ -1809,7 +1949,6 @@ main .main-navigation ul ul a {
 }
 
 .calc-2 {
-	margin-top: 12px;
 	display: inline-grid;
 	grid-template-columns: 60px 60px;
 	grid-template-rows: 60px 60px;
@@ -1901,11 +2040,25 @@ main .main-navigation ul ul a {
 	background-position: center;
 }
 
+.calc-1, .calc-2, .calc-3 {
+	margin-top: min(16px, 1.1111vw);
+}
+
 .home-calcs-2ps>h2, .home-calcs-h2>h2 {
   line-height: 1;
   font-weight: 900;
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 	margin-top: 0;
+}
+
+.home-calcs-2ps>h2 {
+	background-color: rgba(214, 181, 86, 0.9);
+  height: 100%;
+  padding-left: 0.3em;
+  padding-right: 0.3em;
+	border: min(6px, 0.4166vw) solid #D6B556;
+	border-radius: min(7px, 0.4861vw);
+	box-shadow: 0px 4px 17px rgba(0, 0, 0, 0.57);
 }
 
 /* --- BLOCK-HOME-CALC-END --- */
@@ -2008,7 +2161,7 @@ main .main-navigation ul ul a {
 }
 
 
-#wpcf7-f1007-p16-o1 input[type="text"], #wpcf7-f1007-p16-o1 input[type="email"], #wpcf7-f1007-p16-o1 input[type="tel"], #wpcf7-f2210-p1565-o1 input[type="text"], #wpcf7-f2210-p1565-o1 input[type="email"], #wpcf7-f2210-p1565-o1 input[type="tel"], #wpcf7-f2727-p2398-o1 input[type="text"], #wpcf7-f2727-p2398-o1 input[type="email"], #wpcf7-f2727-p2398-o1 input[type="tel"]{
+#wpcf7-f1007-p16-o1 input[type="text"], #wpcf7-f1007-p16-o1 input[type="email"], #wpcf7-f1007-p16-o1 input[type="tel"], #wpcf7-f2210-p1565-o1 input[type="text"], #wpcf7-f2210-p1565-o1 input[type="email"], #wpcf7-f2210-p1565-o1 input[type="tel"], #wpcf7-f2727-p2398-o1 input[type="text"], #wpcf7-f2727-p2398-o1 input[type="email"], #wpcf7-f2727-p2398-o1 input[type="tel"], #wpcf7-f5982-p4706-o1 input[type="text"], #wpcf7-f5982-p4706-o1 input[type="email"], #wpcf7-f5982-p4706-o1 input[type="tel"] {
 	max-height: 110px;
 	height: 7.6388vw;
 	width: 100%;
@@ -2028,25 +2181,22 @@ main .main-navigation ul ul a {
 	display: none;
 }
 
-#wpcf7-f1007-p16-o1 input[type="submit"], #wpcf7-f2210-p1565-o1 input[type="submit"], #wpcf7-f2727-p2398-o1 input[type="submit"] {
-	max-height: 110px;
-	height: 7.6388vw;
-	width: 50%;
-	border: none;
-	background: #F3F3F3;
-  box-shadow: inset 0px 4px 21px rgba(0, 0, 0, 0.25);
-  border-radius: 65px;
-	font-family: Rubik;
-  font-weight: 900;
-  font-size: 50px;
-  line-height: 1;
-	padding-left: 50px;
-	padding-right: 50px;
-	vertical-align: middle;
+#wpcf7-f1007-p16-o1 input[type="submit"], #wpcf7-f2210-p1565-o1 input[type="submit"], #wpcf7-f2727-p2398-o1 input[type="submit"], #wpcf7-f5982-p4706-o1 input[type="submit"] {
+	background: linear-gradient(180deg, rgba(18, 37, 105, 0.96) 0%, rgba(14, 1, 84, 0.96) 88.96%);
+border: 6px solid #D6B556;
+box-shadow: 0px 0.067em 0.317em rgba(0, 0, 0, 0.38);
+border-radius: 4px;
+font-family: Rubik;
+font-weight: normal;
+text-decoration-line: underline;
+color: #D6B556;
+font-size: 32px;
+padding: 0 2em;
+line-height: 2;
 }
 
-#wpcf7-f1007-p16-o1 input[type="submit"]:hover, #wpcf7-f2210-p1565-o1 input[type="submit"]:hover, #wpcf7-f2727-p2398-o1 input[type="submit"]:hover {
-	background: #E6C9C9;
+#wpcf7-f1007-p16-o1 input[type="submit"]:hover, #wpcf7-f2210-p1565-o1 input[type="submit"]:hover, #wpcf7-f2727-p2398-o1 input[type="submit"]:hover, #wpcf7-f5982-p4706-o1 input[type="submit"]:hover {
+	color: white;
 	cursor: pointer;
 }
 
@@ -2077,6 +2227,9 @@ main .main-navigation ul ul a {
 
 
 .dktheme-footer {
+	max-width: 1440px;
+	width: 100%;
+	margin: 0 auto 0 auto;
 	display: flex;
 	justify-content: space-between;
 }
@@ -2817,13 +2970,477 @@ main .main-navigation ul ul a {
 /* --- INVESTMENS END --- */
 
 
+/* ------ COURSE-A ------ */
+
+.block-course-a-intro {
+	padding-top: 2em;
+	padding-bottom: 2em;
+}
+
+.course-a-intro h1 {
+	font-weight: normal;
+  line-height: 1.2333;
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
+.course-a-intro p {
+	font-weight: normal;
+  line-height: 1.1724;
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
+.course-a-intro ul {
+	margin-bottom: 0;
+	margin-top: 1.6552em;
+	list-style: square;
+	list-style-position: inside;
+	padding-right: 0;
+}
+
+.course-a-intro ul>li {
+	font-weight: normal;
+  line-height: 1.1724;
+	margin-top: 0;
+	margin-bottom: 1.4em;
+}
+
+.course-a-intro ul>li:last-child {
+	margin-bottom: 0;
+}
+
+.course-a-intro ul>li::marker {
+	color: #d6b556;
+}
+
+.block-course-a-intro-warning {
+	margin-top: 1.6552em;
+	margin-bottom: 4.5em;
+}
+
+.block-course-a-intro-warning>.wp-block-group__inner-container {
+	display: flex;
+	align-items: center;
+}
+
+.course-a-intro-warning {
+	display: inline-block;
+	padding: 1em;
+	background-color: #d6b556;
+	box-shadow: 4px 6px 10px 3px rgba(0, 0, 0, 0.21);
+  border-radius: 2px;
+	margin-left: 2em;
+}
+
+.course-a-intro-buttons a {
+	padding-top: 0;
+  padding-bottom: 0;
+  line-height: 2.5;
+}
+
+.course-a-intro-video {
+	display: inline-block;
+	margin-top: 2em;
+}
+
+.course-a-intro-space {
+	height: 1em !important;
+}
+/* --------------------- */
+
+.block-components-7-of-course {
+	padding-bottom: 2em;
+}
+
+.component-of-course {
+	background: #F5F5F5;
+  box-shadow: 4px 4px 9px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 2px;
+	margin-bottom: 3em;
+	line-height: 1;
+}
+
+.component-of-course>.wp-block-group__inner-container {
+	display: flex;
+	align-items: center;
+	padding-right: 1.2em;
+}
+
+.component-of-course-descript {
+	margin-right: 1.5em;
+}
+
+.component-of-course h3, .component-of-course p {
+	line-height: 1.383;
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
+.component-of-course h3 {
+	font-weight: bold;
+}
+
+.component-of-course h2 {
+	text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.block-components-7-of-course .course-a-intro-buttons {
+	display: flex;
+	justify-content: center;
+}
+
+/* ---------------------- */
+
+.block-detailed-program-course-a {
+	padding-bottom: 2em;
+}
+
+.detailed-program-course-a-grid-block>.wp-block-group__inner-container {
+	display: grid;
+	grid-template-rows: 100%;
+	grid-template-columns: 100%;
+	
+}
+
+.detailed-program-course-a h1 {
+	text-align: center;
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.detailed-program-course-a-grid-block-lines {
+	grid-row: 1;
+	grid-column: 1;
+	align-self: center;
+}
+
+.detailed-program-course-a-first-block-line {
+	background-color: #d6b556;
+	margin-bottom: 13px;
+	box-shadow: 0px 3px 7px rgba(0, 0, 0, 0.23);
+  border-radius: 26px;
+}
+
+.detailed-program-course-a-first-block-line:last-child {
+	margin-bottom: 0;
+}
+
+.detailed-program-course-a-grid-block-descripts {
+	width: 94%;
+	grid-row: 1;
+	grid-column: 1;
+	justify-self: center;
+	align-self: center;
+}
+
+.detailed-program-course-a-grid-block-descripts>.wp-block-group__inner-container {
+	display: flex;
+	justify-content: space-between;
+}
+
+.detailed-program-course-a-first-block-descript {
+	width: min(386px, 28vw);
+  height: min(284px, 20vw);
+	text-align: center;
+	background: #FFFFFF;
+  border: 6px solid #122569;
+  box-sizing: border-box;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+}
+
+.detailed-program-course-a-first-block-descript>.wp-block-group__inner-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	height: 100%;
+}
+
+#group-h3 h3, .detailed-program-course-a-first-block-descript h3 {
+	margin-top: 0;
+	margin-bottom: 0;
+	line-height: 1;
+}
+
+.detailed-program-course-a-first-block-descript h3, #group-h3 {
+	margin-top: min(60px, 4.2vw);
+}
+
+.detailed-program-course-a-first-block-descript p {
+	margin-top: 0;
+	margin-bottom: min(60px, 4.2vw);
+	line-height: 1;
+}
+
+.course-a-lesson-component-small, .course-a-lesson-component-big {
+	display: flex;
+	justify-content: space-between;
+	background: #D6B556;
+  box-shadow: 0px 3px 22px 2px rgba(0, 0, 0, 0.29);
+  border-radius: 8px; 
+	padding-top: 0.5em;
+	padding-bottom: 0.5em;
+}
+
+.course-a-lesson-component-small {
+	width: 31%;
+}
+
+.course-a-lesson-components-small {
+	display:flex;
+	justify-content: space-between;
+	margin-bottom: 1em;
+}
+
+.lesson-component-small-text>p:first-child {
+	margin-bottom: 0.5em;
+}
+
+.lesson-component-small-text {
+  display: inline-flex;
+	flex-direction: column;
+	justify-content: space-between;
+	margin-right: 1em;
+}
+
+.lesson-component-small-img {
+	display: inherit;
+	line-height: 0;
+	margin-left: 1em;
+}
+
+/* --------------------- */
+
+.block-reasons-course-a {
+	padding-bottom: 2em;
+	background-image: url(../../index_files/meeting-of-financial-managers-X8PHLDJ.png);
+	background-repeat: no-repeat;
+}
+
+.reasons-course-a h1 {
+	line-height: 1.3833;
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
+.reason-of-course {
+	margin-bottom: 3em;
+	line-height: 1;
+}
+
+.reason-of-course>.wp-block-group__inner-container {
+	display: flex;
+	align-items: center;
+}
+
+.reason-of-course-descript {
+	margin-right: 2.5em;
+	background: #D6B556;
+  box-shadow: 0px 3px 22px 2px rgba(0, 0, 0, 0.29);
+  border-radius: 8px;
+}
+
+.reason-of-course-descript>.wp-block-group__inner-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	padding: 1em;
+}
+
+.reason-of-course h3 {
+	line-height: 1.2;
+	margin-top: 0;
+	margin-bottom: 0;
+	font-weight: bold;
+}
+
+.reason-of-course h2 {
+	text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.block-reasons-course-a .course-a-intro-buttons {
+	display: flex;
+	justify-content: center;
+}
+
+/* ---------------------- */
+
+.course-a-video-examples>.wp-block-group__inner-container {
+	display: flex;
+	justify-content: space-between;
+}
+
+.video-example {
+	width: 45%;
+}
+
+.video-example h3 {
+	margin-bottom: 0.5em;
+}
+
+.course-a-intro ul ul {
+	margin-top: 0;
+	margin-bottom: 1.4em;
+}
+
+.course-a-first-li {
+	margin-bottom: 0 !important;
+}
+
+.course-a-intro ul ul>li::marker {
+	color: white;
+}
+
+.course-a-h1-last {
+	text-align: center;
+	margin-top: 0.5em !important;
+}
+
+.course-a-successes .course-a-intro-buttons {
+    display: flex;
+    justify-content: center;
+	  margin-top: 4em;
+}
+
+/* ---------------------- */
+
+.course-a-detailses>details>summary {
+	background: #F5F5F5;
+  box-shadow: 4px 4px 9px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 2px;
+	padding: 0.5em;
+	margin-bottom: 1em;
+}
+
+.course-a-detailses>details {
+	margin-bottom: 3em;
+}
+
+.course-a-detailses>details>div {
+	background: #F5F5F5;
+	border-right: solid 1px #122569;
+  padding-right: 1em;
+	margin-right: 1em;
+  width: 60%;
+  overflow: hidden;
+}
+
+.course-a-detailses>details>div>p {
+	margin-top: 0;
+	margin-bottom: 1em;
+}
+
+.course-a-detailses-img {
+	background-image: url(../../index_files/financial-crisis-9J8AW4P.jpg);
+	line-height: 0;
+}
+
+.course-a-detailses-img>img {
+	object-fit: cover;
+	margin-top: 14%;
+}
+
+/* -------------------- */
+
+.students-tell {
+	display:flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.students-tell-slider {
+	display: flex;
+	justify-content: space-between;
+	width: 90%;
+}
+
+.students-tell-slider > figure {
+	margin-bottom: 0;
+}
+
+.students-tell-slider > figure iframe {
+  width: 100%;
+  height: 30%;
+}
+
+.students-tell-slider > figure {
+ display: none;
+}
+
+#students_tell_video_1, #students_tell_video_2, #students_tell_video_3 {
+	display: block;
+}
+
+/* ---------------------- */
+
+.block-students-thanks {
+	padding-top: 30%;
+	background-image: url(../../index_files/college-students-studying-on-university-campus-out-4DCX8ZH1.jpg);
+	background-repeat: no-repeat;
+}
+
+.students-thanks {
+	display:flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.students-thanks-slider {
+	display: flex;
+	justify-content: center;
+	width: 90%;
+}
+
+.student-thanks {
+	display: none;
+	width: 80%;
+	padding: 1em 2em;
+	background: #F7F7F7;
+  box-shadow: inset 0px 0px 15px 8px rgba(0, 0, 0, 0.25);
+  border-radius: 9px;
+}
+
+.student-thanks>p {
+	line-height: 1.2;
+}
+
+#student_thanks_1 {
+	display: block;
+}
+
+/* ----------------------- */
+
+.course-contacts > .wp-block-group__inner-container {
+    justify-content: center;
+}
+
+#course-a-contacts-p {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+  align-items: flex-start;
+	margin-bottom: 1em;
+}
+
+#course-a-contacts-p>p {
+	margin-bottom: 0;
+	margin-top: 0;
+}
+
+/*#course-a-contacts-p>p:last-child {
+	margin-bottom: 1em !important;
+}*/
+
+/* ---- COURSE-A END ---- */
+
 
 /*@media screen and (min-width: 600px) and (max-width: 1440px)*/
 
 @media screen and (min-width: 600px) and (max-width: 1440px) {
 
-	.size-15 {
-	font-size: 1.4416vw; /*1.0416vw*/
+/*	.size-15 {
+	font-size: 1.4416vw; 
 }
 	
 .size-25 {
@@ -2874,7 +3491,7 @@ main .main-navigation ul ul a {
 .size-90 {
 	font-size: 6.25vw;
 }
-
+*/
 
 .contact-button>a {
   border-width: 0.556vw;
@@ -2890,7 +3507,6 @@ main .main-navigation ul ul a {
 /* ------ HEADER SLIDER ------ */
 
 .slider-h2 {
-	padding-right: 3.681vw;
   top: 6.9444vw;
 }
 
@@ -3004,30 +3620,15 @@ main #primary-menu-in-main>li>a {
 
 /* block-about-photo BEGIN */
 	
-.block-about-photo {
-	margin-top: 2.083333vw;
-	width: 50%;
-}
 
-.block-about-photo figure, .block-about-photo-grid figure {
-	margin: 0 0 2.5vw 0;
-}
-
-.block-about-photo1 {
-  box-shadow: 0px 0.277778vw 0.277778vw rgba(0, 0, 0, 0.25);
-  border-radius: 1.8055556vw;
-}
-
-.block-about-photo2, .block-about-photo3 {
-	filter: drop-shadow(0px 0.27777vw 0.27777vw rgba(0, 0, 0, 0.25));
-}
 
 /* block-about-photo END*/
 
 
 /* --- block-about-text --- */
 
-.block-about-text-header, .block-about-text-list-ext, .block-about-text-list {
+.block-about-text-header, 	
+.block-about-text-list-ext, .block-about-text-list {
 	margin-bottom: 2.36111vw;
 }
 
@@ -3059,7 +3660,6 @@ main #primary-menu-in-main>li>a {
 }
 	
 .block-home-help-branches-branch {
-	height: 33.6805vw;
 	min-height: 33.68vw;
 }
 
@@ -3081,7 +3681,7 @@ main #primary-menu-in-main>li>a {
 /* ---- BLOCK-HOME-CALC ---- */
 
 .home-calcs {
-	height: 34.03vw;
+	height: 40vw;
 	padding-top: 1.3888vw;
 	padding-bottom: 1.3888vw;
 }
@@ -3099,14 +3699,12 @@ main #primary-menu-in-main>li>a {
 }
 
 .calc-1 {
-	margin-top: 0.83333vw;
 	grid-template-columns: 4.86111vw 4.86111vw;
 	grid-template-rows: 4.86111vw 4.86111vw;
 	grid-gap: 0.69444vw;
 }
 
 .calc-2 {
-	margin-top: 0.83333vw;
 	grid-template-columns: 4.16666vw 4.16666vw;
 	grid-template-rows: 4.16666vw 4.16666vw;
 	grid-gap: 0.69444vw;
@@ -3132,10 +3730,6 @@ main #primary-menu-in-main>li>a {
 	
 .calc-1 h1, .calc-2 h1 {
 		font-size: 2.2222vw;
-}
-
-.calc-3 {
-	margin-top: 1.1111vw;
 }
 
 .home-calcs-2ps>h2, .home-calcs-h2>h2 {
@@ -3174,16 +3768,6 @@ main #primary-menu-in-main>li>a {
 	padding-right: 3.4722vw;
 	font-size: 1.73611vw;
   line-height: 1.2;
-}
-
-#wpcf7-f1007-p16-o1 input[type="submit"], #wpcf7-f2210-p1565-o1 input[type="submit"], #wpcf7-f2727-p2398-o1 input[type="submit"] {
-	height: 7.6388vw;
-  box-shadow: inset 0px 0.2777vw 1.45833vw rgba(0, 0, 0, 0.25);
-  border-radius: 4.51388vw;
-	padding-left: 3.4722vw;
-	padding-right: 3.4722vw;
-  font-size: 3.4722vw;
-  line-height: 1;
 }
 
 /* - HOME-CONTACTS-BLOCK END - */
@@ -3249,10 +3833,6 @@ main #primary-menu-in-main>li>a {
 
 .family-group-p p {
   line-height: 1.17143;
-}
-
-.familyfin-we-help-background {
-	
 }
 
 .familyfin-we-help-line {
@@ -3430,7 +4010,7 @@ main #primary-menu-in-main>li>a {
 
 @media screen and (max-width: 599px) {
 	
-	.size-25 {
+/*	.size-25 {
 	font-size: 2.333vw;
 }
 
@@ -3478,6 +4058,7 @@ main #primary-menu-in-main>li>a {
 .size-90 {
 	font-size: 6.25vw;
 }
+*/
 	
 	main .logo-menu {
 	  display: none;
@@ -3490,8 +4071,6 @@ main #primary-menu-in-main>li>a {
 .slider-h2 {
     padding-right: 23px;
     position: absolute;
-    top: 5px;
-    width: 70%;
 }
 	
 .slider-h2>h2 {
@@ -3593,7 +4172,7 @@ header .main-navigation.toggled ul {
 header .menu-toggle {
 	grid-row: 1;
 	grid-column: 1;
-	z-index: 1;
+	z-index: 11;
 	align-self: start;
 	justify-self: start;
 	padding: 0 0 0 0;
@@ -3606,7 +4185,7 @@ header .menu-toggle {
 header .menu-menu-in-main-container {
 	grid-row: 1;
 	grid-column: 1;
-	z-index: 0;
+	z-index: 10;
 	align-self: start;
 	justify-self: start;
 }
@@ -3824,7 +4403,7 @@ header .main-navigation ul ul a {
 
 /* ---- BLOCK-HOME-CALC ---- */
 
-	.block-home-calcs .wp-block-group__inner-container {
+/*	.block-home-calcs .wp-block-group__inner-container {
 		display: inline-flex;
 		justify-content: center;
 		align-items: center;
@@ -3870,7 +4449,7 @@ header .main-navigation ul ul a {
     flex-direction: column;
     align-items: center;
 }
-
+*/
 .calc-1 {
 	margin-top: calc(1.4*0.83333vw);
 	grid-template-columns: calc(1.4*4.86111vw) calc(1.4*4.86111vw);
