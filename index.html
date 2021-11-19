@@ -111,30 +111,31 @@ img.emoji {
 
 			 });
 
-			 var percents = 25.5;
+			 var percents = 35.5;
 
 			 if (window.innerWidth > 1440) {
-				 percents = (1440 * 0.255 + (window.innerWidth - 1440) / 2) / window.innerWidth * 100;
+				 percents = (1440 * 0.355 + (window.innerWidth - 1440) / 2) / window.innerWidth * 100;
 			 };
 
 			 document.querySelectorAll('.background-slider-banner-one').forEach((div) => {
-				 div.style.background = `linear-gradient(270deg, #0d304a 5.23%, #0d304acf ${percents}%, #fff0 45%, #fff0), #c4c4c400`;
+				div.style.background = `linear-gradient(270deg, rgb(13, 48, 74) 5%, rgba(13, 48, 74, 0.66) ${percents}%, rgba(255, 255, 255, 0) 65%, rgba(255, 255, 255, 0)), rgba(196, 196, 196, 0)`;
+				 /**linear-gradient(270deg, rgb(13, 48, 74) 5%, rgba(13, 48, 74, 0.66) ${percents}%, rgba(255, 255, 255, 0) 65%, rgba(255, 255, 255, 0)) repeat scroll 0% 0%, rgba(196, 196, 196, 0) none repeat scroll 0% 0%; */
 			 });
 
 			 window.onresize = function() {
 
 				 if (window.innerWidth > 1440) {
 
-					 percents = (1440 * 0.255 + (window.innerWidth - 1440) / 2) / window.innerWidth * 100; 
+					 percents = (1440 * 0.355 + (window.innerWidth - 1440) / 2) / window.innerWidth * 100; 
 
 				 } else {
 
-					 percents = 25.5;
+					 percents = 35.5;
 
 				 };
 
 				 document.querySelectorAll('.background-slider-banner-one').forEach((div) => {
-	                 div.style.background = `linear-gradient(270deg, #0d304a 5.23%, #0d304acf ${percents}%, #fff0 45%, #fff0), #c4c4c400`;
+	                 div.style.background = `linear-gradient(270deg, rgb(13, 48, 74) 5%, rgba(13, 48, 74, 0.66) ${percents}%, rgba(255, 255, 255, 0) 65%, rgba(255, 255, 255, 0)), rgba(196, 196, 196, 0)`;
                  });
 
 			 };
