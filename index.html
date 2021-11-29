@@ -53,23 +53,83 @@ img.emoji {
     <script src="files/js/navigation.js"></script>
 		
 	<script>
-	     var banner_number = 1;
+	     let banner_number = 1;
+		 let time_banner = -1;
+		 let stop_banner = false;
 	     function startTimer() {
-             let bannerid = '';
-		     timerId = setInterval(function(bnumber) {
-				 bannerid = 'banner_' + banner_number;
-			     document.getElementById(bannerid).style.opacity = "0";
-				 banner_number += 1;
-				 if (banner_number > 4) banner_number = 1;
-				 bannerid = 'banner_' + banner_number;
-				 document.getElementById(bannerid).style.opacity = "0.99";
-			 }, 8000, banner_number);
+             let bannerid = 'banner_1';
+		     timerId = setInterval(() => {
+				 time_banner++;
+				 if ((time_banner >= 8) && (!stop_banner)) {
+					 bannerid = 'banner_' + banner_number;
+			         document.getElementById(bannerid).style.opacity = "0";
+				     banner_number += 1;
+				     if (banner_number > 4) banner_number = 1;
+				     bannerid = 'banner_' + banner_number;
+				     document.getElementById(bannerid).style.opacity = "0.99";
+				     time_banner = -1;
+				 }
+			 }, 1000);
 			 document.getElementById('banner_2').style.display = "grid";
 			 document.getElementById('banner_3').style.display = "grid";
 			 document.getElementById('banner_4').style.display = "grid";
 		 };
 
 		 document.addEventListener('DOMContentLoaded', function(){
+
+			 /* ------------------------------------------------------------------------------------- */
+
+			 document.querySelector('#slider_parent').onmouseover = function() {
+				 stop_banner = true;
+			 };
+
+			 document.querySelector('#slider_parent').onmouseout = function() {
+				stop_banner = false;
+			 };
+
+			 /* ---------------------------------------------------------------------------------------- */
+
+			 let thanks_count = document.querySelectorAll('.student-thanks').length;
+			 let thanks_first_visible_id = 1;
+			 let thanks_visible_count = 1; 
+			 let thanks_first_hidden_id = thanks_first_visible_id + thanks_visible_count;
+
+			 document.querySelectorAll('.thanksslider-pointer').forEach(function(div) {
+
+				 div.onclick = function() {
+
+					if (div.className === 'thanksslider-pointer pointer-to-left') {
+
+						 if (thanks_first_hidden_id > thanks_count) {
+                             return;
+						 };
+
+						 document.querySelector(`#student_thanks_${thanks_first_visible_id}`).style.display = "none";
+					     document.querySelector(`#student_thanks_${thanks_first_hidden_id}`).style.display = "block";
+
+                         thanks_first_visible_id++;
+					     thanks_first_hidden_id++;
+
+					} else {
+
+						 if (thanks_first_visible_id <= 1) {
+                             return;
+					     };
+
+						 thanks_first_hidden_id--;
+						 thanks_first_visible_id--;
+
+						 document.querySelector(`#student_thanks_${thanks_first_visible_id}`).style.display = "block";
+					     document.querySelector(`#student_thanks_${thanks_first_hidden_id}`).style.display = "none";
+
+					};
+					
+
+				 };
+
+			 });
+
+            // ---------------------------------------------------------------------------------------------------------------
 
 			 let  video_count = document.querySelectorAll('.students_tell_video').length;
 			 let video_first_visible_id = 1;
@@ -111,35 +171,45 @@ img.emoji {
 
 			 });
 
-			 var percents = 35.5;
+			 /* ------------------------------------------------------------------------------------------------------- */
+             
+			 //var percents = 35.5;
+			 //let lin_gradient = `linear-gradient(270deg, rgb(13, 48, 74) 5%, rgba(13, 48, 74, 0.66) ${percents}%, rgba(255, 255, 255, 0) 65%, rgba(255, 255, 255, 0)), rgba(196, 196, 196, 0)`;
 
-			 if (window.innerWidth > 1440) {
-				 percents = (1440 * 0.355 + (window.innerWidth - 1440) / 2) / window.innerWidth * 100;
-			 };
+			 //if (window.innerWidth > 1440) {
+			 //	 //percents = (1440 * 0.355 + (window.innerWidth - 1440) / 2) / window.innerWidth * 100;
+			 //	 percents = ((window.innerWidth - 1440) / 2) / window.innerWidth * 100;
+			 //	 lin_gradient = `linear-gradient(270deg, rgba(13, 48, 74, 0.5) 5%, rgba(13, 48, 74, 0.4) ${percents}%, rgba(255, 255, 255, 0) ${percents + 2}%, rgba(255, 255, 255, 0))`;
+			 //};
 
-			 document.querySelectorAll('.background-slider-banner-one').forEach((div) => {
-				div.style.background = `linear-gradient(270deg, rgb(13, 48, 74) 5%, rgba(13, 48, 74, 0.66) ${percents}%, rgba(255, 255, 255, 0) 65%, rgba(255, 255, 255, 0)), rgba(196, 196, 196, 0)`;
-				 /**linear-gradient(270deg, rgb(13, 48, 74) 5%, rgba(13, 48, 74, 0.66) ${percents}%, rgba(255, 255, 255, 0) 65%, rgba(255, 255, 255, 0)) repeat scroll 0% 0%, rgba(196, 196, 196, 0) none repeat scroll 0% 0%; */
-			 });
+			 //document.querySelectorAll('.background-slider-banner-one').forEach((div) => {
+			 //	//div.style.background = `linear-gradient(270deg, rgb(13, 48, 74) 5%, rgba(13, 48, 74, 0.66) ${percents}%, rgba(255, 255, 255, 0) 65%, rgba(255, 255, 255, 0)), rgba(196, 196, 196, 0)`;
+			 //	div.style.background = lin_gradient;
+			 //});
 
-			 window.onresize = function() {
+			 //window.onresize = function() {
 
-				 if (window.innerWidth > 1440) {
+			 //	 if (window.innerWidth > 1440) {
 
-					 percents = (1440 * 0.355 + (window.innerWidth - 1440) / 2) / window.innerWidth * 100; 
+			 //		 //percents = (1440 * 0.355 + (window.innerWidth - 1440) / 2) / window.innerWidth * 100; 
+			 //		 percents = ((window.innerWidth - 1440) / 2) / window.innerWidth * 100; 
+			 //		 lin_gradient = `linear-gradient(270deg, rgba(13, 48, 74, 0.8) 0%, rgba(13, 48, 74, 0.4) ${percents}%, rgba(255, 255, 255, 0) ${percents + 10}%, rgba(255, 255, 255, 0) ${100 - percents - 10}%, rgba(13, 48, 74, 0.4) ${100 - percents}%, rgba(13, 48, 74, 0.8) 100%)`;
 
-				 } else {
+			 //	 } else {
 
-					 percents = 35.5;
+			 //		 percents = 35.5;
+			 //		 lin_gradient = `linear-gradient(270deg, rgb(13, 48, 74) 5%, rgba(13, 48, 74, 0.66) ${percents}%, rgba(255, 255, 255, 0) 65%, rgba(255, 255, 255, 0)), rgba(196, 196, 196, 0)`;
 
-				 };
+			 //	 };
 
-				 document.querySelectorAll('.background-slider-banner-one').forEach((div) => {
-	                 div.style.background = `linear-gradient(270deg, rgb(13, 48, 74) 5%, rgba(13, 48, 74, 0.66) ${percents}%, rgba(255, 255, 255, 0) 65%, rgba(255, 255, 255, 0)), rgba(196, 196, 196, 0)`;
-                 });
+			 //	 document.querySelectorAll('.background-slider-banner-one').forEach((div) => {
+	         //        //div.style.background = `linear-gradient(270deg, rgb(13, 48, 74) 5%, rgba(13, 48, 74, 0.66) ${percents}%, rgba(255, 255, 255, 0) 65%, rgba(255, 255, 255, 0)), rgba(196, 196, 196, 0)`;
+			 //		 div.style.background = lin_gradient;
+             //    });
 
-			 };
-
+			 //};
+             
+			 /* -------------------------------------------------------------------------------------- */
 
              document.querySelector('.parentmenuinmain').onmouseover = function(){
 
@@ -165,10 +235,13 @@ img.emoji {
 
              };
 
+			 /* -------------------------------------------------------------------------------------- */
+
 			 document.querySelectorAll('.slider-button').forEach(function(button) {
 				 button.onclick = function(){
 
                      let bannerid = '#banner_' + banner_number;
+					 console.log(bannerid);
                      this.parentElement.parentElement.querySelector(bannerid).style.opacity = '0';
 
                      if (this.dataset.direction === "right") {
@@ -181,11 +254,14 @@ img.emoji {
                      };
 
                      bannerid = '#banner_' + banner_number;
+					 console.log(bannerid);
                      this.parentElement.parentElement.querySelector(bannerid).style.opacity = '0.99';
 
                  };
 
 			 });
+
+			 /* ------------------------------------------------------------------------------------------------ */
 
 			 document.querySelectorAll('.block-home-help-branches-branch').forEach(function(div) {
 
@@ -236,7 +312,8 @@ img.emoji {
 				
 
 			 });
-			
+
+			 /* ---------------------------------------------------------------------------------------------- */
 				 
 
          });
@@ -252,13 +329,13 @@ img.emoji {
 	     
         <div class="logo-menu">
 		<div class="site-branding">
-			<a href="http://dkotkin.com/" class="custom-logo-link" rel="home"><img src="index_files/logo075-e1634922069477.png" class="custom-logo" alt="dkotkin" width="142" height="142"></a>				<p class="site-title"><a href="http://dkotkin.com/" rel="home">dkotkin</a></p>
+			<a href="index.html" class="custom-logo-link" rel="home"><img src="index_files/logo075-e1634922069477.png" class="custom-logo" alt="dkotkin" width="142" height="142"></a>				<p class="site-title"><a href="index.html" rel="home">dkotkin</a></p>
 						</div><!-- .site-branding -->
 
 		<nav id="site-navigation" class="main-navigation">
 			<!-- <button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false">Primary Menu</button> -->
 			<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><img src="index_files/mobilemenu.png"></button>
-			<div class="menu-menu-in-main-container"><ul id="primary-menu" class="menu nav-menu"><li id="menu-item-1381" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-1381"><a href="http://dkotkin.com/">אודות</a></li>
+			/main/<div class="menu-menu-in-main-container"><ul id="primary-menu" class="menu nav-menu"><li id="menu-item-1381" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-1381"><a href="index.html">אודות</a></li>
 <li id="menu-item-1383" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-16 current_page_item menu-item-has-children menu-item-1383"><a href="index.html" aria-current="page">השירותים</a>
 <ul class="sub-menu">
 	<li id="menu-item-2400" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2400"><a href="investmens.html">ייעוץ השקעות</a></li>
@@ -278,15 +355,17 @@ img.emoji {
 		</div>
 
 		<div id="slider_parent">
+			 
 			 <div class="slider-buttons">
 				 <button class="slider-button slider-button-right" data-direction="right"></button>
 				 <button class="slider-button slider-button-left" data-direction="left"></button>
 		     </div>
              <container id="slider_banners">
-	             <container id="banner_1" class="slider_banner_one slider_banner_one_1" style="opacity: 0.99;">
-					 <div class="background-slider-banner-one" style="background: linear-gradient(270deg, rgb(13, 48, 74) 5.23%, rgba(13, 48, 74, 0.81) 25.5%, rgba(255, 255, 255, 0) 45%, rgba(255, 255, 255, 0)) repeat scroll 0% 0%, rgba(196, 196, 196, 0) none repeat scroll 0% 0%;"></div>
+	             <container id="banner_1" class="slider_banner_one slider_banner_one_1" style="opacity: 0;">
+					 <div class="bg-img-slider-banner-one" style="background-image: url(index_files/001-1-e1636561693659.jpg);"></div>
+					 <div class="background-slider-banner-one"></div>
 	                 <div class="back_slider_banner_one">
-	   	                 <img class="back_img_slider_banner_one" src="index_files/001-1-e1636561693659.jpg" srcset="index_files/001-1-e1636561693659.jpg 2560w, index_files/001-1-e1636561693659-2048x993.jpg 2048w, index_files/001-1-e1636561693659-1536x745.jpg 1536w, index_files/001-1-e1636561693659-768x372.jpg 768w, index_files/001-1-e1636561693659-300x145.jpg 300w">
+	   	                 <img class="back_img_slider_banner_one" src="index_files/001-1-e1636561693659.jpg">
 		             </div>
 		             <div class="front_slider_banner_one">
 		   	             <div id="slider_h2_1" class="slider-h2">
@@ -299,9 +378,10 @@ img.emoji {
 		             </div>
 		         </container>
 		         <container id="banner_2" class="slider_banner_one slider_banner_one_2" style="display: grid; opacity: 0;">
-				     <div class="background-slider-banner-one" style="background: linear-gradient(270deg, rgb(13, 48, 74) 5.23%, rgba(13, 48, 74, 0.81) 25.5%, rgba(255, 255, 255, 0) 45%, rgba(255, 255, 255, 0)) repeat scroll 0% 0%, rgba(196, 196, 196, 0) none repeat scroll 0% 0%;"></div>
+				     <div class="bg-img-slider-banner-one" style="background-image: url(index_files/002-pixlr1-e1637246858133.jpg);"></div>
+				     <div class="background-slider-banner-one"></div>
 		             <div class="back_slider_banner_one">
-                         <!-- <img class="back_img_slider_banner_one" src="http://dkotkin.com/wp-content/uploads/2021/11/002-e1636583090932.jpg"> -->
+                         <!-- <img class="back_img_slider_banner_one" src="index_files/002-e1636583090932.jpg"> -->
 						 <img class="back_img_slider_banner_one" src="index_files/002-pixlr1-e1637246858133.jpg">
 		             </div>
 		             <div class="front_slider_banner_one">
@@ -319,8 +399,9 @@ img.emoji {
 				         </div>
 		             </div>
 		         </container>
-		         <container id="banner_3" class="slider_banner_one slider_banner_one_3" style="display: grid; opacity: 0;">
-				     <div class="background-slider-banner-one" style="background: linear-gradient(270deg, rgb(13, 48, 74) 5.23%, rgba(13, 48, 74, 0.81) 25.5%, rgba(255, 255, 255, 0) 45%, rgba(255, 255, 255, 0)) repeat scroll 0% 0%, rgba(196, 196, 196, 0) none repeat scroll 0% 0%;"></div>
+		         <container id="banner_3" class="slider_banner_one slider_banner_one_3" style="display: grid; opacity: 0.99;">
+				     <div class="bg-img-slider-banner-one" style="background-image: url(index_files/003-1-e1637253114775.jpg);"></div>
+				     <div class="background-slider-banner-one"></div>
 		             <div class="back_slider_banner_one">
 			             <img class="back_img_slider_banner_one" src="index_files/003-1-e1637253114775.jpg">
 		             </div>
@@ -339,9 +420,10 @@ img.emoji {
 		             </div>
 		         </container>
 				 <container id="banner_4" class="slider_banner_one slider_banner_one_4" style="display: grid; opacity: 0;">
-				     <div class="background-slider-banner-one" style="background: linear-gradient(270deg, rgb(13, 48, 74) 5.23%, rgba(13, 48, 74, 0.81) 25.5%, rgba(255, 255, 255, 0) 45%, rgba(255, 255, 255, 0)) repeat scroll 0% 0%, rgba(196, 196, 196, 0) none repeat scroll 0% 0%;"></div>
+				     <div class="bg-img-slider-banner-one" style="background-image: url(index_files/004-e1636566215760.jpg);"></div>
+				     <div class="background-slider-banner-one"></div>
 		             <div class="back_slider_banner_one">
-			             <img class="back_img_slider_banner_one" src="index_files/004.jpg">
+			             <img class="back_img_slider_banner_one" src="index_files/004-e1636566215760.jpg">
 		             </div>
 		             <div class="front_slider_banner_one">
 					     <div id="slider_h2_4" class="slider-h2">
@@ -373,10 +455,10 @@ img.emoji {
 		
 <div class="logo-menu">
     <div class="site-branding">
-        <a href="http://dkotkin.com/" class="custom-logo-link" rel="home">
+        <a href="index.html" class="custom-logo-link" rel="home">
             <img loading="lazy" src="index_files/logo075-e1634922069477.png" class="custom-logo" alt="dkotkin" width="142" height="142">
         </a>
-        <p class="site-title"><a href="http://dkotkin.com/" rel="home">dkotkin</a></p>
+        <p class="site-title"><a href="index.html" rel="home">dkotkin</a></p>
     </div><!-- .site-branding -->
 
     <nav id="site-navigation-in-main" class="main-navigation">
@@ -386,11 +468,11 @@ img.emoji {
         <div class="menu-menu-in-main-container">
             <ul id="primary-menu-in-main" class="menu font-one size-25 color-white">
                 <li id="menu-item-1381" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-1381">
-                    <a href="http://dkotkin.com/">אודות</a>
+                    <a href="index.html">אודות</a>
                 </li>
                 <li id="menu-item-1383" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-16 current_page_item menu-item-has-children menu-item-1383 parentmenuinmain">
                     <a href="index.html" aria-current="page">השירותים</a>
-                    <ul class="sub-menu font-no-one size-15 submenuinmain">
+                    <ul class="sub-menu font-no-one size-15 submenuinmain" style="display: none;">
 	                <li id="menu-item-2400" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-2398 current_page_item menu-item-2400">
                             <a href="investmens.html" aria-current="page">ייעוץ השקעות</a>
                         </li>
@@ -467,10 +549,6 @@ img.emoji {
 
 
 <div id="text-list-ext-1" class="wp-block-group block-about-text-list-ext font-no-one size-29"><div class="wp-block-group__inner-container">
-<h2 class="color-blue"> עובדות:</h2>
-
-
-
 <ul class="color-black"><li>מעל 20 שנה ניסיון בהשקעות</li><li>נתן מעל 3,000 ייעוצים</li><li>מעל 15 שנות ניסיון בהוראה</li><li>לימד מעל 4,000 סטודנטים בתואריים אקדמיים</li><li>הכשיר יותר מ-2,500 מועמדים למבחני רשות ניירות ערך</li><li>מחבר ספר הלימוד «ניתוח ניירות ערך ומכשירים פיננסיים»</li></ul>
 </div></div>
 
@@ -498,7 +576,7 @@ img.emoji {
 
 <div class="wp-block-group block-about-text-list-ext font-no-one size-29"><div class="wp-block-group__inner-container">
 <div class="home-about-video-border">
-    <video src="index_files/a" poster="index_files/Group-29.png" width="700">
+    <video src="" poster="index_files/Group-29.png" width="700">
     </video>
 </div>
 
@@ -509,8 +587,7 @@ img.emoji {
 
 
 <div class="wp-block-group block-about-photo"><div class="wp-block-group__inner-container">
-<!-- <figure class="wp-block-image size-full block-about-photo1"><img loading="lazy" src="index_files/aboutphotoscollx4smallOk-3-e1637253554635.jpg" alt="" class="wp-image-6130" width="609" height="1435"></figure> -->
-<figure class="wp-block-image size-full block-about-photo1"><img loading="lazy" width="630" height="1435" src="index_files/aboutphotoscollx4smallOk-5-e1637259394460.jpg" alt="" class="wp-image-6134"/></figure>
+<figure class="wp-block-image size-full block-about-photo1"><img loading="lazy" src="index_files/aboutphotoscollx4smallOk-5-e1637259394460.jpg" alt="" class="wp-image-6134" width="630" height="1435"></figure>
 </div></div>
 </div></div>
 </div></div>
@@ -535,19 +612,29 @@ img.emoji {
 
 
 
-<p class="has-text-align-center font-no-one size-18 color-white service-hidden-text">לימוד יישומי על בניית וניהול תיק השקעות. לומדים פרקטי מסחר במניות וניתוח פונדמנטלי</p>
+<p class="has-text-align-center font-no-one size-18 color-white service-hidden-text" style="max-height: 0px; visibility: hidden;">לימוד יישומי על בניית וניהול תיק השקעות. לומדים פרקטי מסחר במניות וניתוח פונדמנטלי</p>
 </div></div>
 </div></div>
 
 
 
-<div class="wp-block-cover block-home-help-branches-branch branches-branch-2"><img loading="lazy" class="wp-block-cover__image-background wp-image-6107" alt="" src="index_files/003a-3-1-e1637248104898.jpg" style="object-position:50% 50%" data-object-fit="cover" data-object-position="50% 50%" width="530" height="800"><div class="wp-block-cover__inner-container">
+<div class="wp-block-cover block-home-help-branches-branch branches-branch-2"><img loading="lazy" class="wp-block-cover__image-background wp-image-6247" alt="" src="index_files/smile_boy-e1637429014270.jpg" style="object-position:50% 50%" data-object-fit="cover" data-object-position="50% 50%" width="530" height="800"><div class="wp-block-cover__inner-container">
 <div class="wp-block-group block-home-help-branches-branch-text"><div class="wp-block-group__inner-container">
 <h2 class="has-text-align-center font-one size-28 color-white">קורס מקצועית א’</h2>
 
 
 
-<p class="has-text-align-center font-no-one size-18 color-white service-hidden-text">קורס מיטבי וממוקד כדי לעבור את הבחינה של רשות ני”ע בפעם הראשונה</p>
+<div class="wp-block-group service-hidden-text" style="max-height: 0px; visibility: hidden;"><div class="wp-block-group__inner-container">
+<p class="has-text-align-center font-no-one size-18 color-white">קורס מיטבי וממוקד</p>
+
+
+
+<p class="has-text-align-center font-no-one size-18 color-white">כדי לעבור את הבחינה של רשות ני”ע</p>
+
+
+
+<p class="has-text-align-center font-no-one size-18 color-white">בפעם הראשונה</p>
+</div></div>
 </div></div>
 
 
@@ -563,7 +650,7 @@ img.emoji {
 
 
 
-<p class="font-no-one size-18 color-white service-hidden-text">תכנון נכון יאפשר ניהול יעיל של כספי המשפחה, מה שיביא להורדת הוצאות, הקמת וצמיחת חסכונות — זאת דרך לחופש הכלכלי שלך</p>
+<p class="font-no-one size-18 color-white service-hidden-text" style="max-height: 0px; visibility: hidden;">תכנון נכון יאפשר ניהול יעיל של כספי המשפחה, מה שיביא להורדת הוצאות, הקמת וצמיחת חסכונות — זאת דרך לחופש הכלכלי שלך</p>
 </div></div>
 
 
@@ -579,7 +666,7 @@ img.emoji {
 
 
 
-<p class="font-no-one size-18 color-white service-hidden-text">נושאים חשובים בחיים צריך לעשות עם מקצוענים ואמינים — ליווי שוטף ללא קשר לגודל תיק באובייקטיביות מלאה</p>
+<p class="font-no-one size-18 color-white service-hidden-text" style="max-height: 0px; visibility: hidden;">נושאים חשובים בחיים צריך לעשות עם מקצוענים ואמינים — ליווי שוטף ללא קשר לגודל תיק באובייקטיביות מלאה</p>
 </div></div>
 
 
@@ -611,37 +698,25 @@ img.emoji {
             </div>
             <div class="calc-2">
                 <div class="calc-button-2 calc-multiplication-2">
-                    <h1>X</h1>
+                    <img src="index_files/multiplication_black.png">
                 </div>
                 <div class="calc-button-2 calc-division-2">
-                    <h1>/</h1>
+                    <img src="index_files/division_black.png">
                 </div>
                 <div class="calc-button-2 calc-addition-2">
-                    <h1>+</h1>
+                    <img src="index_files/addition_black.png">
                 </div>
                 <div class="calc-button-2 calc-result-2">
-                    <h1>=</h1>
+                    <img src="index_files/equal_black.png">
                 </div>
             </div>
         </div>
 
-        <div class="home-calc home-calc-1">
+        <div class="home-calc home-calc-4">
             <div class="home-calc-header">
                 <h2 class="font-no-one size-34 color-black">פרופיל משקיע</h2>
             </div>
-            <div class="calc-1">
-                <div class="calc-button calc-multiplication">
-                    <h1>X</h1>
-                </div>
-                <div class="calc-button calc-division">
-                    <h1>/</h1>
-                </div>
-                <div class="calc-button calc-addition">
-                    <h1>+</h1>
-                </div>
-                <div class="calc-button calc-result">
-                    <h1>=</h1>
-                </div>
+            <div class="calc-4">
             </div>
         </div>
 
@@ -673,14 +748,14 @@ img.emoji {
 <form action="/main/#wpcf7-f1007-p16-o1" method="post" class="wpcf7-form init" novalidate="novalidate" data-status="init">
 <div style="display: none;">
 <input type="hidden" name="_wpcf7" value="1007">
-<input type="hidden" name="_wpcf7_version" value="5.5.2">
+<input type="hidden" name="_wpcf7_version" value="5.5.3">
 <input type="hidden" name="_wpcf7_locale" value="he_IL">
 <input type="hidden" name="_wpcf7_unit_tag" value="wpcf7-f1007-p16-o1">
 <input type="hidden" name="_wpcf7_container_post" value="16">
 <input type="hidden" name="_wpcf7_posted_data_hash" value="">
 </div>
 <p><span class="wpcf7-form-control-wrap your-name"><input type="text" name="your-name" size="40" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required cf7name" aria-required="true" aria-invalid="false" placeholder="שם מלא"></span></p>
-<p><span class="wpcf7-form-control-wrap cf7phone"><input type="tel" name="cf7phone" size="40" class="wpcf7-form-control wpcf7-text wpcf7-tel wpcf7-validates-as-required wpcf7-validates-as-tel cf7phone" aria-required="true" aria-invalid="false" placeholder="מס טלפון'"></span></p>
+<p><span class="wpcf7-form-control-wrap cf7phone"><input type="tel" name="cf7phone" size="40" class="wpcf7-form-control wpcf7-text wpcf7-tel wpcf7-validates-as-required wpcf7-validates-as-tel cf7phone" aria-required="true" aria-invalid="false" placeholder="'מס טלפון"></span></p>
 <p><span class="wpcf7-form-control-wrap your-email"><input type="email" name="your-email" size="40" class="wpcf7-form-control wpcf7-text wpcf7-email wpcf7-validates-as-required wpcf7-validates-as-email cf7email" aria-required="true" aria-invalid="false" placeholder="דוא&quot;ל"></span></p>
 <p><span class="wpcf7-form-control-wrap cf7-tema-he"><input type="text" name="cf7-tema-he" size="40" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required cf7-tema-he" id="cf7-tema-he" aria-required="true" aria-invalid="false" placeholder="תוכן הפניה"></span></p>
 <p><input type="submit" value="שלח" class="wpcf7-form-control has-spinner wpcf7-submit"><span class="wpcf7-spinner"></span></p>
@@ -689,7 +764,7 @@ img.emoji {
 
 
 
-<div class="wp-block-group home-contacts-list font-no-one size-35 color-black"><div class="wp-block-group__inner-container">
+<div class="wp-block-group home-contacts-list font-no-one size-60 color-black"><div class="wp-block-group__inner-container">
 <ul><li>אמינות</li><li>מקצועיות</li><li>אדיבות</li><li>יסודיות</li><li>סודיות</li></ul>
 </div></div>
 </div></div>
@@ -744,7 +819,7 @@ img.emoji {
 <div class="menu-menu-in-main-container footer-main-menu">
 <ul id="footer-menu" class="menu font-no-one size-25 color-yellow">
 <li id="menu-item-1381" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-1381"><a href="http://dkotkin.com/">אודות</a></li>
-<li id="menu-item-1383" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-16 current_page_item menu-item-1383"><a href="index.html" aria-current="page">השירותים</a></li>
+<li id="menu-item-1383" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-16 current_page_item menu-item-1383"><a href="http://dkotkin.com/main/" aria-current="page">השירותים</a></li>
 <li id="menu-item-1402" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1402"><a href="http://dkotkin.com/contacts/">צור קשר</a></li>
 <li id="menu-item-1405" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1405"><a href="http://dkotkin.com/recomend/">ממליצים</a></li>
 <li id="menu-item-1382" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1382"><a href="http://dkotkin.com/blog/">כתבות</a></li>
