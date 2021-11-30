@@ -1544,10 +1544,6 @@ main #primary-menu-in-main li>a:hover, main .main-navigation ul ul a:hover {
 	color: white;
 }
 
-main #primary-menu-in-main li>a:visited {
-
-}
-
 main .main-navigation ul ul {
     box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
 	  display: none;
@@ -2412,6 +2408,65 @@ line-height: 2;
 
 /* ----- FAMILYFIN ----- */
 
+#ladder-2 {
+	margin-right: 1em;
+}
+
+#ladder-3 {
+	margin-right: 2em;
+}
+
+#ladder-4 {
+	margin-right: 3em;
+}
+
+.family-help-background {
+    width: 100%;
+    max-width: 1200px;
+    background-image: url(../../index_files/investmens_man_1-3-1-e1637943707727.jpg);
+    background-repeat: no-repeat;
+    background-position: 1% 30%;
+    background-size: 31%;
+    mix-blend-mode: darken;
+    position: absolute;
+    bottom: 0;
+    top: 0;
+    left: -4.3%;
+    /*right: 0;*/
+    z-index: 0;
+    image-rendering: -webkit-optimize-contrast;
+}
+
+.family-schedule-1 {
+	background-image: url(../../index_files/bg_family_2-e1638283361995.jpg);
+	background-size: 100% 100%;
+}
+
+.family-schedule-2 {
+	background-image: 
+	url(../../index_files/bg_family_1-e1638280735267.jpg);
+	background-size: 100% 100%;
+}
+
+.family-schedule-1>.block-box-level-2, .family-schedule-2>.block-box-level-2 {
+	background-image: linear-gradient(243.3deg, rgba(0, 0, 0, 0.86) 21.16%, rgba(0, 0, 0, 0.4214) 81.42%);
+	padding-top: 0.5em;
+	padding-bottom: 0.5em;
+	padding-right: 3em;
+	margin-top: min(48px, 3.5vw);
+	margin-bottom: min(48px, 3.5vw);
+	border: solid 1px burlywood;
+}
+
+.schedule-list>li {
+	list-style-image: url(../../index_files/img_check_list.png);
+  list-style-type: circle;
+}
+
+.schedule-list>li::marker {
+	line-height: 1;
+}
+
 /* ------ WE-HELP ------ */
 
 .familyfin-we-help {
@@ -3064,7 +3119,7 @@ line-height: 2;
   align-items: center;
 }
 
-#cnv {
+#cnv, #cnv-family {
 	background-image: url(../../index_files/investmens_man_2_orig-e1637964302672.jpg);
 	background-size: 26%;
   background-repeat: no-repeat;
@@ -4830,4 +4885,10 @@ header .main-navigation ul ul a {
 	border-right: solid white 4px;
   }
 	
-}
+	.family-help-background {
+		max-width: 1440px;
+    /*right: 8%;*/
+		left: -8%;
+  }
+	
+}	

@@ -51,25 +51,85 @@ img.emoji {
 						</style>
 
     <script src="files/js/navigation.js"></script>
-		
+	
 	<script>
-	     var banner_number = 1;
+	     let banner_number = 1;
+		 let time_banner = -1;
+		 let stop_banner = false;
 	     function startTimer() {
-             let bannerid = '';
-		     timerId = setInterval(function(bnumber) {
-				 bannerid = 'banner_' + banner_number;
-			     document.getElementById(bannerid).style.opacity = "0";
-				 banner_number += 1;
-				 if (banner_number > 4) banner_number = 1;
-				 bannerid = 'banner_' + banner_number;
-				 document.getElementById(bannerid).style.opacity = "0.99";
-			 }, 8000, banner_number);
+             let bannerid = 'banner_1';
+		     timerId = setInterval(() => {
+				 time_banner++;
+				 if ((time_banner >= 8) && (!stop_banner)) {
+					 bannerid = 'banner_' + banner_number;
+			         document.getElementById(bannerid).style.opacity = "0";
+				     banner_number += 1;
+				     if (banner_number > 4) banner_number = 1;
+				     bannerid = 'banner_' + banner_number;
+				     document.getElementById(bannerid).style.opacity = "0.99";
+				     time_banner = -1;
+				 }
+			 }, 1000);
 			 document.getElementById('banner_2').style.display = "grid";
 			 document.getElementById('banner_3').style.display = "grid";
 			 document.getElementById('banner_4').style.display = "grid";
 		 };
 
 		 document.addEventListener('DOMContentLoaded', function(){
+
+			 /* ------------------------------------------------------------------------------------- */
+
+			 document.querySelector('#slider_parent').onmouseover = function() {
+				 stop_banner = true;
+			 };
+
+			 document.querySelector('#slider_parent').onmouseout = function() {
+				stop_banner = false;
+			 };
+
+			 /* ---------------------------------------------------------------------------------------- */
+
+			 let thanks_count = document.querySelectorAll('.student-thanks').length;
+			 let thanks_first_visible_id = 1;
+			 let thanks_visible_count = 1; 
+			 let thanks_first_hidden_id = thanks_first_visible_id + thanks_visible_count;
+
+			 document.querySelectorAll('.thanksslider-pointer').forEach(function(div) {
+
+				 div.onclick = function() {
+
+					if (div.className === 'thanksslider-pointer pointer-to-left') {
+
+						 if (thanks_first_hidden_id > thanks_count) {
+                             return;
+						 };
+
+						 document.querySelector(`#student_thanks_${thanks_first_visible_id}`).style.display = "none";
+					     document.querySelector(`#student_thanks_${thanks_first_hidden_id}`).style.display = "block";
+
+                         thanks_first_visible_id++;
+					     thanks_first_hidden_id++;
+
+					} else {
+
+						 if (thanks_first_visible_id <= 1) {
+                             return;
+					     };
+
+						 thanks_first_hidden_id--;
+						 thanks_first_visible_id--;
+
+						 document.querySelector(`#student_thanks_${thanks_first_visible_id}`).style.display = "block";
+					     document.querySelector(`#student_thanks_${thanks_first_hidden_id}`).style.display = "none";
+
+					};
+					
+
+				 };
+
+			 });
+
+            // ---------------------------------------------------------------------------------------------------------------
 
 			 let  video_count = document.querySelectorAll('.students_tell_video').length;
 			 let video_first_visible_id = 1;
@@ -111,48 +171,90 @@ img.emoji {
 
 			 });
 
-			 var percents = 25.5;
+			 /* ------------------------------------------------------------------------------------------------------- */
+             
+			 //var percents = 35.5;
+			 //let lin_gradient = `linear-gradient(270deg, rgb(13, 48, 74) 5%, rgba(13, 48, 74, 0.66) ${percents}%, rgba(255, 255, 255, 0) 65%, rgba(255, 255, 255, 0)), rgba(196, 196, 196, 0)`;
 
-			 if (window.innerWidth > 1440) {
-				 percents = (1440 * 0.255 + (window.innerWidth - 1440) / 2) / window.innerWidth * 100;
-			 };
+			 //if (window.innerWidth > 1440) {
+			 //	 //percents = (1440 * 0.355 + (window.innerWidth - 1440) / 2) / window.innerWidth * 100;
+			 //	 percents = ((window.innerWidth - 1440) / 2) / window.innerWidth * 100;
+			 //	 lin_gradient = `linear-gradient(270deg, rgba(13, 48, 74, 0.5) 5%, rgba(13, 48, 74, 0.4) ${percents}%, rgba(255, 255, 255, 0) ${percents + 2}%, rgba(255, 255, 255, 0))`;
+			 //};
 
-			 document.querySelectorAll('.background-slider-banner-one').forEach((div) => {
-				 div.style.background = `linear-gradient(270deg, #0d304a 5.23%, #0d304acf ${percents}%, #fff0 45%, #fff0), #c4c4c400`;
+			 //document.querySelectorAll('.background-slider-banner-one').forEach((div) => {
+			 //	//div.style.background = `linear-gradient(270deg, rgb(13, 48, 74) 5%, rgba(13, 48, 74, 0.66) ${percents}%, rgba(255, 255, 255, 0) 65%, rgba(255, 255, 255, 0)), rgba(196, 196, 196, 0)`;
+			 //	div.style.background = lin_gradient;
+			 //});
+
+			 //window.onresize = function() {
+
+			 //	 if (window.innerWidth > 1440) {
+
+			 //		 //percents = (1440 * 0.355 + (window.innerWidth - 1440) / 2) / window.innerWidth * 100; 
+			 //		 percents = ((window.innerWidth - 1440) / 2) / window.innerWidth * 100; 
+			 //		 lin_gradient = `linear-gradient(270deg, rgba(13, 48, 74, 0.8) 0%, rgba(13, 48, 74, 0.4) ${percents}%, rgba(255, 255, 255, 0) ${percents + 10}%, rgba(255, 255, 255, 0) ${100 - percents - 10}%, rgba(13, 48, 74, 0.4) ${100 - percents}%, rgba(13, 48, 74, 0.8) 100%)`;
+
+			 //	 } else {
+
+			 //		 percents = 35.5;
+			 //		 lin_gradient = `linear-gradient(270deg, rgb(13, 48, 74) 5%, rgba(13, 48, 74, 0.66) ${percents}%, rgba(255, 255, 255, 0) 65%, rgba(255, 255, 255, 0)), rgba(196, 196, 196, 0)`;
+
+			 //	 };
+
+			 //	 document.querySelectorAll('.background-slider-banner-one').forEach((div) => {
+	         //        //div.style.background = `linear-gradient(270deg, rgb(13, 48, 74) 5%, rgba(13, 48, 74, 0.66) ${percents}%, rgba(255, 255, 255, 0) 65%, rgba(255, 255, 255, 0)), rgba(196, 196, 196, 0)`;
+			 //		 div.style.background = lin_gradient;
+             //    });
+
+			 //};
+             
+			 /* -------------------------------------------------------------------------------------- */
+
+			 document.querySelectorAll('.slider-button').forEach(function(button) {
+				 button.onclick = function(){
+
+                     let bannerid = '#banner_' + banner_number;
+					 console.log("bannerid on slider-button");
+					 console.log(bannerid);
+                     this.parentElement.parentElement.querySelector(bannerid).style.opacity = '0';
+
+                     if (this.dataset.direction === "right") {
+                         banner_number++;
+                         if (banner_number > 4) banner_number = 1;
+						 console.log('right');
+                     } 
+					 else {
+                         banner_number--;
+                         if (banner_number < 1) banner_number = 4;
+						 console.log('left');
+                     };
+
+                     bannerid = '#banner_' + banner_number;
+                     this.parentElement.parentElement.querySelector(bannerid).style.opacity = '0.99';
+					 time_banner = -1;
+
+                 };
+
 			 });
 
-			 window.onresize = function() {
+			 /* ------------------------------------------------------------------------------------------------ */
 
-				 if (window.innerWidth > 1440) {
+			 
 
-					 percents = (1440 * 0.255 + (window.innerWidth - 1440) / 2) / window.innerWidth * 100; 
+			 document.querySelector('.parentmenuinmain').onmouseover = function(){
 
-				 } else {
-
-					 percents = 25.5;
-
-				 };
-
-				 document.querySelectorAll('.background-slider-banner-one').forEach((div) => {
-	                 div.style.background = `linear-gradient(270deg, #0d304a 5.23%, #0d304acf ${percents}%, #fff0 45%, #fff0), #c4c4c400`;
-                 });
-
-			 };
-
-
-             document.querySelector('.parentmenuinmain').onmouseover = function(){
-
-				this.querySelector('ul').style.display = 'flex';
+                 this.querySelector('ul').style.display = 'flex';
 
              };
 
-			 document.querySelector('.parentmenuinmain').onmouseout = function(){
+             document.querySelector('.parentmenuinmain').onmouseout = function(){
 
-				this.querySelector('ul').style.display = 'none';
+                 this.querySelector('ul').style.display = 'none';
 
              };
 
-			 document.querySelector('.submenuinmain').onmouseover = function(){
+             document.querySelector('.submenuinmain').onmouseover = function(){
 
                  this.style.display = 'flex';
 
@@ -164,86 +266,108 @@ img.emoji {
 
              };
 
-			 document.querySelectorAll('.slider-button').forEach(function(button) {
-				 button.onclick = function(){
+            /* -------------------------------------------------------------------------------------- */
 
-                     let bannerid = '#banner_' + banner_number;
-                     this.parentElement.parentElement.querySelector(bannerid).style.opacity = '0';
-
-                     if (this.dataset.direction === "right") {
-                         banner_number++;
-                         if (banner_number > 4) banner_number = 1;
-                     } 
-					 else {
-                         banner_number--;
-                         if (banner_number < 1) banner_number = 4;
-                     };
-
-                     bannerid = '#banner_' + banner_number;
-                     this.parentElement.parentElement.querySelector(bannerid).style.opacity = '0.99';
-
-                 };
-
-			 });
-
-			 document.querySelectorAll('.block-home-help-branches-branch').forEach(function(div) {
-
-				 div.onmouseover = function() {
-					 
-					 this.querySelector('.service-hidden-text').style.maxHeight = '200px';
-					 this.querySelector('.service-hidden-text').style.visibility = 'visible';
-					 //this.querySelector('img').style.filter = 'grayscale(1)';
-					 //this.style.boxShadow = 'rgba(0, 0, 0, 0.25) 2px 14px 20px 2px, rgba(0, 0, 0, 0.29) -2px 16px 16px 2px';
-				 };
-
-				 div.onmouseout = function() {
-					 this.querySelector('.service-hidden-text').style.maxHeight = '0';
-					 this.querySelector('.service-hidden-text').style.visibility = 'hidden';
-					 //this.querySelector('img').style.filter = 'grayscale(0)';
-					 //this.style.boxShadow = 'rgba(0, 0, 0, 0.19) 0px 10px 20px 0px, rgba(0, 0, 0, 0.23) 0px 6px 6px 0px';
-				 };
-
-				 let site_branch ="";
-
-				 if (div.className === "wp-block-cover block-home-help-branches-branch branches-branch-1") {
-
-	                 site_branch = "capital-market";
-
-                 }
-				 else if (div.className === "wp-block-cover block-home-help-branches-branch branches-branch-2") {
-
-					 site_branch = "course-a";
-
-				 }
-				 else if (div.className === "wp-block-cover block-home-help-branches-branch branches-branch-3") {
-
-					 site_branch = "family-finance";
-
-				 }
-				 else {
-
-					 site_branch = "investmens";
-
-				 };
-
-				 div.onclick = function(event) {
-
-                     window.open(`${site_branch}.html`, '_self');
-
-                 };
-
-				
-
-			 });
 			
-				 
+			let oCanvasFamily = document.querySelector("#cnv-family");
+			let ctxCanvasFamily = oCanvasFamily.getContext("2d");
+			ctxCanvasFamily.fillStyle = "rgb(214, 181, 86)";
+			ctxCanvasFamily.strokeStyle = "rgb(13, 48, 74)";
+			ctxCanvasFamily.lineWidth = 4;
+			ctxCanvasFamily.lineJoin = "miter";
+			ctxCanvasFamily.globalCompositeOperation = "source-over";
 
+			ctxCanvasFamily.beginPath();
+			ctxCanvasFamily.moveTo(1256, 100);
+			ctxCanvasFamily.lineTo(300, 100);
+			ctxCanvasFamily.lineTo(300, 80);
+			ctxCanvasFamily.lineTo(240, 140);
+			ctxCanvasFamily.lineTo(300, 200);
+			ctxCanvasFamily.lineTo(300, 180);
+			ctxCanvasFamily.lineTo(1256, 180);
+			ctxCanvasFamily.closePath();
+			ctxCanvasFamily.stroke();
+			ctxCanvasFamily.fill();
+
+			ctxCanvasFamily.beginPath();
+			ctxCanvasFamily.moveTo(1256, 220);
+			ctxCanvasFamily.lineTo(410, 220);
+			ctxCanvasFamily.lineTo(410, 200);
+			ctxCanvasFamily.lineTo(350, 260);
+			ctxCanvasFamily.lineTo(410, 320);
+			ctxCanvasFamily.lineTo(410, 300);
+			ctxCanvasFamily.lineTo(1256, 300);
+			ctxCanvasFamily.closePath();
+			ctxCanvasFamily.stroke();
+			ctxCanvasFamily.fill();
+
+			ctxCanvasFamily.beginPath();
+			ctxCanvasFamily.moveTo(1256, 340);
+			ctxCanvasFamily.lineTo(520, 340);
+			ctxCanvasFamily.lineTo(520, 320);
+			ctxCanvasFamily.lineTo(460, 380);
+			ctxCanvasFamily.lineTo(520, 440);
+			ctxCanvasFamily.lineTo(520, 420);
+			ctxCanvasFamily.lineTo(1256, 420);
+			ctxCanvasFamily.closePath();
+			ctxCanvasFamily.stroke();
+			ctxCanvasFamily.fill();
+
+			// -------------------------------------------------------
+
+			ctxCanvasFamily.miterLimit = 20;
+			ctxCanvasFamily.fillStyle = "rgb(13, 48, 74)";
+
+			ctxCanvasFamily.beginPath();
+			ctxCanvasFamily.moveTo(1226, 126);
+			ctxCanvasFamily.lineTo(1207, 144);
+			ctxCanvasFamily.lineTo(1200, 138);
+			ctxCanvasFamily.lineTo(1208, 150);
+			ctxCanvasFamily.closePath();
+			ctxCanvasFamily.stroke();
+			ctxCanvasFamily.fill();
+
+			ctxCanvasFamily.beginPath();
+			ctxCanvasFamily.moveTo(1226, 246);
+			ctxCanvasFamily.lineTo(1207, 264);
+			ctxCanvasFamily.lineTo(1200, 258);
+			ctxCanvasFamily.lineTo(1208, 270);
+			ctxCanvasFamily.closePath();
+			ctxCanvasFamily.stroke();
+			ctxCanvasFamily.fill();
+
+			ctxCanvasFamily.beginPath();
+			ctxCanvasFamily.moveTo(1226, 366);
+			ctxCanvasFamily.lineTo(1207, 384);
+			ctxCanvasFamily.lineTo(1200, 378);
+			ctxCanvasFamily.lineTo(1208, 390);
+			ctxCanvasFamily.closePath();
+			ctxCanvasFamily.stroke();
+			ctxCanvasFamily.fill();
+
+			ctxCanvasFamily.fillStyle = "rgb(214, 181, 86)";
+
+			// ---------------------------------------------------------
+
+			ctxCanvasFamily.font = "30pt Rubik";
+			ctxCanvasFamily.lineWidth = 4;
+			let textFamily1 = "אני אהיה לצדך בהחלטות כלכליות קשות";
+			ctxCanvasFamily.strokeText(textFamily1, 1160, 152);
+
+			let textFamily2 = "יועץ פרטי שבאמת דואג לאינטרסים שלך";
+			ctxCanvasFamily.strokeText(textFamily2, 1160, 272);
+
+			let textFamily3 = "אובייקטיביות מלאה ללא כל תלות";
+			ctxCanvasFamily.strokeText(textFamily3, 1160, 392);
+
+			/* ----------------------------------------------------------------------------------- */
+			
          });
 	 </script>
 
 </head>
 
-<body class="page-template-default page page-id-16 page-parent wp-custom-logo no-sidebar" onload="startTimer()">
+<body class="page-template-default page page-id-1565 page-child parent-pageid-16 wp-custom-logo no-sidebar" onload="startTimer()">
 <div id="page" class="site">
 	<a class="skip-link screen-reader-text" href="#primary">Skip to content</a>
 
@@ -251,17 +375,17 @@ img.emoji {
 	     
         <div class="logo-menu">
 		<div class="site-branding">
-			<a href="http://dkotkin.com/" class="custom-logo-link" rel="home"><img src="index_files/logo075-e1634922069477.png" class="custom-logo" alt="dkotkin" width="142" height="142"></a>				<p class="site-title"><a href="http://dkotkin.com/" rel="home">dkotkin</a></p>
+			<a href="index.html" class="custom-logo-link" rel="home"><img src="family-finance_files/logo075-e1634922069477.png" class="custom-logo" alt="dkotkin" width="142" height="142"></a>				<p class="site-title"><a href="index.html" rel="home">dkotkin</a></p>
 						</div><!-- .site-branding -->
 
 		<nav id="site-navigation" class="main-navigation">
 			<!-- <button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false">Primary Menu</button> -->
-			<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><img src="index_files/mobilemenu.png"></button>
-			<div class="menu-menu-in-main-container"><ul id="primary-menu" class="menu nav-menu"><li id="menu-item-1381" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-1381"><a href="http://dkotkin.com/">אודות</a></li>
-<li id="menu-item-1383" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-16 current_page_item menu-item-has-children menu-item-1383"><a href="index.html" aria-current="page">השירותים</a>
+			<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><img src="family-finance_files/mobilemenu.png"></button>
+			/main/family-finance/<div class="menu-menu-in-main-container"><ul id="primary-menu" class="menu nav-menu"><li id="menu-item-1381" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-1381"><a href="index.html">אודות</a></li>
+<li id="menu-item-1383" class="menu-item menu-item-type-post_type menu-item-object-page current-page-ancestor current-menu-ancestor current-menu-parent current-page-parent current_page_parent current_page_ancestor menu-item-has-children menu-item-1383"><a href="index.html">השירותים</a>
 <ul class="sub-menu">
 	<li id="menu-item-2400" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2400"><a href="investmens.html">ייעוץ השקעות</a></li>
-	<li id="menu-item-1575" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1575"><a href="family-finance.html">תכנון פיננסי</a></li>
+	<li id="menu-item-1575" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-1565 current_page_item menu-item-1575"><a href="family-finance.html" aria-current="page">תכנון פיננסי</a></li>
 	<li id="menu-item-4708" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4708"><a href="course-a.html">קורס מקצועית א’</a></li>
 	<li id="menu-item-4711" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4711"><a href="capital-market.html">לימודי שוק ההון</a></li>
 </ul>
@@ -277,82 +401,67 @@ img.emoji {
 		</div>
 
 		<div id="slider_parent">
+			 
 			 <div class="slider-buttons">
 				 <button class="slider-button slider-button-right" data-direction="right"></button>
 				 <button class="slider-button slider-button-left" data-direction="left"></button>
 		     </div>
              <container id="slider_banners">
-	             <container id="banner_1" class="slider_banner_one slider_banner_one_1" style="opacity: 0.99;">
-					 <div class="background-slider-banner-one" style="background: linear-gradient(270deg, rgb(13, 48, 74) 5.23%, rgba(13, 48, 74, 0.81) 25.5%, rgba(255, 255, 255, 0) 45%, rgba(255, 255, 255, 0)) repeat scroll 0% 0%, rgba(196, 196, 196, 0) none repeat scroll 0% 0%;"></div>
+	             <container id="banner_1" class="slider_banner_one slider_banner_one_1">
+					 <div class="bg-img-slider-banner-one" style="background-image: url(index_files/family_banner_1-e1638290743387.jpg);"></div>
+					 <div class="background-slider-banner-one"></div>
 	                 <div class="back_slider_banner_one">
-	   	                 <img class="back_img_slider_banner_one" src="index_files/001-1-e1636561693659.jpg" srcset="index_files/001-1-e1636561693659.jpg 2560w, index_files/001-1-e1636561693659-2048x993.jpg 2048w, index_files/001-1-e1636561693659-1536x745.jpg 1536w, index_files/001-1-e1636561693659-768x372.jpg 768w, index_files/001-1-e1636561693659-300x145.jpg 300w">
+	   	                 <img class="back_img_slider_banner_one" src="family-finance_files/family_banner_1-e1638290743387.jpg" srcset="">
 		             </div>
 		             <div class="front_slider_banner_one">
 		   	             <div id="slider_h2_1" class="slider-h2">
 							 <div>
-			  	                 <h2>ייעוץ השקעות פרטי</h2>
-							     <hr class="golden-line">
+			  	                 <h2>תכנון פיננסי משפחתי</h2>							     <hr class="golden-line">
 		                     </div>
-							 <p>דמיטרי קוטקין - מצפן שלך בשוק ההון </p>
-				         </div>
+							 <p>דמיטרי קוטקין - מורה דרך שלך להשגת עצמאות כלכלית</p>				         </div>
 		             </div>
 		         </container>
-		         <container id="banner_2" class="slider_banner_one slider_banner_one_2" style="display: grid; opacity: 0;">
-				     <div class="background-slider-banner-one" style="background: linear-gradient(270deg, rgb(13, 48, 74) 5.23%, rgba(13, 48, 74, 0.81) 25.5%, rgba(255, 255, 255, 0) 45%, rgba(255, 255, 255, 0)) repeat scroll 0% 0%, rgba(196, 196, 196, 0) none repeat scroll 0% 0%;"></div>
+		         <container id="banner_2" class="slider_banner_one slider_banner_one_2">
+				     <div class="bg-img-slider-banner-one" style="background-image: url(index_files/family_banner_2-e1638291435889.jpg);"></div>
+				     <div class="background-slider-banner-one"></div>
 		             <div class="back_slider_banner_one">
-                         <!-- <img class="back_img_slider_banner_one" src="http://dkotkin.com/wp-content/uploads/2021/11/002-e1636583090932.jpg"> -->
-						 <img class="back_img_slider_banner_one" src="index_files/002-pixlr1-e1637246858133.jpg">
+                         <!-- <img class="back_img_slider_banner_one" src="index_files/002-e1636583090932.jpg"> -->
+						 <img class="back_img_slider_banner_one" src="family-finance_files/family_banner_2-e1638291435889.jpg">
 		             </div>
 		             <div class="front_slider_banner_one">
 			             <div id="slider_h2_2" class="slider-h2">
 							 <div>
-						         <h2>תכנון פיננסי משפחתי</h2>
-							     <hr class="golden-line">
+							     <h2>תכנון פיננסי משפחתי</h2>							     <hr class="golden-line">
 		                     </div>
-							 <p>דמיטרי קוטקין - מורה דרך שלך להשגת עצמאות כלכלית</p>
-							 <!-- <ul>
-								 <li>מצפן שלך בשוק ההון</li>
-								 <li>הצלחה בטוחה במבחני הרשות</li>
-								 <li>מורה דרך שלך להשגת עצמאות כלכלית</li>
-		                     </ul> -->
-				         </div>
+							 <p>דמיטרי קוטקין - מורה דרך שלך להשגת עצמאות כלכלית</p>				         </div>
 		             </div>
 		         </container>
-		         <container id="banner_3" class="slider_banner_one slider_banner_one_3" style="display: grid; opacity: 0;">
-				     <div class="background-slider-banner-one" style="background: linear-gradient(270deg, rgb(13, 48, 74) 5.23%, rgba(13, 48, 74, 0.81) 25.5%, rgba(255, 255, 255, 0) 45%, rgba(255, 255, 255, 0)) repeat scroll 0% 0%, rgba(196, 196, 196, 0) none repeat scroll 0% 0%;"></div>
+		         <container id="banner_3" class="slider_banner_one slider_banner_one_3">
+				     <div class="bg-img-slider-banner-one" style="background-image: url(index_files/family_banner_3_1-e1638292438463.jpg);"></div>
+				     <div class="background-slider-banner-one"></div>
 		             <div class="back_slider_banner_one">
-			             <img class="back_img_slider_banner_one" src="index_files/003-1-e1637253114775.jpg">
+			             <img class="back_img_slider_banner_one" src="family-finance_files/family_banner_3_1-e1638292438463.jpg">
 		             </div>
 		             <div class="front_slider_banner_one">
 					     <div id="slider_h2_3" class="slider-h2">
 							 <div>
-					             <h2>קורס מקצועית א'</h2>
-							     <hr class="golden-line">
+							     <h2>תכנון פיננסי משפחתי</h2>							     <hr class="golden-line">
 		                     </div>
-							 <p>דמיטרי קוטקין – הצלחה שלך במבחני הרשות</p>
-							 <!-- <ul>
-								 <li>נקטין הוצאות ונגדיל הון</li>
-								 <li>של המשפחה שלך</li>
-		                     </ul> -->
-				         </div>
+							 <p>דמיטרי קוטקין - מורה דרך שלך להשגת עצמאות כלכלית</p>				         </div>
 		             </div>
 		         </container>
-				 <container id="banner_4" class="slider_banner_one slider_banner_one_4" style="display: grid; opacity: 0;">
-				     <div class="background-slider-banner-one" style="background: linear-gradient(270deg, rgb(13, 48, 74) 5.23%, rgba(13, 48, 74, 0.81) 25.5%, rgba(255, 255, 255, 0) 45%, rgba(255, 255, 255, 0)) repeat scroll 0% 0%, rgba(196, 196, 196, 0) none repeat scroll 0% 0%;"></div>
+				 <container id="banner_4" class="slider_banner_one slider_banner_one_4">
+				     <div class="bg-img-slider-banner-one" style="background-image: url(index_files/002-pixlr1-e1637246858133.jpg);"></div>
+				     <div class="background-slider-banner-one"></div>
 		             <div class="back_slider_banner_one">
-			             <img class="back_img_slider_banner_one" src="index_files/004.jpg">
+			             <img class="back_img_slider_banner_one" src="family-finance_files/002-pixlr1-e1637246858133.jpg">
 		             </div>
 		             <div class="front_slider_banner_one">
 					     <div id="slider_h2_4" class="slider-h2">
 							 <div>
-					             <h2>לימודי שוק ההון</h2>
-							     <hr class="golden-line">
+							     <h2>תכנון פיננסי משפחתי</h2>							     <hr class="golden-line">
 		                     </div>
-							 <ul>
-								 <li>לימוד יישומי על בניית וניהול תיק השקעות</li>
-								 <li>מסחר במניות וניתוח פונדמנטלי</li>
-		                     </ul>
-				         </div>
+							 <p>דמיטרי קוטקין - מורה דרך שלך להשגת עצמאות כלכלית</p>				         </div>
 		             </div>
 		         </container>
 	         </container>
@@ -363,19 +472,19 @@ img.emoji {
 	<main id="primary" class="site-main">
 
 		
-<article id="post-16" class="post-16 page type-page status-publish hentry">
+<article id="post-1565" class="post-1565 page type-page status-publish hentry">
 	<header class="entry-header">
-		<h1 class="entry-title">main</h1>	</header><!-- .entry-header -->
+		<h1 class="entry-title">family-finance</h1>	</header><!-- .entry-header -->
 
 	
 	<div class="entry-content">
 		
 <div class="logo-menu">
     <div class="site-branding">
-        <a href="http://dkotkin.com/" class="custom-logo-link" rel="home">
-            <img loading="lazy" src="index_files/logo075-e1634922069477.png" class="custom-logo" alt="dkotkin" width="142" height="142">
+        <a href="index.html" class="custom-logo-link" rel="home">
+            <img loading="lazy" src="family-finance_files/logo075-e1634922069477.png" class="custom-logo" alt="dkotkin" width="142" height="142">
         </a>
-        <p class="site-title"><a href="http://dkotkin.com/" rel="home">dkotkin</a></p>
+        <p class="site-title"><a href="index.html" rel="home">dkotkin</a></p>
     </div><!-- .site-branding -->
 
     <nav id="site-navigation-in-main" class="main-navigation">
@@ -385,7 +494,7 @@ img.emoji {
         <div class="menu-menu-in-main-container">
             <ul id="primary-menu-in-main" class="menu font-one size-25 color-white">
                 <li id="menu-item-1381" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-1381">
-                    <a href="http://dkotkin.com/">אודות</a>
+                    <a href="index.html">אודות</a>
                 </li>
                 <li id="menu-item-1383" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-16 current_page_item menu-item-has-children menu-item-1383 parentmenuinmain">
                     <a href="index.html" aria-current="page">השירותים</a>
@@ -423,7 +532,27 @@ img.emoji {
 
 
 
-<div class="wp-block-group block-box-level-1 familyfin-we-help"><div class="wp-block-group__inner-container">
+<div class="wp-block-group block-box-level-1 investmens-slogans-block"><div class="wp-block-group__inner-container">
+<div class="wp-block-group block-box-level-2"><div class="wp-block-group__inner-container">
+<div class="investmens-slogans-questions">
+    <ul class="size-34 color-black">
+        <li>נמאס לך <span style="font-weight: bold; color: #122569;">שהוצאות גדולות</span> מהכנסות?</li>
+        <li>לא מצליחים לנהל <span style="font-weight: bold; color: #122569;">תקציב משפחה</span> ולשלוט על הכסף?</li>
+        <li>רוצים לעשות <span style="font-weight: bold; color: #122569;">סדר בפיננסים</span> של משפחה?</li>
+        <li> יש דאגה על <span style="font-weight: bold; color: #122569;">עתיד פיננסי</span> של ילדים?</li>
+        <li>רוצים להשיג <span style="font-weight: bold; color: #122569;">חופש כלכלי</span> ולהפסיק לרוץ אחרי הזנב?</li>
+    </ul>
+</div>
+</div></div>
+
+
+
+<div class="investment-slogans-background"></div>
+</div></div>
+
+
+
+<div class="wp-block-group block-box-level-1 familyfin-we-help investmens-we-help"><div class="wp-block-group__inner-container">
 <div class="wp-block-group familyfin-we-help-header"><div class="wp-block-group__inner-container">
 <h2 class="font-one size-60 color-blue"> איך אוכל לעזור לך? </h2>
 
@@ -435,56 +564,27 @@ img.emoji {
 
 
 <div class="wp-block-group family-group-p font-no-one color-black"><div class="wp-block-group__inner-container">
-<p class="size-35">מטרה שלי היא לסייע לך לעשות סדר בפיננסים של משפחתך,</p>
-
-
-
-<p class="size-35">בתכנון לעתיד, בין אם מדובר בהשכלה של ילדיך, רכישת דירה, פרישה עתידית או הכנסה</p>
-
-
-
-<p class="size-35">פסיבית שוטפת חודש בחודשו.</p>
+<div class="family-help-p-ladder size-35">
+    <p id="ladder-1">מטרה שלי</p>
+    <p id="ladder-2">לסייע לך לעשות סדר בפיננסים של משפחת:</p>
+    <p id="ladder-3">לאבחן וליעיל מצב נוכחי, לעשות תכנן לעתיד בהתאם לצרכיך —</p>
+    <p id="ladder-4">השכלה של ילדיך, רכישת דירה, פרישה עתידית, הכנסה פסיבית שוטפת.</p>
+</div>
 </div></div>
 
 
 
 <div class="wp-block-group family-group-p font-no-one color-black"><div class="wp-block-group__inner-container">
-<p class="size-35">תכנון נכון יאפשר ניהול יעיל של כספי המשפחה, מה שיביא להורדת הוצאות</p>
-
-
-
-<p class="size-35">הקמת וצמיחת חסכונות.</p>
+<div class="size-35">
+    <p>תכנון נכון יאפשר ניהול יעיל של כספי המשפחה.</p>
+    <p>זה יביא להורדת הוצאות, הקמת וצמיחת חסכונות – זאת דרך לחופש הכלכלי.</p>
+    <p style="font-weight: bold; color: #122569;">אני אבנה עבורך תוכנית פיננסית אישית וכך אלווה אותך ומשפחתך להצלחה.</p>
+</div>
 </div></div>
 
 
 
-<div class="wp-block-group family-group-p font-no-one color-black"><div class="wp-block-group__inner-container">
-<p class="size-35">מטרתנו לתעדף הכנסות קיימות כך שנוכל להשיג תוצאות גדולות</p>
-
-
-
-<p class="size-35">ומשמעותיות מהיום – זאת דרך לחופש הכלכלי שלך.</p>
-</div></div>
-
-
-
-<div class="wp-block-group family-group-p font-no-one color-black"><div class="wp-block-group__inner-container">
-<p class="size-35">תוכנית פיננסית היא כלי שיעזור לך להתמקד בגורמים החשובים ביותר להשגת הצלחה</p>
-
-
-
-<p class="size-35">כלכלית ולראות כיצד החלטות שמתקבלות כעת משפיעות על עתידך.</p>
-</div></div>
-
-
-
-<div class="wp-block-group family-group-p font-no-one color-black"><div class="wp-block-group__inner-container">
-<p class="size-35">אני אפתח עבורך תוכנית פיננסית אישית</p>
-
-
-
-<p class="size-35">שלב אחר שלב ואלווה אותך ומשפחתך להצלחה.</p>
-</div></div>
+<div class="wp-block-group family-group-p"><div class="wp-block-group__inner-container"></div></div>
 
 
 
@@ -494,98 +594,18 @@ img.emoji {
 
 
 <div class="wp-block-buttons familyfin-we-help-buttons contact-buttons">
-<div class="wp-block-button familyfin-we-help-button contact-button"><a class="wp-block-button__link" href="http://dkotkin.com/contacts/">לקביעת פגישה</a></div>
+<div class="wp-block-button familyfin-we-help-button contact-button"><a class="wp-block-button__link" href="http://dkotkin.com/contacts/">קביעת פגישה</a></div>
 </div>
 </div></div>
 
 
 
-<h2 class="familyfin-we-help-slogan font-one size-35 color-blue">דמיטרי קוטקין – מורה דרך שלך לתכנון הפיננסי היעיל</h2>
-
-
-
-<div class="wp-block-group familyfin-we-help-background"><div class="wp-block-group__inner-container"></div></div>
+<div class="wp-block-group family-help-background"><div class="wp-block-group__inner-container"></div></div>
 </div></div>
 
 
 
-<div class="wp-block-group block-box-level-1 group-home-successes"><div class="wp-block-group__inner-container">
-<div class="home-successes">
-    <div class="decor-line home-successes-line"></div>
-    <div class="home-successes-items block-box-level-2">
-
-        <div class="home-successes-item">
-            <p class="home-successes-item-nospan">לימד</p>
-            <p class="home-successes-item-span">מעל 4,000</p>
-            <p class="home-successes-item-nospan">סטודנטים בתואריים</p>
-            <p class="home-successes-item-nospan">אקדמיים</p>
-        </div>
-        
-        <div class="home-successes-item">
-            <p class="home-successes-item-nospan">נתן</p>
-            <p class="home-successes-item-span">כ-3,000</p>
-            <p class="home-successes-item-nospan">ייעוצים</p>
-            <p class="home-successes-item-nospan">&nbsp;</p>
-        </div>
-
-        <div class="home-successes-item">
-            <p class="home-successes-item-nospan">הכשיר</p>
-            <p class="home-successes-item-span">מעל 2,500</p>
-            <p class="home-successes-item-nospan">מועמדים למבחני רשות</p>
-            <p class="home-successes-item-nospan">ני&#187;ע</p>
-        </div>
-        
-    </div>
-</div>
-</div></div>
-
-
-
-<div class="wp-block-group block-box-level-1 block-family-farms"><div class="wp-block-group__inner-container">
-<div class="family-farms">
-
-    <div class="family-farm-rotateblock">
-    </div>
-
-    <div class="family-farm-2ps">
-
-        <div class="family-farm family-farm-1">
-            <div class="family-farm-header font-one color-black">
-                <h2 class="size-25">פיתוח תוכנית פיננסית</h2>
-                <h2 class="size-25">בהתאמה אישית</h2>
-            </div>
-            <div class="farm-1">
-            </div>
-            <div class="family-farm-footer font-no-one color-black">
-                <h2 class="size-25">אני אהיה לצדך</h2>
-                <h2 class="size-25">בהחלטות כלכליות קשות</h2>
-            </div>
-        </div>
-
-        <div class="family-farm family-farm-2">
-            <div class="family-farm-header">
-                <h2 class="farm-h2-1 font-one size-45 color-yellow">כלכלת משפחה</h2>
-                <h2 class="farm-h2-2 font-no-one size-34 color-white">תכנון פיננסי פרטי</h2>
-                <ul class=" font-no-one size-25 color-white">
-                    <li>&#8212; ניתוח המצב הנוכחי</li>
-                    <li>&#8212; המלצות לשיפור המצב הפיננסי הנוכחי</li>
-                    <li>&#8212; בנית תקציב משפחה והדרכה לניהולו</li>
-                    <li>&#8212; קביעת ותכנון יעדים פיננסיים</li>
-                    <li>&#8212; בניית תרחיש אופטימלי להשגת מטרות</li>
-                    <li>&#8212; סדר בביטוחים אלמנטרים</li>
-                    <li>&#8212; סדר בביטוחי חיים וביטוחי בריאות</li>
-                </ul>
-            </div>
-        </div>
-
-    </div>
-    
-</div>
-</div></div>
-
-
-
-<div class="wp-block-group block-box-level-1 family-why-dk"><div class="wp-block-group__inner-container">
+<div class="wp-block-group block-box-level-1 family-why-dk investmens-why-dk"><div class="wp-block-group__inner-container">
 <div class="family-why-dk-background"></div>
 
 
@@ -595,7 +615,7 @@ img.emoji {
 
 
 
-<div class="wp-block-group family-why-dk-characteristics font-no-one size-45 color-blue"><div class="wp-block-group__inner-container">
+<div class="wp-block-group investmens-dk-characteristics family-why-dk-characteristics font-no-one size-32 color-blue"><div class="wp-block-group__inner-container">
 <p>אמינות</p>
 
 
@@ -617,87 +637,157 @@ img.emoji {
 
 
 
-<div class="wp-block-group family-why-dk-services"><div class="wp-block-group__inner-container">
-<div class="wp-block-group family-why-dk-services-1"><div class="wp-block-group__inner-container">
-<div class="wp-block-group family-why-dk-service family-why-dk-serv-1"><div class="wp-block-group__inner-container">
-<h3 class="font-no-one size-34 color-white">ייעוץ השקעות</h3>
+<div>
+    <canvas id="cnv-family" width="1260" height="540">
+        <!-- <img loading="lazy" id="investments_img_check" src="index_files/investment_check.png" width="51" height="46">
+        <img loading="lazy" id="investments_img_man" src="index_files/investmens_man_2_orig-e1637964302672.jpg" width="100" height="150"> -->
+    </canvas>
+</div>
 
 
 
-<p class="font-no-one size-34 color-black">בהתאמה אישית</p>
-</div></div>
-
-
-
-<div class="wp-block-group family-why-dk-service family-why-dk-serv-2"><div class="wp-block-group__inner-container">
-<h3 class="font-no-one size-34 color-white">ליווי וסיוע שוטף</h3>
-
-
-
-<p class="font-no-one size-34 color-black">בניהול תיק השקעות</p>
-</div></div>
-
-
-
-<div class="wp-block-group family-why-dk-service family-why-dk-serv-3"><div class="wp-block-group__inner-container">
-<h3 class="font-no-one size-34 color-white">אובייקטיביות</h3>
-
-
-
-<p class="font-no-one size-34 color-black">מלאה</p>
-</div></div>
-</div></div>
-
-
-
-<div class="wp-block-group family-why-dk-services-2"><div class="wp-block-group__inner-container">
-<div class="wp-block-group family-why-dk-service family-why-dk-serv-4"><div class="wp-block-group__inner-container">
-<h3 class="font-no-one size-34 color-white">ללא קשר</h3>
-
-
-
-<p class="font-no-one size-34 color-black">לגודל תיק</p>
-</div></div>
-
-
-
-<div class="wp-block-group family-why-dk-service family-why-dk-serv-5"><div class="wp-block-group__inner-container">
-<h3 class="font-no-one size-34 color-white">ללא</h3>
-
-
-
-<p class="font-no-one size-34 color-black">כל תלות</p>
-</div></div>
-</div></div>
-</div></div>
-
-
-
-<ul class="font-no-one size-34 color-black"><li>את/ה מאוד עמוס/ה ואין לך זמן וידע בתחום – תסמוך על מקצועיות וניסיון של דמיטרי.</li><li>כסף שלך צריך לעבוד באופן יעיל – חבל לפספס זמן יקר.</li><li>תוך 20 שנים את/ה יכול/ה לייצר הכנסה פסיבית חודש בחודשו.</li><li>כבר היום כדאי לעשות הצעד הראשון להשגת עצמאות כלכלית שלך.</li><li>עם הון התחלתי של 200,000 בסיכוי גבוה ל-1,000,000 תוך 10 שנים.</li></ul>
+<div style="height:30px" aria-hidden="true" class="wp-block-spacer"></div>
 
 
 
 <div class="home-about-video-border block-box-level-2">
-    <video src="https://www.youtube.com/" width="600" poster="index_files/Group-29.png">
+    <video src="family-finance_files/a" poster="index_files/Group-29.png" width="600">
     </video>
 </div>
 
 
 
-<figure class="wp-block-embed is-type-video is-provider-youtube wp-block-embed-youtube family-why-dk-video wp-embed-aspect-16-9 wp-has-aspect-ratio"><div class="wp-block-embed__wrapper">
-https://www.youtube.com/
-</div></figure>
 
 
-
-<p class="family-why-dk-slogan font-no-one size-34 color-black">אני אהיה לצדך בהחלטות עקרוניות בתיק שלך</p>
+<div style="height:65px" aria-hidden="true" class="wp-block-spacer"></div>
 
 
 
 <div class="wp-block-buttons familyfin-we-help-buttons contact-buttons">
 <div class="wp-block-button familyfin-we-help-button contact-button"><a class="wp-block-button__link" href="http://dkotkin.com/contacts/">לקביעת פגישה</a></div>
 </div>
+
+
+
+<div style="height:34px" aria-hidden="true" class="wp-block-spacer"></div>
 </div></div>
+</div></div>
+
+
+
+<div class="wp-block-group block-box-level-1 group-home-successes"><div class="wp-block-group__inner-container">
+<div class="home-successes">
+    <div class="decor-line home-successes-line"></div>
+    <div class="home-successes-items block-box-level-2">
+
+        <div class="home-successes-item">
+            <p class="home-successes-item-nospan">לימד</p>
+            <p class="home-successes-item-span">מעל 4,000</p>
+            <p class="home-successes-item-nospan">סטודנטים בתואריים אקדמיים</p>
+        </div>
+        
+        <div class="home-successes-item">
+            <p class="home-successes-item-nospan">נתן</p>
+            <p class="home-successes-item-span">כ-3,000</p>
+            <p class="home-successes-item-nospan">ייעוצים</p>
+        </div>
+
+        <div class="home-successes-item">
+            <p class="home-successes-item-nospan">הכשיר</p>
+            <p class="home-successes-item-span">מעל 2,500</p>
+            <p class="home-successes-item-nospan">מועמדים למבחני רשות ני”ע</p>
+        </div>
+        
+    </div>
+</div>
+</div></div>
+
+
+
+<div class="wp-block-group block-box-level-1 block-about"><div class="wp-block-group__inner-container">
+<div class="wp-block-group block-about-photo-text block-box-level-2"><div class="wp-block-group__inner-container">
+<div class="wp-block-group block-about-text"><div class="wp-block-group__inner-container">
+<div class="wp-block-group block-about-text-header color-blue"><div class="wp-block-group__inner-container">
+<h1 class="block-about-text-h1 font-one size-88">דמיטרי קוטקין</h1>
+</div></div>
+
+
+
+<ul class="block-about-text-list font-no-one size-29 color-blue"><li>יועץ השקעות עצמאי</li><li>מתכנן פיננסי פרטי</li><li>מנטור למשקיעים פרטיים</li><li>מרצה כל סוגי קורסים בתחום מימון ושוק ההון בתואריים אקדמיים</li></ul>
+
+
+
+<div id="text-list-ext-1" class="wp-block-group block-about-text-list-ext font-no-one size-29"><div class="wp-block-group__inner-container">
+<ul class="color-black"><li>מעל 20 שנה ניסיון בהשקעות</li><li>נתן מעל 3,000 ייעוצים</li><li>מעל 15 שנות ניסיון בהוראה</li><li>לימד מעל 4,000 סטודנטים בתואריים אקדמיים</li><li>הכשיר יותר מ-2,500 מועמדים למבחני רשות ניירות ערך</li><li>מחבר ספר הלימוד «ניתוח ניירות ערך ומכשירים פיננסיים»</li></ul>
+</div></div>
+
+
+
+<div class="wp-block-group block-about-text-list-ext font-no-one size-29"><div class="wp-block-group__inner-container">
+<h2 class="color-blue"> מלמד:</h2>
+
+
+
+<ul class="color-black"><li>מרצה בקריה האקדמית ONO בתואר MA ,MBA ,BA</li><li>מרצה במסלול האקדמי מכללה למנהל בתואר BA</li><li>מרצה סדנאות בסניפי בנק בינלאומי בפריסה ארצי</li><li>מרצה בסדנאות לפרישי צה”ל במסגרת מכללת אתגר</li></ul>
+</div></div>
+
+
+
+<div class="wp-block-group block-about-text-list-ext font-no-one size-29"><div class="wp-block-group__inner-container">
+<h2 class="color-blue"> לימד בעבר:</h2>
+
+
+
+<ul class="color-black"><li>מרצה בכיר בחברת אורין — שפלטר</li><li>מייסד, מנהל אקדמי ומרצה בכיר במכללת B&amp;B</li><li>מנהל אקמי ומרצה בכיר באקדמיה לפיננסים מגדל שוקי הון</li></ul>
+</div></div>
+</div></div>
+
+
+
+<div class="wp-block-group block-about-photo"><div class="wp-block-group__inner-container">
+<figure class="wp-block-image size-full is-resized block-about-photo1 investmens-about-photo"><img src="family-finance_files/home_about_without_mirror_2x_pxlr_small-e1638018445379.jpg" alt="" class="wp-image-6604" height="1032"></figure>
+</div></div>
+</div></div>
+</div></div>
+
+
+
+<div class="wp-block-group"><div class="wp-block-group__inner-container">
+<div class="family-schedule-1 block-box-level-1">
+    <div class="block-box-level-2">
+        <h1 class="font-one size-60 color-yellow">דרך לעצמאות כלכלית</h1>
+        <h2 class="font-no-one size-40 color-white">יעדים להשגה:</h2>
+        <ul class="schedule-list font-no-one size-40 color-white">
+            <li>ייעול בניהול כספים של משפחה</li>
+            <li>יצירת הון התחלתי</li>
+            <li>בניית תוכנית לצמיחת הון חדש או קיים</li>
+            <li>יצירת קרן חסכון לילדים או לנכדים</li>
+            <li>סדר בביטוחים (אופציונלי)</li>
+        </ul>
+    </div>
+</div>
+</div></div>
+
+
+
+<div class="wp-block-group"><div class="wp-block-group__inner-container">
+<div class="family-schedule-2 block-box-level-1">
+    <div class="block-box-level-2">
+        <h1 class="font-one size-60 color-yellow">תכנון פיננסי בהתאמה אישית</h1>
+        <h2 class="font-no-one size-40 color-white">שלבי תכנון:</h2>
+        <ul class="schedule-list font-no-one size-40 color-white">
+            <li>ניתוח המצב הנוכחי</li>
+            <li>פתרון לשיפור ריביות של אשראי</li>
+            <li>בדיקת כדאיות למחזר משכנתא (ליווי בתהליך מיחזור – אופציונלי 1)</li>
+            <li>פתרונות להקטנת הוצאות</li>
+            <li>בנית תקציב משפחה והדכה לניהולו</li>
+            <li>קביעת יעדים פיננסיים למשפחה</li>
+            <li>בניית תוכנית להשגת מטרות</li>
+            <li>המלצות לסדר ביטוחים אלמנטריים (אופציונלי 2)</li>
+            <li>המלצות לסדר ביטוחי חיים וביטוחי בריאות (אופציונלי 2)</li>
+        </ul>
+    </div>
+</div>
 </div></div>
 
 
@@ -706,7 +796,7 @@ https://www.youtube.com/
 <div class="home-calcs">
 
     <div class="home-calcs-h2 block-box-level-2">
-        <h2 class="font-one size-57 color-blue">תחשב את ההישגים</h2>
+        <h2 class="font-one size-57 color-blue">תחשב את ההישגים האפשריים שלך</h2>
     </div>
 
     <div class="home-calcs-rotateblock">
@@ -719,20 +809,19 @@ https://www.youtube.com/
         <div class="home-calc home-calc-2">
             <div class="home-calc-header">
                 <h2 class="font-no-one size-34 color-black">מחשבון</h2>
-                <h2 class="font-no-one size-34 color-white">השקעות</h2>
             </div>
             <div class="calc-2">
                 <div class="calc-button-2 calc-multiplication-2">
-                    <h1>X</h1>
+                    <img src="family-finance_files/multiplication_black.png">
                 </div>
                 <div class="calc-button-2 calc-division-2">
-                    <h1>/</h1>
+                    <img src="family-finance_files/division_black.png">
                 </div>
                 <div class="calc-button-2 calc-addition-2">
-                    <h1>+</h1>
+                    <img src="family-finance_files/addition_black.png">
                 </div>
                 <div class="calc-button-2 calc-result-2">
-                    <h1>=</h1>
+                    <img src="family-finance_files/equal_black.png">
                 </div>
             </div>
         </div>
@@ -740,125 +829,25 @@ https://www.youtube.com/
         <div class="home-calc home-calc-1">
             <div class="home-calc-header">
                 <h2 class="font-no-one size-34 color-black">מחשבון םסלולי</h2>
-                <h2 class="font-no-one size-34 color-white">משכנתא</h2>
             </div>
             <div class="calc-1">
                 <div class="calc-button calc-multiplication">
-                    <h1>X</h1>
+                    <img src="family-finance_files/multiplication_gold.png">
                 </div>
                 <div class="calc-button calc-division">
-                    <h1>/</h1>
+                    <img src="family-finance_files/division_gold.png">
                 </div>
                 <div class="calc-button calc-addition">
-                    <h1>+</h1>
+                    <img src="family-finance_files/addition_gold.png">
                 </div>
                 <div class="calc-button calc-result">
-                    <h1>=</h1>
+                    <img src="family-finance_files/equal_gold.png">
                 </div>
             </div>
         </div>
     </div>
     
 </div>
-</div></div>
-
-
-
-<div class="wp-block-group block-box-level-1 block-about"><div class="wp-block-group__inner-container">
-<div class="wp-block-group block-about-photo-text block-box-level-2"><div class="wp-block-group__inner-container">
-<div class="wp-block-group block-about-text"><div class="wp-block-group__inner-container">
-<div class="wp-block-group block-about-text-header color-blue"><div class="wp-block-group__inner-container">
-<h1 class="block-about-text-h1 font-one size-88">דמיטרי קוטקין</h1>
-
-
-
-<div style="height:13px" aria-hidden="true" class="wp-block-spacer block-about-text-line"></div>
-
-
-
-<p class="block-about-text-p font-no-one size-60">מצפן שלך בשוק ההון</p>
-
-
-
-<p class="block-about-text-p font-no-one size-60">להשגת עצמאות כלכלית</p>
-</div></div>
-
-
-
-<ul class="block-about-text-list font-no-one size-29 color-black"><li>יועץ השקעות עצמאי</li><li>מרצה כל סוגי קורסים בתחום מימון ושוק ההון בתוארים אקדמים</li><li>מנטור למשקיעים פרטיים</li></ul>
-
-
-
-<div class="wp-block-group block-about-text-list-ext font-no-one size-29"><div class="wp-block-group__inner-container">
-<h2 class="color-blue"> עובדות:</h2>
-
-
-
-<ul class="color-black"><li>מעל 15 שנות ניסיון</li><li>נתן מעל 3,000 ייעוצים</li><li>לימד מעל 4,000 סטודנטים בתוארים אקדמים</li><li>הכשיר יותר מ-2,500 מועמדים למבחני רשות ניירות עקך</li></ul>
-</div></div>
-
-
-
-<div class="wp-block-group block-about-text-list-ext font-no-one size-29"><div class="wp-block-group__inner-container">
-<h2 class="color-blue"> מלמד:</h2>
-
-
-
-<ul class="color-black"><li>מרצה בקריה האקדמית ONO בתואר MA ,MBA ,BA.</li><li>מרצה במסלול האקדמי מכללה למנהל בתואר BA.</li><li>מרצה סדנאות בסניפי בנק בינלאומי בפריסה ארצי.</li><li>מרצה בסדנאות לפרישי צה&#187;ל במסגרת מכללת אדגר.</li></ul>
-</div></div>
-
-
-
-<div class="wp-block-group block-about-text-list-ext font-no-one size-29"><div class="wp-block-group__inner-container">
-<h2 class="color-blue"> למד בעבר:</h2>
-
-
-
-<ul class="color-black"><li>מרצה בכיר בחברת אורין &#8212; שפלטר.</li><li>מייסד, מנהל אקדמי ומרצה בכיר במכללת B&amp;B.</li><li>מנהל אקמי ומרצה בכיר באקדמיה לפיננסים מגדל שוקי הון.</li></ul>
-</div></div>
-
-
-
-<div class="wp-block-group block-about-text-list-ext font-no-one size-29"><div class="wp-block-group__inner-container">
-<ul class="color-black"><li>מנטור למשקיעים פרטיים.</li><li>בעל ניסיון בהשקעות למעלה מ- 20 שנה.</li></ul>
-</div></div>
-
-
-
-<ul class="block-about-text-list block-about-text-list-last font-no-one size-29 color-black"><li>מחבר ספר הלימוד &#171;ניתוח ניירות ערך ומכשירים פיננסיים&#187; (2010).</li></ul>
-</div></div>
-
-
-
-<div class="wp-block-group block-about-photo"><div class="wp-block-group__inner-container">
-<figure class="wp-block-image size-full block-about-photo1"><img loading="lazy" width="495" height="675" src="index_files/Rectangle-606.png" alt="" class="wp-image-4400" srcset="index_files/Rectangle-606.png 495w, index_files/Rectangle-606-220x300.png 220w" sizes="(max-width: 495px) 100vw, 495px" /></figure>
-
-
-
-<div class="wp-block-group block-about-photo-grid"><div class="wp-block-group__inner-container">
-<figure class="wp-block-image size-full block-about-photo2"><img loading="lazy" width="337" height="194" src="index_files/image-697.jpg" alt="" class="wp-image-4383" srcset="index_files/image-697.jpg 337w, index_files/image-697-300x173.jpg 300w" sizes="(max-width: 337px) 100vw, 337px" /></figure>
-
-
-
-<figure class="wp-block-image size-full block-about-photo3 is-style-default"><img loading="lazy" width="249" height="311" src="index_files/image-698.jpg" alt="" class="wp-image-4384" srcset="index_files/image-698.jpg 249w, index_files/image-698-240x300.jpg 240w" sizes="(max-width: 249px) 100vw, 249px" /></figure>
-</div></div>
-</div></div>
-</div></div>
-
-
-
-<div class="home-about-video-border block-box-level-2">
-    <video src="https://www.youtube.com/" width="600" poster="index_files/Group-29.png">
-    </video>
-</div>
-
-
-
-<div class="wp-block-group"><div class="wp-block-group__inner-container">
-<figure class="wp-block-embed is-type-video is-provider-youtube wp-block-embed-youtube block-about-video wp-embed-aspect-16-9 wp-has-aspect-ratio"><div class="wp-block-embed__wrapper">
-https://www.youtube.com/watch?v=GcsSqINjqgg&amp;t=33s
-</div></figure>
-</div></div>
 </div></div>
 
 
@@ -871,28 +860,29 @@ https://www.youtube.com/watch?v=GcsSqINjqgg&amp;t=33s
 </div>
 
 
-<div role="form" class="wpcf7" id="wpcf7-f2210-p1565-o1" lang="he-IL" dir="rtl">
+<div role="form" class="wpcf7" id="wpcf7-f2210-p1565-o1" dir="rtl" lang="he-IL">
 <div class="screen-reader-response"><p role="status" aria-live="polite" aria-atomic="true"></p> <ul></ul></div>
-<form action="/main/familyfin/#wpcf7-f2210-p1565-o1" method="post" class="wpcf7-form init" novalidate="novalidate" data-status="init">
+<form action="/main/family-finance/#wpcf7-f2210-p1565-o1" method="post" class="wpcf7-form init" novalidate="novalidate" data-status="init">
 <div style="display: none;">
-<input type="hidden" name="_wpcf7" value="2210" />
-<input type="hidden" name="_wpcf7_version" value="5.5.2" />
-<input type="hidden" name="_wpcf7_locale" value="he_IL" />
-<input type="hidden" name="_wpcf7_unit_tag" value="wpcf7-f2210-p1565-o1" />
-<input type="hidden" name="_wpcf7_container_post" value="1565" />
-<input type="hidden" name="_wpcf7_posted_data_hash" value="" />
+<input type="hidden" name="_wpcf7" value="2210">
+<input type="hidden" name="_wpcf7_version" value="5.5.3">
+<input type="hidden" name="_wpcf7_locale" value="he_IL">
+<input type="hidden" name="_wpcf7_unit_tag" value="wpcf7-f2210-p1565-o1">
+<input type="hidden" name="_wpcf7_container_post" value="1565">
+<input type="hidden" name="_wpcf7_posted_data_hash" value="">
 </div>
-<p><span class="wpcf7-form-control-wrap your-name"><input type="text" name="your-name" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required cf7name" aria-required="true" aria-invalid="false" placeholder="שם מלא" /></span></p>
-<p><span class="wpcf7-form-control-wrap cf7phone"><input type="tel" name="cf7phone" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-tel wpcf7-validates-as-required wpcf7-validates-as-tel cf7phone" aria-required="true" aria-invalid="false" placeholder="מס טלפון" /></span></p>
-<p><span class="wpcf7-form-control-wrap your-email"><input type="email" name="your-email" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-email wpcf7-validates-as-required wpcf7-validates-as-email cf7email" aria-required="true" aria-invalid="false" placeholder="Email" /></span></p>
-<p><input type="submit" value="שליחה" class="wpcf7-form-control has-spinner wpcf7-submit" /></p>
+<p><span class="wpcf7-form-control-wrap your-name"><input type="text" name="your-name" size="40" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required cf7name" aria-required="true" aria-invalid="false" placeholder="שם מלא"></span></p>
+<p><span class="wpcf7-form-control-wrap cf7phone"><input type="tel" name="cf7phone" size="40" class="wpcf7-form-control wpcf7-text wpcf7-tel wpcf7-validates-as-required wpcf7-validates-as-tel cf7phone" aria-required="true" aria-invalid="false" placeholder="'מס טלפון"></span></p>
+<p><span class="wpcf7-form-control-wrap your-email"><input type="email" name="your-email" size="40" class="wpcf7-form-control wpcf7-text wpcf7-email wpcf7-validates-as-required wpcf7-validates-as-email cf7email" aria-required="true" aria-invalid="false" placeholder="דוא&quot;ל"></span></p>
+<p><span class="wpcf7-form-control-wrap cf7-tema-he"><input type="text" name="cf7-tema-he" size="40" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required cf7-tema-he" aria-required="true" aria-invalid="false" placeholder="תוכן הפניה"></span></p>
+<p><input type="submit" value="שלח" class="wpcf7-form-control has-spinner wpcf7-submit"><span class="wpcf7-spinner"></span></p>
 <div class="wpcf7-response-output" aria-hidden="true"></div></form></div>
 </div></div>
 
 
 
-<div class="wp-block-group home-contacts-list font-no-one size-35 color-black"><div class="wp-block-group__inner-container">
-<ul><li>אוביקטיביות מלאיה</li><li>ללא כול תלות</li><li>ללא קשר לגודל תיק</li></ul>
+<div class="wp-block-group home-contacts-list font-no-one size-60 color-black"><div class="wp-block-group__inner-container">
+<ul><li>אמינות</li><li>מקצועיות</li><li>אדיבות</li><li>יסודיות</li><li>סודיות</li></ul>
 </div></div>
 </div></div>
 
@@ -900,162 +890,6 @@ https://www.youtube.com/watch?v=GcsSqINjqgg&amp;t=33s
 
 <!-- <div class="home-contacts-width-line">
 </div> -->
-</div></div>
-
-
-
-<div class="wp-block-group block-box-level-1 family-stories-of-customers-block"><div class="wp-block-group__inner-container">
-<div class="wp-block-group family-stories-of-customers-block-inner block-box-level-2"><div class="wp-block-group__inner-container">
-<h2 class="font-one size-90 color-blue">הלקוחות שלנו</h2>
-
-
-
-<div class="wp-block-group family-stories-of-customers"><div class="wp-block-group__inner-container">
-<div class="wp-block-group family-stories-of-customer"><div class="wp-block-group__inner-container">
-<figure class="wp-block-embed is-type-video is-provider-youtube wp-block-embed-youtube wp-embed-aspect-16-9 wp-has-aspect-ratio"><div class="wp-block-embed__wrapper">
-https://youtu.be/GcsSqINjqgg
-</div></figure>
-
-
-
-<div class="video-border">
-    <video src="https://www.youtube.com" width="300" poster="index_files/Group-29.png">
-    </video>
-</div>
-
-
-
-<div class="wp-block-group family-stories-of-customers-video-description font-no-one size-40 color-blue"><div class="wp-block-group__inner-container">
-<p>שם</p>
-
-
-
-<p>סיפור קצר</p>
-
-
-
-<p>סיפור קצר</p>
-
-
-
-<p>סיפור קצר</p>
-</div></div>
-</div></div>
-
-
-
-<div class="wp-block-group family-stories-of-customer"><div class="wp-block-group__inner-container">
-<figure class="wp-block-embed is-type-video is-provider-youtube wp-block-embed-youtube wp-embed-aspect-16-9 wp-has-aspect-ratio"><div class="wp-block-embed__wrapper">
-https://youtu.be/GcsSqINjqgg
-</div></figure>
-
-
-
-<div class="video-border">
-    <video src="https://www.youtube.com" width="300" poster="index_files/Group-29.png">
-    </video>
-</div>
-
-
-
-<div class="wp-block-group family-stories-of-customers-video-description font-no-one size-40 color-blue"><div class="wp-block-group__inner-container">
-<p>שם</p>
-
-
-
-<p>סיפור קצר</p>
-
-
-
-<p>סיפור קצר</p>
-
-
-
-<p>סיפור קצר</p>
-</div></div>
-</div></div>
-
-
-
-<div class="wp-block-group family-stories-of-customer"><div class="wp-block-group__inner-container">
-<figure class="wp-block-embed is-type-video is-provider-youtube wp-block-embed-youtube wp-embed-aspect-16-9 wp-has-aspect-ratio"><div class="wp-block-embed__wrapper">
-https://youtu.be/GcsSqINjqgg
-</div></figure>
-
-
-
-<div class="video-border">
-    <video src="https://www.youtube.com" width="300" poster="index_files/Group-29.png">
-    </video>
-</div>
-
-
-
-<div class="wp-block-group family-stories-of-customers-video-description font-no-one size-40 color-blue"><div class="wp-block-group__inner-container">
-<p>שם</p>
-
-
-
-<p>סיפור קצר</p>
-
-
-
-<p>סיפור קצר</p>
-
-
-
-<p>סיפור קצר</p>
-</div></div>
-</div></div>
-
-
-
-<div class="wp-block-group family-stories-of-customer"><div class="wp-block-group__inner-container">
-<figure class="wp-block-embed is-type-video is-provider-youtube wp-block-embed-youtube wp-embed-aspect-16-9 wp-has-aspect-ratio"><div class="wp-block-embed__wrapper">
-https://youtu.be/GcsSqINjqgg
-</div></figure>
-
-
-
-<div class="video-border">
-    <video src="https://www.youtube.com" width="300" poster="index_files/Group-29.png">
-    </video>
-</div>
-
-
-
-<div class="wp-block-group family-stories-of-customers-video-description font-no-one size-40 color-blue"><div class="wp-block-group__inner-container">
-<p>שם</p>
-
-
-
-<p>סיפור קצר</p>
-
-
-
-<p>סיפור קצר</p>
-
-
-
-<p>סיפור קצר</p>
-</div></div>
-</div></div>
-</div></div>
-
-
-
-<p class="family-stories-of-customers-block-slogan font-one size-60 color-blue">הדרך שלך להצלחה</p>
-
-
-
-<div class="wp-block-buttons familyfin-we-help-buttons contact-buttons">
-<div class="wp-block-button family-stories-of-customers-block-button contact-button size-60"><a class="wp-block-button__link" href="http://dkotkin.com/contacts/">לקביעת פגישה</a></div>
-</div>
-</div></div>
-
-
-
-<div class="family-stories-of-customers-background"></div>
 </div></div>
 	</div><!-- .entry-content -->
 
@@ -1069,7 +903,7 @@ https://youtu.be/GcsSqINjqgg
 		         <div class="widget-area dktheme-footer" role="complementary">
         <section id="block-18" class="widget widget_block">
 <div class="wp-block-group footer-block-left"><div class="wp-block-group__inner-container">
-<figure class="wp-block-image size-full footer-logo"><img loading="lazy" width="192" height="192" src="index_files/logofooter.png" alt="" class="wp-image-1447" srcset="index_files/logofooter.png 192w, index_files/logofooter-150x150.png 150w" sizes="(max-width: 192px) 100vw, 192px" /></figure>
+<figure class="wp-block-image size-full footer-logo"><img loading="lazy" src="family-finance_files/logofooter.png" alt="" class="wp-image-1447" srcset="family-finance_files/logofooter.png 192w, family-finance_files/logofooter-150x150.png 150w" sizes="(max-width: 192px) 100vw, 192px" width="192" height="192"></figure>
 
 
 
@@ -1079,7 +913,7 @@ https://youtu.be/GcsSqINjqgg
 
 
 
-<p class="font-no-one size-25 color-white">כל הזכויות שמורות</p>
+<p class="font-no-one size-25 color-white">מתכנן פיננסי, יועץ השקעות</p>
 </div></div>
 
 
@@ -1089,16 +923,12 @@ https://youtu.be/GcsSqINjqgg
 
 
 
-<p class="font-no-one size-25 color-white">28.3.2007</p>
-
-
-
 <p class="footer-ltr font-no-one size-25 color-white">7809№ </p>
 </div></div>
 
 
 
-<h3>2021–2005 ©</h3>
+<h3>      2021  ©  כל הזכויות שמורות  </h3>
 </div></div>
 
 
@@ -1127,7 +957,7 @@ https://youtu.be/GcsSqINjqgg
 <p class="font-no-one size-25 color-white">לאינטרסים שלך</p>
 </div></div>
 </section> 
-        </ div> 
+        <!-- div--> 
                 <!-- --------------------------------------------------- --> 
 		
 		<div class="site-info">
@@ -1136,17 +966,18 @@ https://youtu.be/GcsSqINjqgg
 			<span class="sep"> | </span>
 				Theme: dktheme by <a href="http://underscores.me/">dk</a>.		</div><!-- .site-info -->
 		 
-	</footer><!-- #colophon -->
+	</div></footer><!-- #colophon -->
 </div><!-- #page -->
 
-<script src='index_files/regenerator-runtime.min.js?ver=0.13.7' id='regenerator-runtime-js'></script>
-<script src='index_files/wp-polyfill.min.js?ver=3.15.0' id='wp-polyfill-js'></script>
-<script id='contact-form-7-js-extra'>
+<script src="family-finance_files/regenerator-runtime.js" id="regenerator-runtime-js"></script>
+<script src="family-finance_files/wp-polyfill.js" id="wp-polyfill-js"></script>
+<script id="contact-form-7-js-extra">
 var wpcf7 = {"api":{"root":"http:\/\/dkotkin.com\/wp-json\/","namespace":"contact-form-7\/v1"}};
 </script>
-<script src='index_files/index.js?ver=5.5.2' id='contact-form-7-js'></script>
-<script src='index_files/navigation.js?ver=1.0.0' id='dktheme-navigation-js'></script>
-<script src='index_files/wp-embed.min.js?ver=5.8.1' id='wp-embed-js'></script>
+<script src="family-finance_files/index.js" id="contact-form-7-js"></script>
+<script src="family-finance_files/navigation.js" id="dktheme-navigation-js"></script>
+<script src="family-finance_files/wp-embed.js" id="wp-embed-js"></script>
 
-</body>
-</html>
+
+
+</body></html>
