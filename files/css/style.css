@@ -3224,7 +3224,7 @@ line-height: 2;
 }
 
 .investmens-price {
-	margin-top: 6vw;
+	margin-top: min(82px,6vw);
 }
 
 .investmens-price>details>div {
