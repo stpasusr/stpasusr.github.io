@@ -36,7 +36,7 @@ img.emoji {
 <!-- <link rel="https://api.w.org/" href="http://dkotkin.com/wp-json/" /><link rel="alternate" type="application/json" href="http://dkotkin.com/wp-json/wp/v2/pages/16" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://dkotkin.com/xmlrpc.php?rsd" />
 <link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://dkotkin.com/wp-includes/wlwmanifest.xml" /> 
 <meta name="generator" content="WordPress 5.8.1" />
-<link rel="canonical" href="http://dkotkin.com/main/" />
+<link rel="canonical" href="imvestmens.html" />
 <link rel='shortlink' href='http://dkotkin.com/?p=16' />
 <link rel="alternate" type="application/json+oembed" href="http://dkotkin.com/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fdkotkin.com%2Fmain%2F" />
 <link rel="alternate" type="text/xml+oembed" href="http://dkotkin.com/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fdkotkin.com%2Fmain%2F&#038;format=xml" /> -->
@@ -48,23 +48,18 @@ img.emoji {
 				}
 					</style>
 				<style id="wp-custom-css">
-					@font-face {
-	                    font-family: Rubik;
-	                    src: url(files/fonts/Rubik-Regular.ttf);
-	                    font-weight: normal;
-                        display: swap; /* !!! */
-	                    /*font-family: 'Rubik', sans-serif;*/
-                    }
-				</style>
+						</style>
 
     <script src="files/js/navigation.js"></script>
-
+				
 	<script>
 	     let banner_number = 1;
 		 let time_banner = -1;
 		 let stop_banner = false;
+		 var iO6hXe8Lz_1 = 'OF7bh0Y3vyo';
+
 	     function startTimer() {
-             let bannerid = '';
+             let bannerid = 'banner_1';
 		     timerId = setInterval(() => {
 				 time_banner++;
 				 if ((time_banner >= 8) && (!stop_banner)) {
@@ -84,6 +79,21 @@ img.emoji {
 
 		 document.addEventListener('DOMContentLoaded', function(){
 
+			 /* ------------------------------------------------------------------------------------ */
+
+			 //function closeYT(event) {
+			//	    event.bubbles = true;
+			//		document.querySelector(".dk-video-blind").style.zIndex = '1';
+			//		console.log('hi');
+			//	 };
+             
+			// document.querySelector(".dk-video-youtube").addEventListener("contextmenu", closeYT, true);
+
+
+			 /* ------------------------------------------------------------------------------------ */
+
+
+
 			 /* ------------------------------------------------------------------------------------- */
 
 			 document.querySelector('#slider_parent').onmouseover = function() {
@@ -96,171 +106,31 @@ img.emoji {
 
 			 /* ---------------------------------------------------------------------------------------- */
 
-			 let thanks_count = document.querySelectorAll('.student-thanks').length;
-			 let thanks_first_visible_id = 1;
-			 let thanks_visible_count = 1; 
-			 let thanks_first_hidden_id = thanks_first_visible_id + thanks_visible_count;
-
-			 document.querySelectorAll('.thanksslider-pointer').forEach(function(div) {
-
-				 div.onclick = function() {
-
-					if (div.className === 'thanksslider-pointer pointer-to-left') {
-
-						 if (thanks_first_hidden_id > thanks_count) {
-                             return;
-						 };
-
-						 document.querySelector(`#student_thanks_${thanks_first_visible_id}`).style.display = "none";
-					     document.querySelector(`#student_thanks_${thanks_first_hidden_id}`).style.display = "block";
-
-                         thanks_first_visible_id++;
-					     thanks_first_hidden_id++;
-
-					} else {
-
-						 if (thanks_first_visible_id <= 1) {
-                             return;
-					     };
-
-						 thanks_first_hidden_id--;
-						 thanks_first_visible_id--;
-
-						 document.querySelector(`#student_thanks_${thanks_first_visible_id}`).style.display = "block";
-					     document.querySelector(`#student_thanks_${thanks_first_hidden_id}`).style.display = "none";
-
-					};
-					
-
-				 };
-
-			 });
-
-            // ---------------------------------------------------------------------------------------------------------------
-
-			 let  video_count = document.querySelectorAll('.students_tell_video').length;
-			 let video_first_visible_id = 1;
-			 let video_visible_count = 3; 
-			 let video_first_hidden_id = video_first_visible_id + video_visible_count;
-
-			 document.querySelectorAll('.videoslider-pointer').forEach(function(div) {
-
-				 div.onclick = function() {
-
-					if (div.className === 'videoslider-pointer pointer-to-left') {
-
-						 if (video_first_hidden_id > video_count) {
-                             return;
-						 };
-
-						 document.querySelector(`#students_tell_video_${video_first_visible_id}`).style.display = "none";
-					     document.querySelector(`#students_tell_video_${video_first_hidden_id}`).style.display = "block";
-
-                         video_first_visible_id++;
-					     video_first_hidden_id++;
-
-					} else {
-
-						 if (video_first_visible_id <= 1) {
-                             return;
-					     };
-
-						 video_first_hidden_id--;
-						 video_first_visible_id--;
-
-						 document.querySelector(`#students_tell_video_${video_first_visible_id}`).style.display = "block";
-					     document.querySelector(`#students_tell_video_${video_first_hidden_id}`).style.display = "none";
-
-					};
-					
-
-				 };
-
-			 });
-
-			 /* ------------------------------------------------------------------------------------------------------- */
              
-			 //var percents = 35.5;
-			 //let lin_gradient = `linear-gradient(270deg, rgb(13, 48, 74) 5%, rgba(13, 48, 74, 0.66) ${percents}%, rgba(255, 255, 255, 0) 65%, rgba(255, 255, 255, 0)), rgba(196, 196, 196, 0)`;
-
-			 //if (window.innerWidth > 1440) {
-			 //	 //percents = (1440 * 0.355 + (window.innerWidth - 1440) / 2) / window.innerWidth * 100;
-			 //	 percents = ((window.innerWidth - 1440) / 2) / window.innerWidth * 100;
-			 //	 lin_gradient = `linear-gradient(270deg, rgba(13, 48, 74, 0.5) 5%, rgba(13, 48, 74, 0.4) ${percents}%, rgba(255, 255, 255, 0) ${percents + 2}%, rgba(255, 255, 255, 0))`;
-			 //};
-
-			 //document.querySelectorAll('.background-slider-banner-one').forEach((div) => {
-			 //	//div.style.background = `linear-gradient(270deg, rgb(13, 48, 74) 5%, rgba(13, 48, 74, 0.66) ${percents}%, rgba(255, 255, 255, 0) 65%, rgba(255, 255, 255, 0)), rgba(196, 196, 196, 0)`;
-			 //	div.style.background = lin_gradient;
-			 //});
-
-			 //window.onresize = function() {
-
-			 //	 if (window.innerWidth > 1440) {
-
-			 //		 //percents = (1440 * 0.355 + (window.innerWidth - 1440) / 2) / window.innerWidth * 100; 
-			 //		 percents = ((window.innerWidth - 1440) / 2) / window.innerWidth * 100; 
-			 //		 lin_gradient = `linear-gradient(270deg, rgba(13, 48, 74, 0.8) 0%, rgba(13, 48, 74, 0.4) ${percents}%, rgba(255, 255, 255, 0) ${percents + 10}%, rgba(255, 255, 255, 0) ${100 - percents - 10}%, rgba(13, 48, 74, 0.4) ${100 - percents}%, rgba(13, 48, 74, 0.8) 100%)`;
-
-			 //	 } else {
-
-			 //		 percents = 35.5;
-			 //		 lin_gradient = `linear-gradient(270deg, rgb(13, 48, 74) 5%, rgba(13, 48, 74, 0.66) ${percents}%, rgba(255, 255, 255, 0) 65%, rgba(255, 255, 255, 0)), rgba(196, 196, 196, 0)`;
-
-			 //	 };
-
-			 //	 document.querySelectorAll('.background-slider-banner-one').forEach((div) => {
-	         //        //div.style.background = `linear-gradient(270deg, rgb(13, 48, 74) 5%, rgba(13, 48, 74, 0.66) ${percents}%, rgba(255, 255, 255, 0) 65%, rgba(255, 255, 255, 0)), rgba(196, 196, 196, 0)`;
-			 //		 div.style.background = lin_gradient;
-             //    });
-
-			 //};
-             
-			 /* -------------------------------------------------------------------------------------- */
-
-             document.querySelector('.parentmenuinmain').onmouseover = function(){
-
-				this.querySelector('ul').style.display = 'flex';
-
-             };
-
-			 document.querySelector('.parentmenuinmain').onmouseout = function(){
-
-				this.querySelector('ul').style.display = 'none';
-
-             };
-
-			 document.querySelector('.submenuinmain').onmouseover = function(){
-
-                 this.style.display = 'flex';
-
-             };
-
-             document.querySelector('.submenuinmain').onmouseout = function(){
-
-                 this.style.display = 'none';
-
-             };
-
 			 /* -------------------------------------------------------------------------------------- */
 
 			 document.querySelectorAll('.slider-button').forEach(function(button) {
 				 button.onclick = function(){
 
                      let bannerid = '#banner_' + banner_number;
+					 console.log("bannerid on slider-button");
+					 console.log(bannerid);
                      this.parentElement.parentElement.querySelector(bannerid).style.opacity = '0';
 
                      if (this.dataset.direction === "right") {
                          banner_number++;
                          if (banner_number > 4) banner_number = 1;
+						 console.log('right');
                      } 
 					 else {
                          banner_number--;
                          if (banner_number < 1) banner_number = 4;
+						 console.log('left');
                      };
 
                      bannerid = '#banner_' + banner_number;
                      this.parentElement.parentElement.querySelector(bannerid).style.opacity = '0.99';
+					 time_banner = -1;
 
                  };
 
@@ -268,216 +138,112 @@ img.emoji {
 
 			 /* ------------------------------------------------------------------------------------------------ */
 
-			 document.querySelectorAll('.block-home-help-branches-branch').forEach(function(div) {
+			 
 
-				 div.onmouseover = function() {
-					 
-					 this.querySelector('.service-hidden-text').style.maxHeight = '200px';
-					 this.querySelector('.service-hidden-text').style.visibility = 'visible';
-					 //this.querySelector('img').style.filter = 'grayscale(1)';
-					 //this.style.boxShadow = 'rgba(0, 0, 0, 0.25) 2px 14px 20px 2px, rgba(0, 0, 0, 0.29) -2px 16px 16px 2px';
-				 };
+			 //document.querySelector('.parentmenuinmain').onmouseover = function(){
 
-				 div.onmouseout = function() {
-					 this.querySelector('.service-hidden-text').style.maxHeight = '0';
-					 this.querySelector('.service-hidden-text').style.visibility = 'hidden';
-					 //this.querySelector('img').style.filter = 'grayscale(0)';
-					 //this.style.boxShadow = 'rgba(0, 0, 0, 0.19) 0px 10px 20px 0px, rgba(0, 0, 0, 0.23) 0px 6px 6px 0px';
-				 };
+             //    this.querySelector('ul').style.display = 'flex';
 
-				 let site_branch ="";
+             //};
 
-				 if (div.className === "wp-block-cover block-home-help-branches-branch branches-branch-1") {
+             //document.querySelector('.parentmenuinmain').onmouseout = function(){
 
-	                 site_branch = "capital-market";
+             //    this.querySelector('ul').style.display = 'none';
 
-                 }
-				 else if (div.className === "wp-block-cover block-home-help-branches-branch branches-branch-2") {
+            // };
 
-					 site_branch = "course-a";
+             //document.querySelector('.submenuinmain').onmouseover = function(){
 
-				 }
-				 else if (div.className === "wp-block-cover block-home-help-branches-branch branches-branch-3") {
+             //    this.style.display = 'flex';
 
-					 site_branch = "family-finance";
+            // };
 
-				 }
-				 else {
+             //document.querySelector('.submenuinmain').onmouseout = function(){
 
-					 site_branch = "investmens";
+             //    this.style.display = 'none';
 
-				 };
+             //};
 
-				 div.onclick = function(event) {
+            /* -------------------------------------------------------------------------------------- */
 
-                     window.open(`${site_branch}.html`, '_self');
+			
+			document.querySelector(".parentmenuinmain").onmouseover = function(){
 
-                 };
+				this.querySelector("ul").style.display = "flex";
 
-				
+			};
 
-			 });
+			document.querySelector(".parentmenuinmain").onmouseout = function(){
 
-			 /* ---------------------------------------------------------------------------------------------- */
+				this.querySelector("ul").style.display = "none";
 
-			 let oCanvas = document.querySelector("#cnv");
-			 let ctxCanvas = oCanvas.getContext("2d");
-			 ctxCanvas.fillStyle = "rgb(214, 181, 86)";
-			 ctxCanvas.strokeStyle = "rgb(13, 48, 74)";
-			 ctxCanvas.lineWidth = 4;
-			 ctxCanvas.lineJoin = "miter";
-			 ctxCanvas.globalCompositeOperation = "source-over";
+			};
 
-			 ctxCanvas.beginPath();
-			 ctxCanvas.moveTo(1256, 50);
-			 ctxCanvas.lineTo(300, 50);
-			 ctxCanvas.lineTo(300, 30);
-			 ctxCanvas.lineTo(240, 90);
-			 ctxCanvas.lineTo(300, 150);
-			 ctxCanvas.lineTo(300, 130);
-			 ctxCanvas.lineTo(1256, 130);
-			 ctxCanvas.closePath();
-			 ctxCanvas.stroke();
-			 ctxCanvas.fill();
+			document.querySelector(".submenuinmain").onmouseover = function(){
 
-			 ctxCanvas.beginPath();
-			 ctxCanvas.moveTo(1256, 170);
-			 ctxCanvas.lineTo(410, 170);
-			 ctxCanvas.lineTo(410, 150);
-			 ctxCanvas.lineTo(350, 210);
-			 ctxCanvas.lineTo(410, 270);
-			 ctxCanvas.lineTo(410, 250);
-			 ctxCanvas.lineTo(1256, 250);
-			 ctxCanvas.closePath();
-			 ctxCanvas.stroke();
-			 ctxCanvas.fill();
+				this.style.display = "flex";
 
-			 ctxCanvas.beginPath();
-			 ctxCanvas.moveTo(1256, 290);
-			 ctxCanvas.lineTo(520, 290);
-			 ctxCanvas.lineTo(520, 270);
-			 ctxCanvas.lineTo(460, 330);
-			 ctxCanvas.lineTo(520, 390);
-			 ctxCanvas.lineTo(520, 370);
-			 ctxCanvas.lineTo(1256, 370);
-			 ctxCanvas.closePath();
-			 ctxCanvas.stroke();
-			 ctxCanvas.fill();
+			};
 
-			 ctxCanvas.beginPath();
-			 ctxCanvas.moveTo(1256, 410);
-			 ctxCanvas.lineTo(630, 410);
-			 ctxCanvas.lineTo(630, 390);
-			 ctxCanvas.lineTo(570, 450);
-			 ctxCanvas.lineTo(630, 510);
-			 ctxCanvas.lineTo(630, 490);
-			 ctxCanvas.lineTo(1256, 490);
-			 ctxCanvas.closePath();
-			 ctxCanvas.stroke();
-			 ctxCanvas.fill();
+			document.querySelector(".submenuinmain").onmouseout = function(){
 
-             // -------------------------------------------------------
+				this.style.display = "none";
 
-             ctxCanvas.miterLimit = 20;
-			 ctxCanvas.fillStyle = "rgb(13, 48, 74)";
+			};
 
-			 ctxCanvas.beginPath();
-			 ctxCanvas.moveTo(1226, 76);
-			 ctxCanvas.lineTo(1207, 94);
-			 ctxCanvas.lineTo(1200, 88);
-			 ctxCanvas.lineTo(1208, 100);
-			 ctxCanvas.closePath();
-			 ctxCanvas.stroke();
-			 ctxCanvas.fill();
+		   /* -------------------------------------------------------------------------------------- */
 
-			 ctxCanvas.beginPath();
-			 ctxCanvas.moveTo(1226, 196);
-			 ctxCanvas.lineTo(1207, 214);
-			 ctxCanvas.lineTo(1200, 208);
-			 ctxCanvas.lineTo(1208, 220);
-			 ctxCanvas.closePath();
-			 ctxCanvas.stroke();
-			 ctxCanvas.fill();
 
-             ctxCanvas.beginPath();
-			 ctxCanvas.moveTo(1226, 316);
-			 ctxCanvas.lineTo(1207, 334);
-			 ctxCanvas.lineTo(1200, 328);
-			 ctxCanvas.lineTo(1208, 340);
-			 ctxCanvas.closePath();
-			 ctxCanvas.stroke();
-			 ctxCanvas.fill();
+		   let arr_cnv = [1, 2, 3, 4];
+		   let x = 1256;
+		   let y = 300;
+		   let z = 240;
 
-			 ctxCanvas.beginPath();
-			 ctxCanvas.moveTo(1226, 436);
-			 ctxCanvas.lineTo(1207, 454);
-			 ctxCanvas.lineTo(1200, 448);
-			 ctxCanvas.lineTo(1208, 460);
-			 ctxCanvas.closePath();
-			 ctxCanvas.stroke();
-			 ctxCanvas.fill();
+			for (var i of arr_cnv) {
+				let oCanvas = document.querySelector(`#cnv-${i}`);
+				let ctxCanvas = oCanvas.getContext("2d");
+			    ctxCanvas.fillStyle = "rgb(214, 181, 86)";
+			    ctxCanvas.strokeStyle = "rgb(13, 48, 74)";
+			    ctxCanvas.lineWidth = 4;
+			    ctxCanvas.lineJoin = "miter";
+			    ctxCanvas.globalCompositeOperation = "source-over";
 
-			 ctxCanvas.fillStyle = "rgb(214, 181, 86)";
+				ctxCanvas.beginPath();
+			    ctxCanvas.moveTo(x, 25);
+			    ctxCanvas.lineTo(y, 25);
+			    ctxCanvas.lineTo(y, 5);
+			    ctxCanvas.lineTo(z, 65);
+			    ctxCanvas.lineTo(y, 125);
+			    ctxCanvas.lineTo(y, 105);
+			    ctxCanvas.lineTo(x, 105);
+			    ctxCanvas.closePath();
+			    ctxCanvas.stroke();
+			    ctxCanvas.fill();
 
-			 // ---------------------------------------------------------
+				ctxCanvas.miterLimit = 20;
+			    ctxCanvas.fillStyle = "rgb(13, 48, 74)";
 
-             //var image = document.getElementById('investments_img_check');
-			 //ctxCanvas.drawImage(image, 1190, 60, 51, 46);
-			 //ctxCanvas.drawImage(image, 1190, 180, 51, 46);
-			 //ctxCanvas.drawImage(image, 1190, 300, 51, 46);
-			 //ctxCanvas.drawImage(image, 1190, 420, 51, 46);
+			    ctxCanvas.beginPath();
+			    ctxCanvas.moveTo(1226, 51);
+			    ctxCanvas.lineTo(1207, 69);
+			    ctxCanvas.lineTo(1200, 63);
+			    ctxCanvas.lineTo(1208, 75);
+			    ctxCanvas.closePath();
+			    ctxCanvas.stroke();
+			    ctxCanvas.fill();
 
-			 // --------------------------------------------------------
+				y += 110;
+				z += 110;
+			};
 
-			 ctxCanvas.font = "30pt Rubik";
-			 ctxCanvas.lineWidth = 4;
-			 let text1 = "ייעוץ השקעות בהתאמה אישית";
-			 ctxCanvas.strokeText(text1, 1160, 102);
-
-			 let text2 = "ייעוץ השקעות ללא קשר לגודל תיק";
-			 ctxCanvas.strokeText(text2, 1160, 222);
-
-			 let text3 = "ליווי וסיוע שוטף בניהול תיק השקעות";
-			 ctxCanvas.strokeText(text3, 1160, 342);
-
-			 let text4 = "אובייקטיביות מלאה ללא כל תלות";
-			 ctxCanvas.strokeText(text4, 1160, 462);
-
-             /* ------------------------------------------------------------------------------------------- */
-
-             let arr = [1, 2, 3, 4];
-
-			 for (var i of arr) {
-
-			     let oCanvStepPointer = document.querySelector(`#investmens-steps-canv-${i}`);
-			     let ctxCanvStepPointer = oCanvStepPointer.getContext("2d");
-			     ctxCanvStepPointer.fillStyle = "rgba(13, 48, 74, 1)";
-			     ctxCanvStepPointer.strokeStyle = "rgb(214, 181, 86)";
-			     ctxCanvStepPointer.lineWidth = 10;
-			     ctxCanvStepPointer.lineJoin = "miter";
-			     ctxCanvStepPointer.globalCompositeOperation = "source-over";
-
-			     ctxCanvStepPointer.beginPath();
-			     ctxCanvStepPointer.moveTo(60, 5);
-			     ctxCanvStepPointer.lineTo(60, 40);
-			     ctxCanvStepPointer.lineTo(25, 40);
-			     ctxCanvStepPointer.lineTo(121, 74);
-			     ctxCanvStepPointer.lineTo(215, 40);
-			     ctxCanvStepPointer.lineTo(180, 40);
-			     ctxCanvStepPointer.lineTo(180, 5);
-			     ctxCanvStepPointer.closePath();
-			     ctxCanvStepPointer.stroke();
-			     ctxCanvStepPointer.fill();
-
-			 };
-				 
-
+			/* ----------------------------------------------------------------------------------- */
+			
          });
 	 </script>
 
 </head>
 
-<body class="page-template-default page page-id-2398 page-child parent-pageid-16 wp-custom-logo no-sidebar" onload="startTimer()">
+<body class="page-template-default page page-id-2398 page-child parent-pageid-16 wp-custom-logo no-sidebar" onload="startTimer()" oncontextmenu="return false">
 <div id="page" class="site">
 	<a class="skip-link screen-reader-text" href="#primary">Skip to content</a>
 
@@ -485,19 +251,19 @@ img.emoji {
 	     
         <div class="logo-menu">
 		<div class="site-branding">
-			<a href="index.html" class="custom-logo-link" rel="home"><img src="investmens_files/logo075-e1634922069477.png" class="custom-logo" alt="dkotkin" width="142" height="142"></a>				<p class="site-title"><a href="index.html" rel="home">dkotkin</a></p>
+			<a href="index.html" class="custom-logo-link" rel="home"><img width="142" height="142" src="index_files/logo075-e1634922069477.png" class="custom-logo" alt="dkotkin" /></a>				<p class="site-title"><a href="index.html" rel="home">dkotkin</a></p>
 						</div><!-- .site-branding -->
 
 		<nav id="site-navigation" class="main-navigation">
 			<!-- <button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false">Primary Menu</button> -->
-			<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><img src="investmens_files/mobilemenu.png"></button>
-			/main/investmens/<div class="menu-menu-in-main-container"><ul id="primary-menu" class="menu nav-menu"><li id="menu-item-1381" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-1381"><a href="index.html">אודות</a></li>
+			<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><img src="index_files/mobilemenu.png"></button>
+			/main/investmens/<div class="menu-menu-in-main-container"><ul id="primary-menu" class="menu"><li id="menu-item-1381" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-1381"><a href="index.html">אודות</a></li>
 <li id="menu-item-1383" class="menu-item menu-item-type-post_type menu-item-object-page current-page-ancestor current-menu-ancestor current-menu-parent current-page-parent current_page_parent current_page_ancestor menu-item-has-children menu-item-1383"><a href="index.html">השירותים</a>
 <ul class="sub-menu">
 	<li id="menu-item-2400" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-2398 current_page_item menu-item-2400"><a href="investmens.html" aria-current="page">ייעוץ השקעות</a></li>
 	<li id="menu-item-1575" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1575"><a href="family-finance.html">תכנון פיננסי</a></li>
-	<li id="menu-item-4708" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4708"><a href="course-a.html">קורס מקצועית א’</a></li>
-	<li id="menu-item-4711" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4711"><a href="capital-market.html">לימודי שוק ההון</a></li>
+	<li id="menu-item-4708" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4708"><a href="course-a.html">קורס מקצועית א&#8217;</a></li>
+	<li id="menu-item-4711" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4711"><a href="http://dkotkin.com/main/capital-market/">לימודי שוק ההון</a></li>
 </ul>
 </li>
 <li id="menu-item-1402" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1402"><a href="http://dkotkin.com/contacts/">צור קשר</a></li>
@@ -521,7 +287,8 @@ img.emoji {
 					 <div class="bg-img-slider-banner-one" style="background-image: url(index_files/inv_cons_banner1_orig-scaled-e1638117415353.jpg);"></div>
 					 <div class="background-slider-banner-one"></div>
 	                 <div class="back_slider_banner_one">
-	   	                 <img class="back_img_slider_banner_one" src="investmens_files/inv_cons_banner1_orig-scaled-e1638117415353.jpg" srcset="">
+	   	                 <img class="back_img_slider_banner_one" src="index_files/inv_cons_banner1_orig-scaled-e1638117415353.jpg"
+							srcset="">
 						 <!-- <img class="back_img_slider_banner_one" src=""
 							srcset="index_files/001-1-e1636561693659.jpg 2560w,
 													 index_files/001-1-e1636561693659-2048x993.jpg 2048w,
@@ -532,11 +299,9 @@ img.emoji {
 		             <div class="front_slider_banner_one">
 		   	             <div id="slider_h2_1" class="slider-h2">
 							 <div>
-			  	                 <h2>ייעוץ השקעות פרטי</h2>
-							     <hr class="golden-line">
+			  	                 <h2>ייעוץ השקעות פרטי</h2>							     <hr class="golden-line"></hr>
 		                     </div>
-							 <p>דמיטרי קוטקין - מצפן שלך בשוק ההון </p>
-				         </div>
+							 <p>דמיטרי קוטקין - מצפן שלך בשוק ההון </p>				         </div>
 		             </div>
 		         </container>
 		         <container id="banner_2" class="slider_banner_one slider_banner_one_2">
@@ -544,53 +309,42 @@ img.emoji {
 				     <div class="background-slider-banner-one"></div>
 		             <div class="back_slider_banner_one">
                          <!-- <img class="back_img_slider_banner_one" src="index_files/002-e1636583090932.jpg"> -->
-						 <img class="back_img_slider_banner_one" src="investmens_files/inv_cons_banner4-e1638112149224.jpg">
+						 <img class="back_img_slider_banner_one" src="index_files/inv_cons_banner4-e1638112149224.jpg">
 		             </div>
 		             <div class="front_slider_banner_one">
 			             <div id="slider_h2_2" class="slider-h2">
 							 <div>
-								<h2>ייעוץ השקעות פרטי</h2>
-							     <hr class="golden-line">
+							     <h2>ייעוץ השקעות פרטי</h2>							     <hr class="golden-line"></hr>
 		                     </div>
-							 <p>דמיטרי קוטקין - מצפן שלך בשוק ההון </p>
-							 <!-- <ul>
-								 <li>מצפן שלך בשוק ההון</li>
-								 <li>הצלחה בטוחה במבחני הרשות</li>
-								 <li>מורה דרך שלך להשגת עצמאות כלכלית</li>
-		                     </ul> -->
-				         </div>
+							 <p>דמיטרי קוטקין - מצפן שלך בשוק ההון </p>				         </div>
 		             </div>
 		         </container>
 		         <container id="banner_3" class="slider_banner_one slider_banner_one_3">
 				     <div class="bg-img-slider-banner-one" style="background-image: url(index_files/inv_cons_banner3-e1638111540677.jpg);"></div>
 				     <div class="background-slider-banner-one"></div>
 		             <div class="back_slider_banner_one">
-			             <img class="back_img_slider_banner_one" src="investmens_files/inv_cons_banner3-e1638111540677.jpg">
+			             <img class="back_img_slider_banner_one" src="index_files/inv_cons_banner3-e1638111540677.jpg">
 		             </div>
 		             <div class="front_slider_banner_one">
 					     <div id="slider_h2_3" class="slider-h2">
 							 <div>
-								<h2>ייעוץ השקעות פרטי</h2>
-							     <hr class="golden-line">
+							     <h2>ייעוץ השקעות פרטי</h2>							     <hr class="golden-line"></hr>
 		                     </div>
-							 <p>דמיטרי קוטקין - מצפן שלך בשוק ההון </p>
-				         </div>
+							 <p>דמיטרי קוטקין - מצפן שלך בשוק ההון </p>				         </div>
 		             </div>
 		         </container>
 				 <container id="banner_4" class="slider_banner_one slider_banner_one_4">
 				     <div class="bg-img-slider-banner-one" style="background-image: url(index_files/inv_cons_banner5-e1638112504405.jpg);"></div>
 				     <div class="background-slider-banner-one"></div>
 		             <div class="back_slider_banner_one">
-			             <img class="back_img_slider_banner_one" src="investmens_files/inv_cons_banner5-e1638112504405.jpg">
+			             <img class="back_img_slider_banner_one" src="index_files/inv_cons_banner5-e1638112504405.jpg">
 		             </div>
 		             <div class="front_slider_banner_one">
 					     <div id="slider_h2_4" class="slider-h2">
 							 <div>
-								<h2>ייעוץ השקעות פרטי</h2>
-							     <hr class="golden-line">
+							     <h2>ייעוץ השקעות פרטי</h2>							     <hr class="golden-line"></hr>
 		                     </div>
-							 <p>דמיטרי קוטקין - מצפן שלך בשוק ההון </p>
-				         </div>
+							 <p>דמיטרי קוטקין - מצפן שלך בשוק ההון </p>				         </div>
 		             </div>
 		         </container>
 	         </container>
@@ -611,7 +365,11 @@ img.emoji {
 <div class="logo-menu">
     <div class="site-branding">
         <a href="index.html" class="custom-logo-link" rel="home">
-            <img loading="lazy" src="investmens_files/logo075-e1634922069477.png" class="custom-logo" alt="dkotkin" width="142" height="142">
+            <div class="custom-logo logo-rings">
+                <img loading="lazy" width="142" height="142" src="index_files/logo_center.png" id="logo1" alt="dkotkin">
+                <img loading="lazy" width="142" height="142" src="index_files/blue_rings_2.png" id="logo2">
+                <img loading="lazy" width="142" height="142" src="index_files/yellow_rings_2.png" id="logo3">
+            </div>
         </a>
         <p class="site-title"><a href="index.html" rel="home">dkotkin</a></p>
     </div><!-- .site-branding -->
@@ -635,10 +393,10 @@ img.emoji {
                             <a href="family-finance.html">תכנון פיננסי</a>
                         </li>
 	                <li id="menu-item-4708" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4708">
-                            <a href="course-a.html">קורס מקצועית א’</a>
+                            <a href="course-a.html">קורס מקצועית א&#8217;</a>
                         </li>
 	                <li id="menu-item-4711" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4711">
-                            <a href="capital-market.html">לימודי שוק ההון</a>
+                            <a href="http://dkotkin.com/main/capital-market/">לימודי שוק ההון</a>
                         </li>
                     </ul>
                 </li>
@@ -665,9 +423,9 @@ img.emoji {
 <div class="wp-block-group block-box-level-2"><div class="wp-block-group__inner-container">
 <div class="investmens-slogans-questions">
     <ul class="font-no-one size-34 color-black">
-        <li>האם <span style="font-weight: bold; color: #122569;">נמאס</span> שתיק השקעות שלך בבנק משיג <span style="font-weight: bold; color: #122569;">תשואה צנועה</span> מאוד?</li>
-        <li>האם&nbsp;<span style="font-weight: bold; color: #122569;">לא מסכימים</span> לתת לך ייעוץ השקעות מכיוון&nbsp;שתיק&nbsp; <span style="font-weight: bold; color: #122569;">פחות מ-300,000 ש”ח?</span></li>
-        <li>האם <span style="font-weight: bold; color: #122569;">רוצה להשיג חופש כלכלי</span>&nbsp;אמיתי ולהפסיק לרוץ אחרי הזנב?</li>
+        <li>האם <span style="font-weight: bold; color: #0d304a;">נמאס</span> שתיק השקעות שלך בבנק משיג <span style="font-weight: bold; color: #0d304a;">תשואה צנועה</span> מאוד?</li>
+        <li>האם&nbsp;<span style="font-weight: bold; color: #0d304a;">לא מסכימים</span> לתת לך ייעוץ השקעות מכיוון&nbsp;שתיק&nbsp; <span style="font-weight: bold; color: #0d304a;">פחות מ-300,000 ש”ח?</span></li>
+        <li>האם <span style="font-weight: bold; color: #0d304a;">רוצה להשיג חופש כלכלי</span>&nbsp;אמיתי ולהפסיק לרוץ אחרי הזנב?</li>
     </ul>
 </div>
 </div></div>
@@ -680,36 +438,41 @@ img.emoji {
 
 
 <div class="wp-block-group block-box-level-1 familyfin-we-help investmens-we-help"><div class="wp-block-group__inner-container">
-<div class="wp-block-group familyfin-we-help-header"><div class="wp-block-group__inner-container">
-<h2 class="font-one size-60 color-blue"> איך אוכל לעזור לך? </h2>
+<div class="wp-block-group investmens-we-help-title-group"><div class="wp-block-group__inner-container">
+<div class="wp-block-group investmens-we-help-header"><div class="wp-block-group__inner-container">
+<h2 class="font-one size-60 color-blue"> מטרה שלי לעזור לך! </h2>
 
 
 
-<div style="height:13px" aria-hidden="true" class="wp-block-spacer"></div>
+<div style="height:13px" aria-hidden="true" class="wp-block-spacer line-spacer"></div>
 </div></div>
 
 
 
-<div class="wp-block-group family-group-p font-no-one color-black"><div class="wp-block-group__inner-container">
-<div class="investmens-help-p-ladder size-35">
-    <p>מטרה שלי</p>
-    <p><span style="font-weight: bold; color: #122569;">לסייע לך</span> לנהל תיק השקעות,</p>
-    <p><span style="font-weight: bold; color: #122569;">למקסם תועלתך</span> בסיכון המינימלי האפשרי.</p>
-</div>
-</div></div>
-
-
-
-<div class="wp-block-group family-group-p font-no-one color-black"><div class="wp-block-group__inner-container">
-<p class="size-35">לבחור <span style="font-weight: bold; color: #122569;">האסטרטגיה הנכונה ביותר עבורך</span> שמתאימה לצרכיך, יכולותיך וציפיותיך.</p>
+<div class="wp-block-group investments-help-background"><div class="wp-block-group__inner-container"></div></div>
 </div></div>
 
 
 
 <div class="wp-block-group family-group-p font-no-one color-black"><div class="wp-block-group__inner-container">
 <ul class="investment-help-ul-ladder size-35">
-    <li>אם מדובר בתיק הצמיחה — <span style="font-weight: bold; color: #122569;">נגדיל את ההון</span></li>
-    <li>אם מטרה היא להגיע לחופש הכלכלי — <span style="font-weight: bold; color: #122569;">נבנה הכנסה פסיבית</span> קבועה שוטפת.</li>
+    <li><span style="font-weight: bold; color: #0d304a;">לסייע לך</span> לנהל תיק השקעות,</li>
+    <li><span style="font-weight: bold; color: #0d304a;">למקסם תועלתך</span> בסיכון המינימלי האפשרי.</li>
+</ul>
+</div></div>
+
+
+
+<div class="wp-block-group family-group-p font-no-one color-black"><div class="wp-block-group__inner-container">
+<p class="size-35" style="text-align: center;">לבחור <span style="font-weight: bold; color: #0d304a;">האסטרטגיה הנכונה ביותר עבורך</span> שמתאימה לצרכיך, יכולותיך וציפיותיך.</p>
+</div></div>
+
+
+
+<div class="wp-block-group family-group-p font-no-one color-black"><div class="wp-block-group__inner-container">
+<ul class="investment-help-ul-ladder size-35">
+    <li>אם מדובר בתיק הצמיחה &#8212; <span style="font-weight: bold; color: #0d304a;">נגדיל את ההון</span></li>
+    <li>אם מטרה היא להגיע לחופש הכלכלי &#8212; <span style="font-weight: bold; color: #0d304a;">נבנה הכנסה פסיבית</span> קבועה שוטפת.</li>
 </ul>
 </div></div>
 
@@ -730,7 +493,7 @@ img.emoji {
 
 
 <div class="wp-block-group familyfin-we-help-line-and-button"><div class="wp-block-group__inner-container">
-<div style="height:13px" aria-hidden="true" class="wp-block-spacer familyfin-we-help-line"></div>
+<div style="height:13px" aria-hidden="true" class="wp-block-spacer familyfin-we-help-line line-spacer"></div>
 
 
 
@@ -738,19 +501,11 @@ img.emoji {
 <div class="wp-block-button familyfin-we-help-button contact-button"><a class="wp-block-button__link" href="http://dkotkin.com/contacts/">קביעת פגישה</a></div>
 </div>
 </div></div>
-
-
-
-<div class="wp-block-group investments-help-background"><div class="wp-block-group__inner-container"></div></div>
 </div></div>
 
 
 
 <div class="wp-block-group block-box-level-1 family-why-dk investmens-why-dk"><div class="wp-block-group__inner-container">
-<div class="family-why-dk-background"></div>
-
-
-
 <div class="wp-block-group family-why-dk-inner block-box-level-2"><div class="wp-block-group__inner-container">
 <h2 class="font-one size-60 color-blue">מדוע לפנות לדמיטרי?</h2>
 
@@ -778,11 +533,37 @@ img.emoji {
 
 
 
-<div>
-    <canvas id="cnv" width="1260" height="540">
+<div id="cnv" class="investmens-many-canvas font-one color-blue size-40">
 
+    <div class="investmens-canvas">
+        <canvas id="cnv-1" class="canvas-pointer" width="1260" height="130">
     </canvas>
+        <p id="cnv-text-1" class="canvas-text">ליווי וסיוע שוטף בניהול תיק השקעות</p>
+    </div>
+
+    <div class="investmens-canvas">
+        <canvas id="cnv-2" class="canvas-pointer" width="1260" height="130">
+    </canvas>
+        <p id="cnv-text-2" class="canvas-text">ייעוץ השקעות ללא קשר לגודל תיק</p>
+    </div>
+
+    <div class="investmens-canvas">
+        <canvas id="cnv-3" class="canvas-pointer" width="1260" height="130">
+    </canvas>
+        <p id="cnv-text-3" class="canvas-text">אובייקטיביות מלאה ללא כל תלות</p>
+    </div>
+
+    <div class="investmens-canvas">
+        <canvas id="cnv-4" class="canvas-pointer" width="1260" height="130">
+    </canvas>
+        <p id="cnv-text-4" class="canvas-text">ייעוץ השקעות בהתאמה אישית</p>
+    </div>
+
 </div>
+
+
+
+<div style="height:31px" aria-hidden="true" class="wp-block-spacer"></div>
 
 
 
@@ -790,12 +571,66 @@ img.emoji {
 
 
 
-<div class="home-about-video-border block-box-level-2">
-    <video src="" poster="index_files/Group-29.png" width="600">
-    </video>
+<div class="dk-video dk-video-inv">
+
+    <div class="dk-video-blind" data-number="1"></div>
+
+    <div class="dk-video-youtube">
+
+        <div id="player_1" class="dk-player"></div>
+
+        <script>
+
+            let tag = document.createElement('script');
+            tag.src = "https://www.youtube.com/iframe_api";
+            let firstScriptTag = document.getElementsByTagName('script')[0];
+            firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+            let player1;
+
+            if (typeof iO6hXe8Lz_1 == "undefined") {
+                iO6hXe8Lz_1 = '';
+            };
+
+            function onYouTubeIframeAPIReady() {
+                player1 = new YT.Player('player_1', {
+                    height: '100%',
+                    width: '100%',
+                    videoId: iO6hXe8Lz_1,
+                    playerVars: {
+                        'controls': 0,
+                        'autoplay': 0
+                    },
+                    events: {
+                        'onReady': onPlayerReady,
+                        'onStateChange': onPlayerStateChange,
+                        'onPlaybackQualityChange': onPlayerPlaybackQualityChange
+                    }
+                });
+            };
+            
+            function onPlayerReady(event) {
+                event.target.playVideo();
+            };
+
+            let done = false;
+            function onPlayerStateChange(event) {
+                
+            };
+
+            function onPlayerPlaybackQualityChange(event) {
+                 event.target.setPlaybackQuality('default');
+            };
+
+            function stopVideo() {
+                player1.stopVideo();
+            };
+
+        </script>
+
+    </div>
+
 </div>
-
-
 
 
 
@@ -803,8 +638,8 @@ img.emoji {
 
 
 
-<div class="wp-block-buttons familyfin-we-help-buttons contact-buttons">
-<div class="wp-block-button familyfin-we-help-button contact-button"><a class="wp-block-button__link" href="http://dkotkin.com/contacts/">לקביעת פגישה</a></div>
+<div class="wp-block-buttons investments-why-buttons contact-buttons">
+<div class="wp-block-button familyfin-we-help-button contact-button"><a class="wp-block-button__link" href="http://dkotkin.com/contacts/">קביעת פגישה</a></div>
 </div>
 </div></div>
 </div></div>
@@ -813,8 +648,8 @@ img.emoji {
 
 <div class="wp-block-group block-box-level-1 group-home-successes"><div class="wp-block-group__inner-container">
 <div class="home-successes">
-    <div class="decor-line home-successes-line"></div>
-    <div class="home-successes-items block-box-level-2">
+    <div class="decor-line home-successes-line line-spacer"></div>
+    <div class="home-successes-items block-box-level-2 color-blue">
 
         <div class="home-successes-item">
             <p class="home-successes-item-nospan">לימד</p>
@@ -844,12 +679,28 @@ img.emoji {
 <div class="wp-block-group block-about-photo-text block-box-level-2"><div class="wp-block-group__inner-container">
 <div class="wp-block-group block-about-text"><div class="wp-block-group__inner-container">
 <div class="wp-block-group block-about-text-header color-blue"><div class="wp-block-group__inner-container">
-<h1 class="block-about-text-h1 font-one size-88">דמיטרי קוטקין</h1>
+<h1 class="block-about-text-h1 font-one size-120">דמיטרי קוטקין</h1>
+
+
+
+<div class="wp-block-group block-about-text-list font-no-one size-29"><div class="wp-block-group__inner-container">
+<p>יועץ השקעות עצמאי</p>
+
+
+
+<p>מתכנן פיננסי פרטי</p>
+
+
+
+<p>מנטור למשקיעים פרטיים</p>
 </div></div>
 
 
 
-<ul class="block-about-text-list font-no-one size-29 color-blue"><li>יועץ השקעות עצמאי</li><li>מתכנן פיננסי פרטי</li><li>מנטור למשקיעים פרטיים</li><li>מרצה כל סוגי קורסים בתחום מימון ושוק ההון בתואריים אקדמיים</li></ul>
+<div class="wp-block-group block-about-text-list-2 font-no-one size-29"><div class="wp-block-group__inner-container">
+<p class="font-no-one size-29 color-blue">מרצה כל סוגי קורסים בתחום מימון ושוק ההון בתואריים אקדמיים</p>
+</div></div>
+</div></div>
 
 
 
@@ -874,14 +725,77 @@ img.emoji {
 
 
 
-<ul class="color-black"><li>מרצה בכיר בחברת אורין — שפלטר</li><li>מייסד, מנהל אקדמי ומרצה בכיר במכללת B&amp;B</li><li>מנהל אקמי ומרצה בכיר באקדמיה לפיננסים מגדל שוקי הון</li></ul>
+<ul class="color-black"><li>מרצה בכיר בחברת אורין &#8212; שפלטר</li><li>מייסד, מנהל אקדמי ומרצה בכיר במכללת B&amp;B</li><li>מנהל אקמי ומרצה בכיר באקדמיה לפיננסים מגדל שוקי הון</li></ul>
 </div></div>
+
+
+
+<div class="dk-video dk-video-main">
+
+    <div class="dk-video-blind" data-number="1"></div>
+
+    <div class="dk-video-youtube">
+
+        <div id="player_1" class="dk-player"></div>
+
+        <script>
+
+            let tag = document.createElement('script');
+            tag.src = "https://www.youtube.com/iframe_api";
+            let firstScriptTag = document.getElementsByTagName('script')[0];
+            firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+            let player1;
+
+            if (typeof mO6hXe8Lz_1 == "undefined") {
+                mO6hXe8Lz_1 = '';
+            };
+
+            function onYouTubeIframeAPIReady() {
+                player1 = new YT.Player('player_1', {
+                    height: '100%',
+                    width: '100%',
+                    videoId: mO6hXe8Lz_1,
+                    playerVars: {
+                        'controls': 0,
+                        'autoplay': 0
+                    },
+                    events: {
+                        'onReady': onPlayerReady,
+                        'onStateChange': onPlayerStateChange,
+                        'onPlaybackQualityChange': onPlayerPlaybackQualityChange
+                    }
+                });
+            };
+            
+            function onPlayerReady(event) {
+                event.target.playVideo();
+            };
+
+            let done = false;
+            function onPlayerStateChange(event) {
+                
+            };
+
+            function onPlayerPlaybackQualityChange(event) {
+                 event.target.setPlaybackQuality('default');
+            };
+
+            function stopVideo() {
+                player1.stopVideo();
+            };
+
+        </script>
+
+    </div>
+
+</div>
 </div></div>
 
 
 
 <div class="wp-block-group block-about-photo"><div class="wp-block-group__inner-container">
-<figure class="wp-block-image size-full is-resized block-about-photo1 investmens-about-photo"><img src="investmens_files/home_about_without_mirror_2x_pxlr_small-e1638018445379.jpg" alt="" class="wp-image-6604" height="1032"></figure>
+<figure class="wp-block-image size-large block-about-photo1"><img src="index_files/home_about_without_mirror_2x_pxlr_small-e1638018445379.jpg" alt=""/></figure>
 </div></div>
 </div></div>
 </div></div>
@@ -896,12 +810,12 @@ img.emoji {
 <div class="wp-block-group invest-consult-process block-box-level-2"><div class="wp-block-group__inner-container">
 <div class="wp-block-group invest-consult-process-step-right invest-consult-process-step"><div class="wp-block-group__inner-container">
 <div class="wp-block-group invest-consult-process-step-details"><div class="wp-block-group__inner-container">
-<p class="font-one size-60 color-yellow step-pointer">שלב 1</p>
+<p class="font-one size-60 color-blue step-pointer">שלב 1</p>
 
 
 
 <div class="wp-block-group invest-consult-process-step-p"><div class="wp-block-group__inner-container">
-<p class="font-no-one size-35 color-black">הפגישה הראשונה — ליבון צרכים של המשקיע.</p>
+<p class="font-no-one size-36 color-black">הפגישה הראשונה &#8212; ליבון צרכים של המשקיע.</p>
 
 
 
@@ -913,27 +827,21 @@ img.emoji {
 
 
 
-<p class="font-no-one size-35 color-black">זמן משוער — כשעה וחצי.</p>
+<p class="font-no-one size-25 color-black">זמן משוער — כשעה וחצי.</p>
 </div></div>
 </div></div>
 </div></div>
-
-
-
-<div class="investmens-steps-pointer">
-    <canvas id="investmens-steps-canv-1" class="investmens-steps-canv" width="241" height="80"></canvas>
-</div>
 
 
 
 <div class="wp-block-group invest-consult-process-step-left invest-consult-process-step"><div class="wp-block-group__inner-container">
 <div class="wp-block-group invest-consult-process-step-details"><div class="wp-block-group__inner-container">
-<p class="font-one size-60 color-yellow step-pointer">שלב 2</p>
+<p class="font-one size-60 color-blue step-pointer">שלב 2</p>
 
 
 
 <div class="wp-block-group invest-consult-process-step-p"><div class="wp-block-group__inner-container">
-<p class="font-no-one size-35 color-black">עבודה עצמאית של יועץ — בניית תיק השקעות.</p>
+<p class="font-no-one size-36 color-black">עבודה עצמאית של יועץ &#8212; בניית תיק השקעות.</p>
 
 
 
@@ -941,27 +849,21 @@ img.emoji {
 
 
 
-<p class="font-no-one size-35 color-black">זמן משוער – כשבוע ימים.</p>
+<p class="font-no-one size-25 color-black">זמן משוער – כשבוע ימים.</p>
 </div></div>
 </div></div>
 </div></div>
-
-
-
-<div class="investmens-steps-pointer">
-    <canvas id="investmens-steps-canv-2" class="investmens-steps-canv" width="241" height="80"></canvas>
-</div>
 
 
 
 <div class="wp-block-group invest-consult-process-step-right invest-consult-process-step"><div class="wp-block-group__inner-container">
 <div class="wp-block-group invest-consult-process-step-details"><div class="wp-block-group__inner-container">
-<p class="font-one size-60 color-yellow step-pointer">שלב 3</p>
+<p class="font-one size-60 color-blue step-pointer">שלב 3</p>
 
 
 
 <div class="wp-block-group invest-consult-process-step-p"><div class="wp-block-group__inner-container">
-<p class="font-no-one size-35 color-black">הפגישה השנייה – הצגת ייעוץ.</p>
+<p class="font-no-one size-36 color-black">הפגישה השנייה – הצגת ייעוץ.</p>
 
 
 
@@ -973,59 +875,47 @@ img.emoji {
 
 
 
-<p class="font-no-one size-35 color-black">זמן משוער — כשעה.</p>
+<p class="font-no-one size-25 color-black">זמן משוער — כשעה.</p>
 </div></div>
 </div></div>
 </div></div>
-
-
-
-<div class="investmens-steps-pointer">
-    <canvas id="investmens-steps-canv-3" class="investmens-steps-canv" width="241" height="80"></canvas>
-</div>
 
 
 
 <div class="wp-block-group invest-consult-process-step-left invest-consult-process-step"><div class="wp-block-group__inner-container">
 <div class="wp-block-group invest-consult-process-step-details"><div class="wp-block-group__inner-container">
-<p class="font-one size-60 color-yellow step-pointer">שלב 4</p>
+<p class="font-one size-60 color-blue step-pointer">שלב 4</p>
 
 
 
 <div class="wp-block-group invest-consult-process-step-p"><div class="wp-block-group__inner-container">
-<p class="font-no-one size-35 color-black">שלב זה אופציונלי בלבד.</p>
+<p class="font-no-one size-36 color-black">הפגישה השלישית – סדר בקופות וביטוחים (שלב זה אופציונלי בלבד).</p>
 
 
 
-<p class="font-no-one size-35 color-black">ליווי בפגישה עם יועץ/משווק פנסיוני — אבחון ביטוחים ותכנון פנסיוני.</p>
+<p class="font-no-one size-35 color-black">ליווי בפגישה עם יועץ/משווק פנסיוני &#8212; אבחון ביטוחים ותכנון פנסיוני.</p>
 
 
 
-<p class="font-no-one size-35 color-black">זמן משוער – כשעה.</p>
+<p class="font-no-one size-25 color-black">זמן משוער – כשעה.</p>
 </div></div>
 </div></div>
 </div></div>
-
-
-
-<div class="investmens-steps-pointer">
-    <canvas id="investmens-steps-canv-4" class="investmens-steps-canv" width="241" height="80"></canvas>
-</div>
 
 
 
 <div class="wp-block-group invest-consult-process-step-right invest-consult-process-step"><div class="wp-block-group__inner-container">
 <div class="wp-block-group invest-consult-process-step-details"><div class="wp-block-group__inner-container">
-<p class="font-one size-60 color-yellow step-pointer">שלב 5</p>
+<p class="font-one size-60 color-blue step-pointer">שלב 5</p>
 
 
 
 <div class="wp-block-group invest-consult-process-step-p"><div class="wp-block-group__inner-container">
-<p class="font-no-one size-35 color-black">שלב זה אופציונלי בלבד.</p>
+<p class="font-no-one size-36 color-black">ליווי שוטף (שלב זה אופציונלי בלבד).</p>
 
 
 
-<p class="font-no-one size-35 color-black">מעקב על תיק השקעות במהלך שנה בתדירות רבעונית.</p>
+<p class="font-no-one size-25 color-black">מעקב על תיק השקעות במהלך שנה בתדירות רבעונית.</p>
 </div></div>
 </div></div>
 </div></div>
@@ -1038,9 +928,9 @@ img.emoji {
         <details>
             <summary class="font-one color-blue size-60">עלות השירות (שכר טרחה) <span></span></summary>
             <div class="font-no-one color-black size-29">
-                <p>עבור שלושה שלבים הראשונים — 1,500 ₪.</p>
-                <p>עבור שלב רביעי — 300 ₪.</p>
-                <p>עבור שלב החמישי —  בהסכמה בהתאם להיקף העבודה הצפוי, משוער בין 200 לבין 500 ₪.</p>
+                <p>עבור שלושה שלבים הראשונים &#8212; 1,500 ₪.</p>
+                <p>עבור שלב רביעי &#8212; 300 ₪.</p>
+                <p>עבור שלב החמישי &#8212;  בהסכמה בהתאם להיקף העבודה הצפוי, משוער בין 200 לבין 500 ₪. לרבעון.</p>
             </div>
         </details>
 
@@ -1055,7 +945,7 @@ img.emoji {
 
 
 
-<div class="wp-block-group block-box-level-1"><div class="wp-block-group__inner-container">
+<div class="wp-block-group block-home-calcs block-box-level-1"><div class="wp-block-group__inner-container">
 <div class="home-calcs">
 
     <div class="home-calcs-h2 block-box-level-2">
@@ -1065,37 +955,38 @@ img.emoji {
     <div class="home-calcs-rotateblock">
     </div>
 
-    <div class="home-calcs-2ps block-box-level-2">
+    <div class="investmens-calcs home-calcs-2ps block-box-level-2">
 
-        <h2 class="font-one size-57 color-white">מחשבונים</h2>
+        <!-- <h2 class="font-one size-57 color-white">מחשבונים</h2> -->
 
-        <div class="home-calc">
+        <div class="home-calc home-calc-2">
             <div class="home-calc-header">
-                <h2 class="font-no-one size-34 color-black">מהי האסטרטגיה</h2>
+                <h2 class="font-no-one size-34 color-black">מחשבון השקעות</h2>
             </div>
-            <div class="invest-calc-3">
+            <div class="calc-2">
+                <div class="calc-button-2 calc-multiplication-2">
+                    <!-- <img src="index_files/multiplication_black.png"> -->
+                </div>
+                <div class="calc-button-2 calc-division-2">
+                    <!-- <img src="index_files/division_black.png"> -->
+                </div>
+                <div class="calc-button-2 calc-addition-2">
+                    <!-- <img src="index_files/addition_black.png"> -->
+                </div>
+                <div class="calc-button-2 calc-result-2">
+                    <!-- <img src="index_files/equal_black.png"> -->
+                </div>
             </div>
         </div>
 
-        <div class="home-calc home-calc-1">
+        <div class="home-calc home-calc-4">
             <div class="home-calc-header">
-                <h2 class="font-no-one size-34 color-black">מחשבון</h2>
+                <h2 class="font-no-one size-34 color-black">פרופיל משקיע</h2>
             </div>
-            <div class="calc-1">
-                <div class="calc-button calc-multiplication">
-                    <img src="investmens_files/multiplication_gold.png">
-                </div>
-                <div class="calc-button calc-division">
-                    <img src="investmens_files/division_gold.png">
-                </div>
-                <div class="calc-button calc-addition">
-                    <img src="investmens_files/addition_gold.png">
-                </div>
-                <div class="calc-button calc-result">
-                    <img src="investmens_files/equal_gold.png">
-                </div>
+            <div class="calc-4">
             </div>
         </div>
+
     </div>
     
 </div>
@@ -1111,22 +1002,22 @@ img.emoji {
 </div>
 
 
-<div role="form" class="wpcf7" id="wpcf7-f2727-p2398-o1" dir="rtl" lang="he-IL">
+<div role="form" class="wpcf7" id="wpcf7-f2727-p2398-o1" lang="he-IL" dir="rtl">
 <div class="screen-reader-response"><p role="status" aria-live="polite" aria-atomic="true"></p> <ul></ul></div>
 <form action="/main/investmens/#wpcf7-f2727-p2398-o1" method="post" class="wpcf7-form init" novalidate="novalidate" data-status="init">
 <div style="display: none;">
-<input type="hidden" name="_wpcf7" value="2727">
-<input type="hidden" name="_wpcf7_version" value="5.5.3">
-<input type="hidden" name="_wpcf7_locale" value="he_IL">
-<input type="hidden" name="_wpcf7_unit_tag" value="wpcf7-f2727-p2398-o1">
-<input type="hidden" name="_wpcf7_container_post" value="2398">
-<input type="hidden" name="_wpcf7_posted_data_hash" value="">
+<input type="hidden" name="_wpcf7" value="2727" />
+<input type="hidden" name="_wpcf7_version" value="5.5.3" />
+<input type="hidden" name="_wpcf7_locale" value="he_IL" />
+<input type="hidden" name="_wpcf7_unit_tag" value="wpcf7-f2727-p2398-o1" />
+<input type="hidden" name="_wpcf7_container_post" value="2398" />
+<input type="hidden" name="_wpcf7_posted_data_hash" value="" />
 </div>
-<p><span class="wpcf7-form-control-wrap your-name"><input type="text" name="your-name" size="40" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required cf7name" aria-required="true" aria-invalid="false" placeholder="שם מלא"></span></p>
-<p><span class="wpcf7-form-control-wrap cf7phone"><input type="tel" name="cf7phone" size="40" class="wpcf7-form-control wpcf7-text wpcf7-tel wpcf7-validates-as-required wpcf7-validates-as-tel cf7phone" aria-required="true" aria-invalid="false" placeholder="'מס טלפון"></span></p>
-<p><span class="wpcf7-form-control-wrap your-email"><input type="email" name="your-email" size="40" class="wpcf7-form-control wpcf7-text wpcf7-email wpcf7-validates-as-required wpcf7-validates-as-email cf7email" aria-required="true" aria-invalid="false" placeholder="דוא&quot;ל"></span></p>
-<p><span class="wpcf7-form-control-wrap cf7-tema-he"><input type="text" name="cf7-tema-he" size="40" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required cf7-tema-he" aria-required="true" aria-invalid="false" placeholder="תוכן הפניה"></span></p>
-<p><input type="submit" value="שלח" class="wpcf7-form-control has-spinner wpcf7-submit"><span class="wpcf7-spinner"></span></p>
+<p><span class="wpcf7-form-control-wrap your-name"><input type="text" name="your-name" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required cf7name" aria-required="true" aria-invalid="false" placeholder="שם מלא" /></span></p>
+<p><span class="wpcf7-form-control-wrap cf7phone"><input type="tel" name="cf7phone" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-tel wpcf7-validates-as-required wpcf7-validates-as-tel cf7phone" aria-required="true" aria-invalid="false" placeholder="&#039;מס טלפון" /></span></p>
+<p><span class="wpcf7-form-control-wrap your-email"><input type="email" name="your-email" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-email wpcf7-validates-as-required wpcf7-validates-as-email cf7email" aria-required="true" aria-invalid="false" placeholder="דוא&quot;ל" /></span></p>
+<p><span class="wpcf7-form-control-wrap cf7-tema-he"><input type="text" name="cf7-tema-he" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required cf7-tema-he" aria-required="true" aria-invalid="false" placeholder="תוכן הפניה" /></span></p>
+<p><input type="submit" value="שלח" class="wpcf7-form-control has-spinner wpcf7-submit" /></p>
 <div class="wpcf7-response-output" aria-hidden="true"></div></form></div>
 </div></div>
 
@@ -1139,8 +1030,8 @@ img.emoji {
 
 
 
-<!-- <div class="home-contacts-width-line">
-</div> -->
+<div class="home-contacts-width-line">
+</div>
 </div></div>
 	</div><!-- .entry-content -->
 
@@ -1154,7 +1045,7 @@ img.emoji {
 		         <div class="widget-area dktheme-footer" role="complementary">
         <section id="block-18" class="widget widget_block">
 <div class="wp-block-group footer-block-left"><div class="wp-block-group__inner-container">
-<figure class="wp-block-image size-full footer-logo"><img loading="lazy" src="investmens_files/logofooter.png" alt="" class="wp-image-1447" srcset="investmens_files/logofooter.png 192w, investmens_files/logofooter-150x150.png 150w" sizes="(max-width: 192px) 100vw, 192px" width="192" height="192"></figure>
+<figure class="wp-block-image size-full footer-logo"><img loading="lazy" width="143" height="142" src="index_files/logo_rings_f.png" alt="" class="wp-image-7694"/></figure>
 
 
 
@@ -1208,7 +1099,7 @@ img.emoji {
 <p class="font-no-one size-25 color-white">לאינטרסים שלך</p>
 </div></div>
 </section> 
-        <!-- div--> 
+        </ div> 
                 <!-- --------------------------------------------------- --> 
 		
 		<div class="site-info">
@@ -1217,18 +1108,17 @@ img.emoji {
 			<span class="sep"> | </span>
 				Theme: dktheme by <a href="http://underscores.me/">dk</a>.		</div><!-- .site-info -->
 		 
-	</div></footer><!-- #colophon -->
+	</footer><!-- #colophon -->
 </div><!-- #page -->
 
-<script src="investmens_files/regenerator-runtime.js" id="regenerator-runtime-js"></script>
-<script src="investmens_files/wp-polyfill.js" id="wp-polyfill-js"></script>
-<script id="contact-form-7-js-extra">
+<script src='index_files/regenerator-runtime.min.js?ver=0.13.7' id='regenerator-runtime-js'></script>
+<script src='index_files/wp-polyfill.min.js?ver=3.15.0' id='wp-polyfill-js'></script>
+<script id='contact-form-7-js-extra'>
 var wpcf7 = {"api":{"root":"http:\/\/dkotkin.com\/wp-json\/","namespace":"contact-form-7\/v1"}};
 </script>
-<script src="investmens_files/index.js" id="contact-form-7-js"></script>
-<script src="investmens_files/navigation.js" id="dktheme-navigation-js"></script>
-<script src="investmens_files/wp-embed.js" id="wp-embed-js"></script>
+<script src='index_files/index.js?ver=5.5.3' id='contact-form-7-js'></script>
+<script src='index_files/navigation.js?ver=1.0.0' id='dktheme-navigation-js'></script>
+<script src='index_files/wp-embed.min.js?ver=5.8.2' id='wp-embed-js'></script>
 
-
-
-</body></html>
+</body>
+</html>

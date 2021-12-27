@@ -36,7 +36,7 @@ img.emoji {
 <!-- <link rel="https://api.w.org/" href="http://dkotkin.com/wp-json/" /><link rel="alternate" type="application/json" href="http://dkotkin.com/wp-json/wp/v2/pages/16" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://dkotkin.com/xmlrpc.php?rsd" />
 <link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://dkotkin.com/wp-includes/wlwmanifest.xml" /> 
 <meta name="generator" content="WordPress 5.8.1" />
-<link rel="canonical" href="http://dkotkin.com/main/" />
+<link rel="canonical" href="course-a.html" />
 <link rel='shortlink' href='http://dkotkin.com/?p=16' />
 <link rel="alternate" type="application/json+oembed" href="http://dkotkin.com/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fdkotkin.com%2Fmain%2F" />
 <link rel="alternate" type="text/xml+oembed" href="http://dkotkin.com/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fdkotkin.com%2Fmain%2F&#038;format=xml" /> -->
@@ -51,13 +51,22 @@ img.emoji {
 						</style>
 
     <script src="files/js/navigation.js"></script>
-
+				
 	<script>
 	     let banner_number = 1;
 		 let time_banner = -1;
 		 let stop_banner = false;
+		 var cO6hXe8Lz_1 = 'pmoYP_QvGsM';
+         var cO6hXe8Lz_2 = 'OF7bh0Y3vyo';
+         var cO6hXe8Lz_3 = 'oL3_nZtyzAw';
+         var cO6hXe8Lz_4 = 'KHye8y_MbEE';
+         var cO6hXe8Lz_5 = 'pmoYP_QvGsM';
+         var cO6hXe8Lz_6 = '-iJlGkgakNc';
+         var cO6hXe8Lz_7 = 'f-GMYDoTfI0';
+         var cO6hXe8Lz_8 = 'WUsQbri9yaI';
+
 	     function startTimer() {
-             let bannerid = '';
+             let bannerid = 'banner_1';
 		     timerId = setInterval(() => {
 				 time_banner++;
 				 if ((time_banner >= 8) && (!stop_banner)) {
@@ -77,6 +86,21 @@ img.emoji {
 
 		 document.addEventListener('DOMContentLoaded', function(){
 
+			 /* ------------------------------------------------------------------------------------ */
+
+			 //function closeYT(event) {
+			//	    event.bubbles = true;
+			//		document.querySelector(".dk-video-blind").style.zIndex = '1';
+			//		console.log('hi');
+			//	 };
+             
+			// document.querySelector(".dk-video-youtube").addEventListener("contextmenu", closeYT, true);
+
+
+			 /* ------------------------------------------------------------------------------------ */
+
+
+
 			 /* ------------------------------------------------------------------------------------- */
 
 			 document.querySelector('#slider_parent').onmouseover = function() {
@@ -89,16 +113,125 @@ img.emoji {
 
 			 /* ---------------------------------------------------------------------------------------- */
 
-			 let thanks_count = document.querySelectorAll('.student-thanks').length;
+             
+			 /* -------------------------------------------------------------------------------------- */
+
+			 document.querySelectorAll('.slider-button').forEach(function(button) {
+				 button.onclick = function(){
+
+                     let bannerid = '#banner_' + banner_number;
+					 console.log("bannerid on slider-button");
+					 console.log(bannerid);
+                     this.parentElement.parentElement.querySelector(bannerid).style.opacity = '0';
+
+                     if (this.dataset.direction === "right") {
+                         banner_number++;
+                         if (banner_number > 4) banner_number = 1;
+						 console.log('right');
+                     } 
+					 else {
+                         banner_number--;
+                         if (banner_number < 1) banner_number = 4;
+						 console.log('left');
+                     };
+
+                     bannerid = '#banner_' + banner_number;
+                     this.parentElement.parentElement.querySelector(bannerid).style.opacity = '0.99';
+					 time_banner = -1;
+
+                 };
+
+			 });
+
+			 /* ------------------------------------------------------------------------------------------------ */
+
+			 
+
+			 //document.querySelector('.parentmenuinmain').onmouseover = function(){
+
+             //    this.querySelector('ul').style.display = 'flex';
+
+             //};
+
+             //document.querySelector('.parentmenuinmain').onmouseout = function(){
+
+             //    this.querySelector('ul').style.display = 'none';
+
+            // };
+
+             //document.querySelector('.submenuinmain').onmouseover = function(){
+
+             //    this.style.display = 'flex';
+
+            // };
+
+             //document.querySelector('.submenuinmain').onmouseout = function(){
+
+             //    this.style.display = 'none';
+
+             //};
+
+            /* -------------------------------------------------------------------------------------- */
+
+			
+			document.querySelectorAll(".block-home-help-branches-branch").forEach(function(div) {
+
+				div.onmouseover = function() {
+					
+					//this.querySelector(".description-hidden-text").style.maxHeight = "200px";
+					this.querySelector(".description-hidden-text").style.opacity = "1";
+				};
+
+				div.onmouseout = function() {
+					//this.querySelector(".description-hidden-text").style.maxHeight = "0";
+					this.querySelector(".description-hidden-text").style.opacity = "0";
+				};
+
+				let site_branch ="";
+
+				if (div.className === "wp-block-cover block-home-help-branches-branch branches-branch-1") {
+
+					site_branch = "capital-market";
+
+				}
+				else if (div.className === "wp-block-cover block-home-help-branches-branch branches-branch-2") {
+
+					site_branch = "course-a";
+
+				}
+				else if (div.className === "wp-block-cover block-home-help-branches-branch branches-branch-3") {
+
+					site_branch = "family-finance";
+
+				}
+				else {
+
+					site_branch = "investmens";
+
+				};
+
+				div.onclick = function(event) {
+
+					//window.open(`http://dkotkin.com/main/${site_branch}/`, "_self");
+
+				};
+
+			   
+
+			});
+
+			/* ---------------------------------------------------------------------------------------------- */
+
+			let thanks_count = document.querySelectorAll(".student-thanks").length;
 			 let thanks_first_visible_id = 1;
 			 let thanks_visible_count = 1; 
 			 let thanks_first_hidden_id = thanks_first_visible_id + thanks_visible_count;
 
-			 document.querySelectorAll('.thanksslider-pointer').forEach(function(div) {
+			 document.querySelectorAll(".thanksslider-pointer").forEach(function(div) {
 
 				 div.onclick = function() {
 
-					if (div.className === 'thanksslider-pointer pointer-to-left') {
+					if (div.className === "thanksslider-pointer pointer-to-left") {
 
 						 if (thanks_first_hidden_id > thanks_count) {
                              return;
@@ -131,23 +264,28 @@ img.emoji {
 
             // ---------------------------------------------------------------------------------------------------------------
 
-			 let  video_count = document.querySelectorAll('.students_tell_video').length;
+			 let  video_count = document.querySelectorAll(".students_tell_video").length;
 			 let video_first_visible_id = 1;
 			 let video_visible_count = 3; 
 			 let video_first_hidden_id = video_first_visible_id + video_visible_count;
 
-			 document.querySelectorAll('.videoslider-pointer').forEach(function(div) {
+			 for (var k = 1; k < 4; k++) {
+				document.querySelector(`#students_tell_video_${k}`).style.display = "grid";
+			 }
+
+			 document.querySelectorAll(".videoslider-pointer").forEach(function(div) {
 
 				 div.onclick = function() {
 
-					if (div.className === 'videoslider-pointer pointer-to-left') {
+					if (div.className === "videoslider-pointer pointer-to-left") {
 
 						 if (video_first_hidden_id > video_count) {
                              return;
 						 };
 
 						 document.querySelector(`#students_tell_video_${video_first_visible_id}`).style.display = "none";
-					     document.querySelector(`#students_tell_video_${video_first_hidden_id}`).style.display = "block";
+						 document.querySelector(`#students_tell_v_${video_first_visible_id}`).pause();
+					     document.querySelector(`#students_tell_video_${video_first_hidden_id}`).style.display = "grid";
 
                          video_first_visible_id++;
 					     video_first_hidden_id++;
@@ -161,8 +299,9 @@ img.emoji {
 						 video_first_hidden_id--;
 						 video_first_visible_id--;
 
-						 document.querySelector(`#students_tell_video_${video_first_visible_id}`).style.display = "block";
+						 document.querySelector(`#students_tell_video_${video_first_visible_id}`).style.display = "grid";
 					     document.querySelector(`#students_tell_video_${video_first_hidden_id}`).style.display = "none";
+						 document.querySelector(`#students_tell_v_${video_first_hidden_id}`).pause();
 
 					};
 					
@@ -172,130 +311,103 @@ img.emoji {
 			 });
 
 			 /* ------------------------------------------------------------------------------------------------------- */
-             
-			 //var percents = 35.5;
-			 //let lin_gradient = `linear-gradient(270deg, rgb(13, 48, 74) 5%, rgba(13, 48, 74, 0.66) ${percents}%, rgba(255, 255, 255, 0) 65%, rgba(255, 255, 255, 0)), rgba(196, 196, 196, 0)`;
 
-			 //if (window.innerWidth > 1440) {
-			 //	 //percents = (1440 * 0.355 + (window.innerWidth - 1440) / 2) / window.innerWidth * 100;
-			 //	 percents = ((window.innerWidth - 1440) / 2) / window.innerWidth * 100;
-			 //	 lin_gradient = `linear-gradient(270deg, rgba(13, 48, 74, 0.5) 5%, rgba(13, 48, 74, 0.4) ${percents}%, rgba(255, 255, 255, 0) ${percents + 2}%, rgba(255, 255, 255, 0))`;
-			 //};
+			 document.querySelectorAll(".dk-video-blind").forEach(function(div) {
+				div.oncontextmenu = ()=>{
+					return false;
+				};
 
-			 //document.querySelectorAll('.background-slider-banner-one').forEach((div) => {
-			 //	//div.style.background = `linear-gradient(270deg, rgb(13, 48, 74) 5%, rgba(13, 48, 74, 0.66) ${percents}%, rgba(255, 255, 255, 0) 65%, rgba(255, 255, 255, 0)), rgba(196, 196, 196, 0)`;
-			 //	div.style.background = lin_gradient;
-			 //});
+				console.log(div.dataset["number"]);
 
-			 //window.onresize = function() {
+			   
+			   let play_pause = true;
 
-			 //	 if (window.innerWidth > 1440) {
+				function playYT() {
+				   //console.log(player.getPlaybackQuality());
+				   //player.setPlaybackQuality("default");
+				   //console.log(player.getPlaybackQuality());
 
-			 //		 //percents = (1440 * 0.355 + (window.innerWidth - 1440) / 2) / window.innerWidth * 100; 
-			 //		 percents = ((window.innerWidth - 1440) / 2) / window.innerWidth * 100; 
-			 //		 lin_gradient = `linear-gradient(270deg, rgba(13, 48, 74, 0.8) 0%, rgba(13, 48, 74, 0.4) ${percents}%, rgba(255, 255, 255, 0) ${percents + 10}%, rgba(255, 255, 255, 0) ${100 - percents - 10}%, rgba(13, 48, 74, 0.4) ${100 - percents}%, rgba(13, 48, 74, 0.8) 100%)`;
+				   switch (div.dataset["number"]) {
+				   case "1":
+					   if (play_pause) {
+						   player1.playVideo();
+						   play_pause = false;
+					   } else {
+						   player1.pauseVideo();
+							  play_pause = true;
+					   };
+					   break;
+				   case "2":
+					   if (play_pause) {
+						   player2.playVideo();
+						   play_pause = false;
+					   } else {
+						   player2.pauseVideo();
+							  play_pause = true;
+					   };
+					   break;
+				   case "3":
+					   if (play_pause) {
+						   player3.playVideo();
+						   play_pause = false;
+					   } else {
+						   player3.pauseVideo();
+							  play_pause = true;
+					   };
+					   break;
+				   default:
+					   //player = player1;
+				   };
 
-			 //	 } else {
-
-			 //		 percents = 35.5;
-			 //		 lin_gradient = `linear-gradient(270deg, rgb(13, 48, 74) 5%, rgba(13, 48, 74, 0.66) ${percents}%, rgba(255, 255, 255, 0) 65%, rgba(255, 255, 255, 0)), rgba(196, 196, 196, 0)`;
-
-			 //	 };
-
-			 //	 document.querySelectorAll('.background-slider-banner-one').forEach((div) => {
-	         //        //div.style.background = `linear-gradient(270deg, rgb(13, 48, 74) 5%, rgba(13, 48, 74, 0.66) ${percents}%, rgba(255, 255, 255, 0) 65%, rgba(255, 255, 255, 0)), rgba(196, 196, 196, 0)`;
-			 //		 div.style.background = lin_gradient;
-             //    });
-
-			 //};
-             
-			 /* -------------------------------------------------------------------------------------- */
-
-
-			 /* -------------------------------------------------------------------------------------- */
-
-			 document.querySelectorAll('.slider-button').forEach(function(button) {
-				 button.onclick = function(){
-
-                     let bannerid = '#banner_' + banner_number;
-                     this.parentElement.parentElement.querySelector(bannerid).style.opacity = '0';
-
-                     if (this.dataset.direction === "right") {
-                         banner_number++;
-                         if (banner_number > 4) banner_number = 1;
-                     } 
-					 else {
-                         banner_number--;
-                         if (banner_number < 1) banner_number = 4;
-                     };
-
-                     bannerid = '#banner_' + banner_number;
-                     this.parentElement.parentElement.querySelector(bannerid).style.opacity = '0.99';
-
-                 };
-
-			 });
-
-			 /* ------------------------------------------------------------------------------------------------ */
-
-			 document.querySelectorAll('.block-home-help-branches-branch').forEach(function(div) {
-
-				 div.onmouseover = function() {
-					 
-					 this.querySelector('.service-hidden-text').style.maxHeight = '200px';
-					 this.querySelector('.service-hidden-text').style.visibility = 'visible';
-					 //this.querySelector('img').style.filter = 'grayscale(1)';
-					 //this.style.boxShadow = 'rgba(0, 0, 0, 0.25) 2px 14px 20px 2px, rgba(0, 0, 0, 0.29) -2px 16px 16px 2px';
-				 };
-
-				 div.onmouseout = function() {
-					 this.querySelector('.service-hidden-text').style.maxHeight = '0';
-					 this.querySelector('.service-hidden-text').style.visibility = 'hidden';
-					 //this.querySelector('img').style.filter = 'grayscale(0)';
-					 //this.style.boxShadow = 'rgba(0, 0, 0, 0.19) 0px 10px 20px 0px, rgba(0, 0, 0, 0.23) 0px 6px 6px 0px';
-				 };
-
-				 let site_branch ="";
-
-				 if (div.className === "wp-block-cover block-home-help-branches-branch branches-branch-1") {
-
-	                 site_branch = "capital-market";
-
-                 }
-				 else if (div.className === "wp-block-cover block-home-help-branches-branch branches-branch-2") {
-
-					 site_branch = "course-a";
-
-				 }
-				 else if (div.className === "wp-block-cover block-home-help-branches-branch branches-branch-3") {
-
-					 site_branch = "family-finance";
-
-				 }
-				 else {
-
-					 site_branch = "investmens";
-
-				 };
-
-				 div.onclick = function(event) {
-
-                     window.open(`${site_branch}.html`, '_self');
-
-                 };
+				};
 
 				
 
-			 });
+				div.addEventListener("click", playYT);
+				
+			});
 
-			 /* ---------------------------------------------------------------------------------------------- */ 
+			/* ----------------------------------------------------------------------------------- */
 
+			document.querySelectorAll(".students_tell_video").forEach(function(div) {
+
+				div.onclick = function() {
+
+					let video = this.querySelector(".students_tell_v");
+					
+					if (video.paused === true) {
+						video.onfocus = true;
+						video.volume = 0.02;
+						video.muted = false;
+						video.play();
+					}
+					else {
+						video.pause();
+					};
+				};
+
+			});
+
+			/* ------------------------------------------------------------------------------------------ */
+
+			//document.querySelectorAll(".volume").forEach(function(div) {
+
+			//	div.onclick = function() {
+
+			//		console.log(this);
+			//		console.log(onclick.offsetY);
+			//	};
+
+			//});
+
+			/* -------------------------------------------------------------------------------------------- */
+			
          });
 	 </script>
 
 </head>
 
-<body class="page-template-default page page-id-4706 page-child parent-pageid-16 wp-custom-logo no-sidebar" onload="startTimer()">
+<body class="page-template-default page page-id-4706 page-child parent-pageid-16 wp-custom-logo no-sidebar" onload="startTimer()" oncontextmenu="return false">
 <div id="page" class="site">
 	<a class="skip-link screen-reader-text" href="#primary">Skip to content</a>
 
@@ -303,13 +415,13 @@ img.emoji {
 	     
         <div class="logo-menu">
 		<div class="site-branding">
-			<a href="index.html" class="custom-logo-link" rel="home"><img src="course-a_files/logo075-e1634922069477.png" class="custom-logo" alt="dkotkin" width="142" height="142"></a>				<p class="site-title"><a href="http://dkotkin.com/" rel="home">dkotkin</a></p>
+			<a href="index.html" class="custom-logo-link" rel="home"><img src="index_files/logo075-e1634922069477.png" class="custom-logo" alt="dkotkin" width="142" height="142"></a>				<p class="site-title"><a href="index.html" rel="home">dkotkin</a></p>
 						</div><!-- .site-branding -->
 
 		<nav id="site-navigation" class="main-navigation">
 			<!-- <button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false">Primary Menu</button> -->
-			<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><img src="course-a_files/mobilemenu.png"></button>
-			/main/course-a/<div class="menu-menu-in-course-a-container"><ul id="primary-menu" class="menu nav-menu"><li id="menu-item-6023" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-6023"><a href="http://dkotkin.com/">אודות</a></li>
+			<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><img src="index_files/mobilemenu.png"></button>
+			/main/course-a/<div class="menu-menu-in-course-a-container"><ul id="primary-menu" class="menu nav-menu"><li id="menu-item-6023" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-6023"><a href="index.html">אודות</a></li>
 <li id="menu-item-6177" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6177"><a href="http://dkotkin.com/contacts/">צור קשר</a></li>
 <li id="menu-item-6180" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6180"><a href="http://dkotkin.com/buying-a-course-a/">רכישת קורס</a></li>
 <li id="menu-item-6183" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6183"><a href="http://dkotkin.com/course-a-components/">מרכיבי קורס</a></li>
@@ -328,11 +440,11 @@ img.emoji {
 				 <button class="slider-button slider-button-left" data-direction="left"></button>
 		     </div>
              <container id="slider_banners">
-	             <container id="banner_1" class="slider_banner_one slider_banner_one_1">
-					 <div class="bg-img-slider-banner-one" style="background-image: url(index_files/001-1-e1636561693659.jpg);"></div>
+	             <container id="banner_1" class="slider_banner_one slider_banner_one_1" style="opacity: 0.99;">
+					 <div class="bg-img-slider-banner-one" style="background-image: url(index_files/003-1-e1637253114775.jpg);"></div>
 					 <div class="background-slider-banner-one"></div>
 	                 <div class="back_slider_banner_one">
-	   	                 <img class="back_img_slider_banner_one" src="course-a_files/001-1-e1636561693659.jpg" srcset="course-a_files/001-1-e1636561693659.jpg 2560w, course-a_files/001-1-e1636561693659-2048x993.jpg 2048w, course-a_files/001-1-e1636561693659-1536x745.jpg 1536w, course-a_files/001-1-e1636561693659-768x372.jpg 768w, course-a_files/001-1-e1636561693659-300x145.jpg 300w">
+	   	                 <img class="back_img_slider_banner_one" src="index_files/003-1-e1637253114775.jpg" srcset="">
 						 <!-- <img class="back_img_slider_banner_one" src=""
 							srcset="index_files/001-1-e1636561693659.jpg 2560w,
 													 index_files/001-1-e1636561693659-2048x993.jpg 2048w,
@@ -343,72 +455,52 @@ img.emoji {
 		             <div class="front_slider_banner_one">
 		   	             <div id="slider_h2_1" class="slider-h2">
 							 <div>
-			  	                 <h2>ייעוץ השקעות פרטי</h2>
-							     <hr class="golden-line">
+			  	                 <h2>קורס מקצועית א'</h2>							     <hr class="golden-line">
 		                     </div>
-							 <p>דמיטרי קוטקין - מצפן שלך בשוק ההון </p>
-				         </div>
+							 <p>דמיטרי קוטקין – הצלחה שלך במבחני רשות ני"ע</p>				         </div>
 		             </div>
 		         </container>
-		         <container id="banner_2" class="slider_banner_one slider_banner_one_2">
-				     <div class="bg-img-slider-banner-one" style="background-image: url(index_files/002-pixlr1-e1637246858133.jpg);"></div>
+		         <container id="banner_2" class="slider_banner_one slider_banner_one_2" style="display: grid; opacity: 0;">
+				     <div class="bg-img-slider-banner-one" style="background-image: url(index_files/course_a_banner_2-e1640179366612.jpg);"></div>
 				     <div class="background-slider-banner-one"></div>
 		             <div class="back_slider_banner_one">
                          <!-- <img class="back_img_slider_banner_one" src="index_files/002-e1636583090932.jpg"> -->
-						 <img class="back_img_slider_banner_one" src="course-a_files/002-pixlr1-e1637246858133.jpg">
+						 <img class="back_img_slider_banner_one" src="index_files/course_a_banner_2-e1640179366612.jpg">
 		             </div>
 		             <div class="front_slider_banner_one">
 			             <div id="slider_h2_2" class="slider-h2">
 							 <div>
-						         <h2>תכנון פיננסי משפחתי</h2>
-							     <hr class="golden-line">
+							     <h2>קורס מקצועית א'</h2>							     <hr class="golden-line">
 		                     </div>
-							 <p>דמיטרי קוטקין - מורה דרך שלך להשגת עצמאות כלכלית</p>
-							 <!-- <ul>
-								 <li>מצפן שלך בשוק ההון</li>
-								 <li>הצלחה בטוחה במבחני הרשות</li>
-								 <li>מורה דרך שלך להשגת עצמאות כלכלית</li>
-		                     </ul> -->
-				         </div>
+							 <p>דמיטרי קוטקין – הצלחה שלך במבחני רשות ני"ע</p>				         </div>
 		             </div>
 		         </container>
-		         <container id="banner_3" class="slider_banner_one slider_banner_one_3">
-				     <div class="bg-img-slider-banner-one" style="background-image: url(index_files/003-1-e1637253114775.jpg);"></div>
+		         <container id="banner_3" class="slider_banner_one slider_banner_one_3" style="display: grid; opacity: 0;">
+				     <div class="bg-img-slider-banner-one" style="background-image: url(index_files/course_a_banner_3_-e1640180759146.jpg);"></div>
 				     <div class="background-slider-banner-one"></div>
 		             <div class="back_slider_banner_one">
-			             <img class="back_img_slider_banner_one" src="course-a_files/003-1-e1637253114775.jpg">
+			             <img class="back_img_slider_banner_one" src="index_files/course_a_banner_3_-e1640180759146.jpg">
 		             </div>
 		             <div class="front_slider_banner_one">
 					     <div id="slider_h2_3" class="slider-h2">
 							 <div>
-					             <h2>קורס מקצועית א'</h2>
-							     <hr class="golden-line">
+							     <h2>קורס מקצועית א'</h2>							     <hr class="golden-line">
 		                     </div>
-							 <p>דמיטרי קוטקין – הצלחה שלך במבחני הרשות</p>
-							 <!-- <ul>
-								 <li>נקטין הוצאות ונגדיל הון</li>
-								 <li>של המשפחה שלך</li>
-		                     </ul> -->
-				         </div>
+							 <p>דמיטרי קוטקין – הצלחה שלך במבחני רשות ני"ע</p>				         </div>
 		             </div>
 		         </container>
-				 <container id="banner_4" class="slider_banner_one slider_banner_one_4">
-				     <div class="bg-img-slider-banner-one" style="background-image: url(index_files/004-e1636566215760.jpg);"></div>
+				 <container id="banner_4" class="slider_banner_one slider_banner_one_4" style="display: grid; opacity: 0;">
+				     <div class="bg-img-slider-banner-one" style="background-image: url(index_files/course_a_banner_4-e1640181320640.jpg);"></div>
 				     <div class="background-slider-banner-one"></div>
 		             <div class="back_slider_banner_one">
-			             <img class="back_img_slider_banner_one" src="course-a_files/004-e1636566215760.jpg">
+			             <img class="back_img_slider_banner_one" src="index_files/course_a_banner_4-e1640181320640.jpg">
 		             </div>
 		             <div class="front_slider_banner_one">
 					     <div id="slider_h2_4" class="slider-h2">
 							 <div>
-					             <h2>לימודי שוק ההון</h2>
-							     <hr class="golden-line">
+							     <h2>קורס מקצועית א'</h2>							     <hr class="golden-line">
 		                     </div>
-							 <ul>
-								 <li>לימוד יישומי על בניית וניהול תיק השקעות</li>
-								 <li>מסחר במניות וניתוח פונדמנטלי</li>
-		                     </ul>
-				         </div>
+							 <p>דמיטרי קוטקין – הצלחה שלך במבחני רשות ני"ע</p>				         </div>
 		             </div>
 		         </container>
 	         </container>
@@ -428,8 +520,12 @@ img.emoji {
 		
 <div class="logo-menu">
     <div class="site-branding">
-        <a href="index.html" class="custom-logo-link" rel="home">
-            <img loading="lazy" src="course-a_files/logo075-e1634922069477.png" class="custom-logo" alt="dkotkin" width="142" height="142">
+         <a href="index.html" class="custom-logo-link" rel="home">
+            <div class="custom-logo logo-rings">
+                <img loading="lazy" src="index_files/logo_center.png" id="logo1" alt="dkotkin" width="142" height="142">
+                <img loading="lazy" src="index_files/blue_rings_2.png" id="logo2" width="142" height="142">
+                <img loading="lazy" src="index_files/yellow_rings_2.png" id="logo3" width="142" height="142">
+            </div>
         </a>
         <p class="site-title"><a href="index.html" rel="home">dkotkin</a></p>
     </div><!-- .site-branding -->
@@ -466,7 +562,7 @@ img.emoji {
 
 
 <div class="wp-block-group block-course-a-intro block-box-level-1"><div class="wp-block-group__inner-container">
-<div class="wp-block-group course-a-intro block-box-level-2"><div class="wp-block-group__inner-container">
+<div class="wp-block-group course-a-intro block-box-level-2 course-a-intro-1"><div class="wp-block-group__inner-container">
 <h1 class="font-one color-blue size-60"> למי צריך קורס הכנה למבחן מקצועית א’ </h1>
 
 
@@ -499,59 +595,59 @@ img.emoji {
 
 
 
-<p class="font-no-one color-black size-29">קורס מקצועית א’ הינו הקורס העיקרי הנלמד במסגרת לימודים לקראת קבלת אחד</p>
+<div class="wp-block-group course-a-intro-p-group"><div class="wp-block-group__inner-container">
+<p class="font-no-one color-black size-28">קורס מקצועית א’ הינו הקורס העיקרי הנלמד במסגרת לימודים לקראת קבלת אחד</p>
 
 
 
-<p class="font-no-one color-black size-29">מרישיונות שהוזכרו לעיל מטעם הרשות לניירות ערך ו/או משרד האוצר. לכן, קל להבין כי</p>
+<p class="font-no-one color-black size-28">מרישיונות שהוזכרו לעיל מטעם הרשות לניירות ערך ו/או משרד האוצר. הקורס עוסק</p>
 
 
 
-<p class="font-no-one color-black size-29">הקורס עוסק בעיקרו בניתוח ניירות ערך ובמכשירים הפיננסים השונים הקיימים בשוק ההון,</p>
+<p class="font-no-one color-black size-28">בעיקרו בניתוח ניירות ערך ובמכשירים הפיננסים השונים הקיימים בשוק ההון, בהם</p>
 
 
 
-<p class="font-no-one color-black size-29">בהם משתמשים מנהלי תיקים, יועצים פנסיוניים וכד’. כאמור קורס מקצועית א’ הינו אחד</p>
+<p class="font-no-one color-black size-28">משתמשים יועצי השקעות, מנהלי תיקים, יועצים פנסיונים וכד’. קורס מקצועית א’ הוא</p>
 
 
 
-<p class="font-no-one color-black size-29">הקורסים מתקדמים ומקיפים ביותר לקבל רישיון פיננסי או פנסיוני להם מחויב כל מי</p>
+<p class="font-no-one color-black size-28">אחד מהקורסים מתקדמים ומקיפים ביותר לקבלת רישיון פיננסי או פנסיוני להם מחויב</p>
 
 
 
-<p class="font-no-one color-black size-29">שמעוניין לעסוק במקצועות שהוזכרו.</p>
+<p class="font-no-one color-black size-28">כל מי שמעוניין לעסוק במקצועות שהוזכרו.</p>
+</div></div>
 
 
 
 <div class="wp-block-group block-course-a-intro-warning"><div class="wp-block-group__inner-container">
 <div class="course-a-intro-warning font-no-one color-black size-29">
 
-    <p style="font-weight: bold;">הסבר מלא על<span style="color: white;"> מסלול לקבלת רישיונות</span></p>
+    <p style="font-weight: bold;">הסבר מלא על מסלול לקבלת רישיונות</p>
     <p>של רשות ני”ע ומשרד האוצר כולל קישור לרישום לבחינה</p>
+    <p><a href="http://dkotkin.com/course-a-components/">לחץ כאן</a></p>
 
-</div>
-
-
-
-<div class="wp-block-buttons contact-buttons course-a-intro-buttons">
-<div class="wp-block-button contact-button font-no-one size-40"><a class="wp-block-button__link">לחץ כאן</a></div>
 </div>
 </div></div>
 
 
 
-<h1 class="font-one color-blue size-60">המשימה שלי – הצלחה שלך בבחינה!</h1>
+<div class="wp-block-group course-a-intro-h1-line"><div class="wp-block-group__inner-container">
+<h1 class="font-one color-blue size-60">מטרה שלי – הצלחה שלך בבחינה!</h1>
 
 
 
-<div class="wp-block-group course-a-intro-video"><div class="wp-block-group__inner-container">
-<div class="home-about-video-border">
-    <video src="" poster="index_files/Group-29.png" width="700">
-    </video>
-</div>
-
-
+<div style="height:13px" aria-hidden="true" class="wp-block-spacer line-spacer"></div>
 </div></div>
+
+
+
+<div id="video_a_1" class="dk-video dk-video-course-a course-a-intro-video">
+
+    
+
+</div>
 
 
 
@@ -559,9 +655,15 @@ img.emoji {
 
 
 
+<div class="wp-block-group course-a-intro-button-line"><div class="wp-block-group__inner-container">
+<div style="height:13px" aria-hidden="true" class="wp-block-spacer line-spacer"></div>
+
+
+
 <div class="wp-block-buttons contact-buttons course-a-intro-buttons">
 <div class="wp-block-button contact-button font-no-one size-40"><a class="wp-block-button__link">רכישת קורס</a></div>
 </div>
+</div></div>
 </div></div>
 </div></div>
 
@@ -674,12 +776,6 @@ img.emoji {
 <h3>מרתון מבחני סימולציה</h3>
 </div></div>
 </div></div>
-
-
-
-<div class="wp-block-buttons contact-buttons course-a-intro-buttons">
-<div class="wp-block-button contact-button font-no-one size-40"><a class="wp-block-button__link">רכישת קורס</a></div>
-</div>
 </div></div>
 </div></div>
 
@@ -687,41 +783,21 @@ img.emoji {
 
 <div class="wp-block-group block-detailed-program-course-a block-box-level-1"><div class="wp-block-group__inner-container">
 <div class="wp-block-group detailed-program-course-a"><div class="wp-block-group__inner-container">
-<h1 class="font-one color-blue size-60">תוכנית מפורטת של קורס מקצועית א’</h1>
-
-
-
 <div class="wp-block-group detailed-program-course-a-grid-block"><div class="wp-block-group__inner-container">
 <div class="wp-block-group detailed-program-course-a-grid-block-lines"><div class="wp-block-group__inner-container">
-<div style="height:13px" aria-hidden="true" class="wp-block-spacer detailed-program-course-a-first-block-line"></div>
+<div style="height:13px" aria-hidden="true" class="wp-block-spacer detailed-program-course-a-first-block-line line-spacer"></div>
 
 
 
-<div style="height:13px" aria-hidden="true" class="wp-block-spacer detailed-program-course-a-first-block-line"></div>
+<div style="height:13px" aria-hidden="true" class="wp-block-spacer detailed-program-course-a-first-block-line line-spacer"></div>
 
 
 
-<div style="height:13px" aria-hidden="true" class="wp-block-spacer detailed-program-course-a-first-block-line"></div>
+<div style="height:13px" aria-hidden="true" class="wp-block-spacer detailed-program-course-a-first-block-line line-spacer"></div>
 
 
 
-<div style="height:13px" aria-hidden="true" class="wp-block-spacer detailed-program-course-a-first-block-line"></div>
-
-
-
-<div style="height:13px" aria-hidden="true" class="wp-block-spacer detailed-program-course-a-first-block-line"></div>
-
-
-
-<div style="height:13px" aria-hidden="true" class="wp-block-spacer detailed-program-course-a-first-block-line"></div>
-
-
-
-<div style="height:13px" aria-hidden="true" class="wp-block-spacer detailed-program-course-a-first-block-line"></div>
-
-
-
-<div style="height:13px" aria-hidden="true" class="wp-block-spacer detailed-program-course-a-first-block-line"></div>
+<div style="height:13px" aria-hidden="true" class="wp-block-spacer detailed-program-course-a-first-block-line line-spacer"></div>
 </div></div>
 
 
@@ -738,7 +814,7 @@ img.emoji {
 
 
 <div class="wp-block-group detailed-program-course-a-first-block-descript"><div class="wp-block-group__inner-container">
-<h3 class="font-one color-blue size-35">ערוץ ב-Telegram</h3>
+<h3 class="font-one color-blue size-35">Chat</h3>
 
 
 
@@ -748,17 +824,11 @@ img.emoji {
 
 
 <div class="wp-block-group detailed-program-course-a-first-block-descript"><div class="wp-block-group__inner-container">
-<div id="group-h3" class="wp-block-group"><div class="wp-block-group__inner-container">
 <h3 class="font-one color-blue size-35">3 שיעורים online </h3>
 
 
 
-<h3 class="font-one color-blue size-35">עם מרצה</h3>
-</div></div>
-
-
-
-<p class="font-no-one color-black size-34">בסוף הקורס לקראת הבחינה</p>
+<p class="font-no-one color-black size-34">לקראת הבחינה</p>
 </div></div>
 </div></div>
 </div></div>
@@ -766,132 +836,193 @@ img.emoji {
 
 
 
-<div class="wp-block-group block-box-level-2 course-a-lesson-components"><div class="wp-block-group__inner-container">
-<h1 class="font-one color-blue size-60">4 מרכבים של כל שיעור </h1>
+<div class="wp-block-group block-home-help-branches-header block-box-level-2"><div class="wp-block-group__inner-container">
+<h2 class="font-one size-60 color-blue"> מה ניתן כל שיעור: </h2>
+</div></div>
 
 
 
-<div class="font-no-one size-34">
+<div class="wp-block-group block-home-help-branches-branches"><div class="wp-block-group__inner-container">
+<div class="wp-block-cover block-home-help-branches-branch branches-branch-1"><img loading="lazy" class="wp-block-cover__image-background wp-image-8458" alt="" src="index_files/course_a_descr_1-e1640444012715.jpg" data-object-fit="cover" width="530" height="800"><div class="wp-block-cover__inner-container">
+<div class="wp-block-group home-help-branches-branch-background"><div class="wp-block-group__inner-container"></div></div>
 
-    <div class="course-a-lesson-components-small">
 
-        <div class="course-a-lesson-component-small lesson-component-1">
-            <div class="lesson-component-small-text">
-                <p class="color-white line-height-1">סיכום של השיעור</p>
-                <p class="color-black line-height-1">מצגת של השיעור</p>
-            </div>
-            <div class="lesson-component-small-img small-img-1">
-                <img src="course-a_files/sheet.png">
-            </div>
-        </div>
 
-        <div class="course-a-lesson-component-small lesson-component-2">
-            <div class="lesson-component-small-text">
-                <p class="color-white line-height-1">שיעור עצמו</p>
-                <p class="color-black line-height-1">הקלטת וידאו</p>
-            </div>
-            <div class="lesson-component-small-img small-img-2">
-                <img src="course-a_files/play.png">
-            </div>
-        </div>
+<div class="wp-block-group block-home-help-branches-branch-text"><div class="wp-block-group__inner-container">
+<h2 class="has-text-align-center font-one size-28 color-white not-margin-bottom">שיעור מוקלט</h2>
 
-        <div class="course-a-lesson-component-small lesson-component-3">
-            <div class="lesson-component-small-text">
-                <p class="color-white line-height-1">שיעורי בית</p>
-                <p class="color-black line-height-1">תרגילים</p>
-            </div>
-            <div class="lesson-component-small-img small-img-3">
-                <img src="course-a_files/reader.png">
-            </div>
-        </div>
+
+
+<h2 class="has-text-align-center font-one size-28 color-white">&nbsp;</h2>
+
+
+
+<div class="wp-block-group font-no-one color-yellow description-hidden-text"><div class="wp-block-group__inner-container">
+<p class="has-text-align-center">הקלטת וידאו</p>
+
+
+
+<p class="has-text-align-center">&nbsp;</p>
+</div></div>
+</div></div>
+</div></div>
+
+
+
+<div class="wp-block-cover block-home-help-branches-branch branches-branch-2"><img loading="lazy" class="wp-block-cover__image-background wp-image-8460" alt="" src="index_files/course_a_descr_2-e1640444603480.jpg" style="object-position:50% 50%" data-object-fit="cover" data-object-position="50% 50%" width="530" height="800"><div class="wp-block-cover__inner-container">
+<div class="wp-block-group block-home-help-branches-branch-text"><div class="wp-block-group__inner-container">
+<h2 class="has-text-align-center font-one size-28 color-white not-margin-bottom">סיכום שיעור</h2>
+
+
+
+<h2 class="has-text-align-center font-one size-28 color-white">&nbsp;</h2>
+
+
+
+<div class="wp-block-group font-no-one color-yellow description-hidden-text"><div class="wp-block-group__inner-container">
+<p class="has-text-align-center">מצגת</p>
+
+
+
+<p class="has-text-align-center">&nbsp;</p>
+</div></div>
+</div></div>
+
+
+
+<div class="wp-block-group home-help-branches-branch-background"><div class="wp-block-group__inner-container"></div></div>
+</div></div>
+
+
+
+<div class="wp-block-cover block-home-help-branches-branch branches-branch-3"><img loading="lazy" class="wp-block-cover__image-background wp-image-8462" alt="" src="index_files/course_a_descr_3-e1640445133123.jpg" data-object-fit="cover" width="476" height="800"><div class="wp-block-cover__inner-container">
+<div class="wp-block-group block-home-help-branches-branch-text"><div class="wp-block-group__inner-container">
+<h2 class="has-text-align-center font-one size-28 color-white not-margin-bottom">שיעורי בית</h2>
+
+
+
+<h2 class="has-text-align-center font-one size-28 color-white">&nbsp;</h2>
+
+
+
+<div class="wp-block-group font-no-one color-yellow description-hidden-text"><div class="wp-block-group__inner-container">
+<p class="has-text-align-center">קובץ תרגילים</p>
+
+
+
+<p class="has-text-align-center">&nbsp;</p>
+</div></div>
+</div></div>
+
+
+
+<div class="wp-block-group home-help-branches-branch-background"><div class="wp-block-group__inner-container"></div></div>
+</div></div>
+
+
+
+<div class="wp-block-cover block-home-help-branches-branch branches-branch-4"><img loading="lazy" class="wp-block-cover__image-background wp-image-8464" alt="" src="index_files/course_a_descr_4-e1640445727399.jpg" data-object-fit="cover" width="530" height="800"><div class="wp-block-cover__inner-container">
+<div class="wp-block-group block-home-help-branches-branch-text"><div class="wp-block-group__inner-container">
+<h2 class="has-text-align-center font-one size-28 color-white not-margin-bottom">פתרון מפורט</h2>
+
+
+
+<h2 class="has-text-align-center font-one size-28 color-white">של שיעורי בית</h2>
+
+
+
+<div class="wp-block-group font-no-one color-yellow description-hidden-text"><div class="wp-block-group__inner-container">
+<p class="has-text-align-center">הקלטת וידאו</p>
+
+
+
+<p class="has-text-align-center">עם הסבר של מרצה</p>
+</div></div>
+</div></div>
+
+
+
+<div class="wp-block-group home-help-branches-branch-background"><div class="wp-block-group__inner-container"></div></div>
+</div></div>
+</div></div>
+
+
+
+<div class="wp-block-buttons contact-buttons course-a-intro-buttons">
+<div class="wp-block-button contact-button font-no-one size-40"><a class="wp-block-button__link">רכישת קורס</a></div>
+</div>
+</div></div>
+
+
+
+<div class="course-a-shedule-1 block-box-level-1">
+    <div class="course-a-shedule-1-bg">
+    </div>
+    <div class="block-box block-box-level-2">
+        <h1 class="font-one size-50 color-yellow">מדוע כדאי ללמוד קורס דיגיטלי?</h1>
+        <ul class="schedule-list font-no-one size-30 color-yellow">
+            <li> <span class="color-white">כי קורס דיגיטלי </span>זול יותר</li>
+            <li> <span class="color-white">כי אפשר ללמוד </span>בזמן שנוח לך</li>
+            <li> <span class="color-white">כי נגיש </span>מכל מקום</li>
+            <li> כי אפשר לחסוך<span class="color-white"> על</span><span class="color-white">:<br>
+נסיעות, פקקים, תשלומי חניה, יציאה מוקדמת מעבודה</span></li>
+            <li> <span class="color-white">כי ניתן ללמוד </span>בקצב שמתאים לך</li>
+            <li> כי אפשר לחזור על החומר<span class="color-white"> כמה שרוצים</span></li>
+        </ul>
+    </div>
+</div>
+
+
+
+<div style="height:10px" aria-hidden="true" class="wp-block-spacer"></div>
+
+
+
+<div class="course-a-shedule-2 block-box-level-1">
+    <div class="course-a-shedule-2-bg">
+    </div>
+    <div class="block-box block-box-level-2">
+
+        <h1 class="font-one size-50 color-yellow">מדוע כדאי לרכוש את הקורס דווקא כאן?</h1>
+        <ul class="schedule-list font-no-one size-30 color-white">
+            <li>כי כדאי ללמוד אצל <span class="color-yellow">מרצה המקצועי והוותיק</span> ביותר בתחום</li>
+            <li>כי כדאי ללמוד כך <span class="color-yellow">שלעבור את הבחינה מפעם הראשונה</span></li>
+            <li>כי נוח כאשר <span class="color-yellow">ניתן תמיד לפנות למרצה</span> – פורום פעיל</li>
+            <li>כי נוח כאשר בסוף הקורס יש<span class="color-yellow"> 3 שיעורי תגבור עם מרצה און-ליין</span></li>
+        </ul>
 
     </div>
+</div>
 
-    <div class="course-a-lesson-component-big">
-        <div class="lesson-component-small-text">
-            <p class="color-white line-height-1">פתרון מפורט של שיעורי בית</p>
-            <p class="color-black line-height-1">הקלטת וידאו עם הסבר של מרצה</p>
-        </div>
-        <div class="lesson-component-small-img small-img-3">
-            <img src="course-a_files/handlux.png">
-        </div>
-    </div>
+
+
+<div class="wp-block-group another-block-course-a-intro block-box-level-1"><div class="wp-block-group__inner-container">
+<div class="wp-block-group block-box-level-2"><div class="wp-block-group__inner-container">
+<div class="wp-block-group course-a-video-examples"><div class="wp-block-group__inner-container">
+<div class="wp-block-group course-a-intro-video video-example"><div class="wp-block-group__inner-container">
+<h3 class="font-no-one color-black size-35 weight-bold">דוגמה של שיעור:</h3>
+
+
+
+<div id="video_a_2" class="dk-video dk-video-course-a">
+
+    
 
 </div>
 </div></div>
-</div></div>
 
 
 
-<div class="wp-block-group block-reasons-course-a block-box-level-1"><div class="wp-block-group__inner-container">
-<div class="wp-block-group reasons-course-a  block-box-level-2"><div class="wp-block-group__inner-container">
-<h1 class="font-one color-blue size-60">4 סיבות מדוע כדאי ללמוד קורס</h1>
+<div class="wp-block-group course-a-intro-video video-example"><div class="wp-block-group__inner-container">
+<h3 class="font-no-one color-black size-35 weight-bold">דוגמה של פתרון:</h3>
 
 
 
-<h1 class="font-one color-blue size-60">דווקא דיגיטלי?</h1>
+<div id="video_a_3" class="dk-video dk-video-course-a">
 
+    
 
-
-<div class="wp-block-group reason-of-course"><div class="wp-block-group__inner-container">
-<h2 class="font-one color-yellow size-60">1</h2>
-
-
-
-<div class="wp-block-group reason-of-course-descript font-no-one color-black size-34"><div class="wp-block-group__inner-container">
-<h3>כי קורס דיגיטלי הרבה יותר זול</h3>
-
-
-
-<h3> </h3>
-</div></div>
-</div></div>
-
-
-
-<div class="wp-block-group reason-of-course"><div class="wp-block-group__inner-container">
-<h2 class="font-one color-yellow size-60">2</h2>
-
-
-
-<div class="wp-block-group reason-of-course-descript font-no-one color-black size-34"><div class="wp-block-group__inner-container">
-<h3>כי אפשר ללמוד בזמן שנוח ולא בשעות שקבעו מראש</h3>
-
-
-
-<h3> </h3>
-</div></div>
-</div></div>
-
-
-
-<div class="wp-block-group reason-of-course"><div class="wp-block-group__inner-container">
-<h2 class="font-one color-yellow size-60">3</h2>
-
-
-
-<div class="wp-block-group reason-of-course-descript font-no-one color-black size-34"><div class="wp-block-group__inner-container">
-<h3>כי אפשר לחסוך על:</h3>
-
-
-
-<h3>נסיעות, פקקים, תשלומי חניה, יציאה מוקדמת מעבודה ועוד</h3>
-</div></div>
-</div></div>
-
-
-
-<div class="wp-block-group reason-of-course"><div class="wp-block-group__inner-container">
-<h2 class="font-one color-yellow size-60">4</h2>
-
-
-
-<div class="wp-block-group reason-of-course-descript font-no-one color-black size-34"><div class="wp-block-group__inner-container">
-<h3>כי לומדים יעיל יותר:</h3>
-
-
-
-<h3>ניתן ללמוד בקצב שמתאים לך, ניתן לחזור על הנושאים</h3>
+</div>
 </div></div>
 </div></div>
 
@@ -905,82 +1036,15 @@ img.emoji {
 
 
 
-<div class="wp-block-group block-course-a-intro another-block-course-a-intro block-box-level-1"><div class="wp-block-group__inner-container">
-<div class="wp-block-group course-a-intro block-box-level-2"><div class="wp-block-group__inner-container">
-<h1 class="font-one color-blue size-60">6 סיבות מדוע כדאי ללמוד קורס  </h1>
-
-
-
-<h1 class="font-one color-blue size-60">מקצועית א’ דווקא כאן?</h1>
-
-
-
-<ul class="font-no-one color-black size-35">
-
-    <li class="course-a-first-li"><span style="font-weight: bold;">דמיטרי הוא אחד ממרצים המקצועיים</span></li>
-    <ul>
-        <li>המצליחים והוותיקים ביותר בשוק הכנה למבחני רשות ני”ע – מאז 2005</li>
-    </ul>
-    <li><span style="font-weight: bold;">כמות שעות</span> לימוד בקורס מרבית בשוק – <span style="font-weight: bold;">מעל 200</span></li>
-    <li><span style="font-weight: bold;">כמות תרגילים</span> במהלך הקורס מרבית בשוק – <span style="font-weight: bold;">מעל 1,000</span></li>
-    <li>התראות והערות של מרצה ב-Telegram</li>
-    <li>פורום פעיל לשאלות ותשובות מול מרצה ב-Telegram</li>
-    <li>3 שיעורי תגבור (on-line) מקיפים עם מרצה לקראת הבחינה</li>
-
-</ul>
-
-
-
-<div class="wp-block-group course-a-video-examples"><div class="wp-block-group__inner-container">
-<div class="wp-block-group course-a-intro-video video-example"><div class="wp-block-group__inner-container">
-<h3 class="font-no-one color-black size-35 weight-bold">דוגמה של שיעור:</h3>
-
-
-
-<div class="home-about-video-border">
-    <video src="" poster="index_files/Group-29.png" width="700">
-    </video>
-</div>
-
-
-
-<figure class="wp-block-embed is-type-video is-provider-youtube wp-block-embed-youtube block-about-video wp-embed-aspect-16-9 wp-has-aspect-ratio"><div class="wp-block-embed__wrapper">
-https://www.youtube.com/
-</div></figure>
-</div></div>
-
-
-
-<div class="wp-block-group course-a-intro-video video-example"><div class="wp-block-group__inner-container">
-<h3 class="font-no-one color-black size-35 weight-bold">דוגמה של פתרון תרגילי בית:</h3>
-
-
-
-<div class="home-about-video-border">
-    <video src="" poster="index_files/Group-29.png" width="700">
-    </video>
-</div>
-
-
-
-<figure class="wp-block-embed is-type-video is-provider-youtube wp-block-embed-youtube block-about-video wp-embed-aspect-16-9 wp-has-aspect-ratio"><div class="wp-block-embed__wrapper">
-https://www.youtube.com/
-</div></figure>
-</div></div>
-</div></div>
-
-
-
-<h1 class="has-text-align-left font-one color-blue size-60 course-a-h1-last">הדרך שלך להצלחה</h1>
-</div></div>
-</div></div>
-
-
-
 <div class="wp-block-group block-box-level-1 group-home-successes course-a-successes"><div class="wp-block-group__inner-container">
+<h1 class="color-blue size-60 font-one block-box-level-2">מדוע כדאי ללמוד אצל דמיטרי?</h1>
+<div id="why-course-a-bg">
+    <img loading="lazy" src="index_files/course-a-why-bg-baner-no-text.jpg" data-object-fit="cover">
+    <p class="color-yellow size-60 font-one">כי זאת דרך שלך להצלחה במבחן מקצועית א’</p>
+</div>
 <div class="home-successes">
-    <div class="decor-line home-successes-line"></div>
-    <div class="home-successes-items block-box-level-2">
+    <div class="decor-line home-successes-line line-spacer"></div>
+    <div class="home-successes-items block-box-level-2 color-blue">
 
         <div class="home-successes-item">
             <p class="home-successes-item-nospan">לימד</p>
@@ -1005,38 +1069,59 @@ https://www.youtube.com/
 
 
 
-<div class="wp-block-buttons contact-buttons course-a-intro-buttons">
-<div class="wp-block-button contact-button font-no-one size-40"><a class="wp-block-button__link">רכישת קורס</a></div>
-</div>
+<div class="wp-block-group course-a-about-header block-about-text-header color-blue block-about-text"><div class="wp-block-group__inner-container">
+<h1 class="block-about-text-h1 font-one size-120">דמיטרי קוטקין</h1>
+
+
+
+<div class="wp-block-group block-about-text-list font-no-one size-29"><div class="wp-block-group__inner-container">
+<p>יועץ השקעות עצמאי</p>
+
+
+
+<p>מתכנן פיננסי פרטי</p>
+
+
+
+<p>מנטור למשקיעים פרטיים</p>
 </div></div>
 
 
 
-<div class="wp-block-group block-box-level-1"><div class="wp-block-group__inner-container">
+<div class="wp-block-group block-about-text-list-2 font-no-one size-29"><div class="wp-block-group__inner-container">
+<p class="font-no-one size-29 color-blue">מרצה כל סוגי קורסים בתחום מימון ושוק ההון בתואריים אקדמיים</p>
+</div></div>
+</div></div>
+</div></div>
+
+
+
+<div class="wp-block-group block-box-level-1 group-course-a-details"><div class="wp-block-group__inner-container">
 <div class="block-box-level-2 course-a-detailses">
 
-    <div class="course-a-detailses-img"><img src="course-a_files/manpointer-e1637003761288.png"></div>
+    <div class="course-a-detailses-img"><img src="index_files/manpointer-e1637003761288.png"></div>
 
         <details>
             <summary class="font-one color-blue size-60">שיטת הלימוד <span></span></summary>
-            <div class="font-no-one color-black size-29">
-                <p>מלמד בגובה העיניים ויודע להפוך דברים קשים ומסובכים לקלים ומעניינים.</p>
-                <p>במהלך שנים רבות דמיטרי הצליח לפתח שיטות שונות וקיצורי
- דרך המאפשרים לו לפשט תכנים מורכבים לשיטת לימוד בהירה ופשוטה, הממוקדת 
-בהצלחה לבחינה.</p>
-                <p>חיבר וערך ספר לימוד «ניתוח ניירות ערך ומכשירים פיננסים» עוד בשנת 2010.</p>
-                <p>כל התכנים של הקורס מאוד מסודרים ומפורטים ביותר.</p>
-                <p>דמיטרי פרפקציוניסט, מאמין שאם עושים משהו אז עושים הכי טוב שאפשר או לא עושים כלל.</p>
+            <div class="font-no-one color-black size-28">
+            <ul>
+                <li>דמיטרי מלמד בגובה העיניים ויודע להפוך דברים קשים ומסובכים לקלים ומעניינים.</li>
+                <li>במהלך שנים רבות דמיטרי הצליח לפתח שיטות שונות וקיצורי דרך המאפשרים לו לפשט 
+תכנים מורכבים לשיטת לימוד בהירה ופשוטה, הממוקדת בהצלחה לבחינה.</li>
+                <li>דמיטרי חיבר וערך ספר לימוד «ניתוח ניירות ערך ומכשירים פיננסים» עוד בשנת 2010.</li>
+                <li>כל התכנים של הקורס מאוד מסודרים ומפורטים ביותר.</li>
+                <li>דמיטרי פרפקציוניסט, מאמין שאם עושים משהו אז עושים הכי טוב שאפשר או לא עושים כלל.</li>
+            </ul>
             </div>
         </details>
 
         <details>
             <summary class="font-one color-blue size-60">השכלה <span></span></summary>
-            <div class="font-no-one color-black size-29">
+            <div class="font-no-one color-black size-28">
                 <ul>
-                    <li>תואר שני במנהל העסקים</li>
-                    <li>התמחות במימון ושוק ההון (הקריה האקדמית אונו)</li>
-                    <li>תואר ראשון בכלכלה (אוניברסיטת בר אילן)</li>
+                    <li>דוקטורנט בתחום כלכלה התנהגות (Vernadsky Crimean Federal University)</li>
+                    <li>תואר שני (MBA) במנהל העסקים, התמחות במימון ושוק ההון (הקריה האקדמית אונו)</li>
+                    <li>תואר ראשון (BA) בכלכלה (אוניברסיטת בר אילן)</li>
                     <li>בעל רישיון בייעוץ השקעות מאז 03/2006</li>
                 </ul>
             </div>
@@ -1044,32 +1129,52 @@ https://www.youtube.com/
 
         <details>
             <summary class="font-one color-blue size-60">ניסיון מקצועי <span></span></summary>
-            <div class="font-no-one color-black size-29">
-                <p>אחד מ-2 מרצים הוותיקים ביותר בשוק הכנה למבחני רשות, בין המלמדים היום.</p>
-                <p>שותף לפעילות ו”יד ימין” של יבגני אורין עוד לפני הקמת מכללת אורין-שפלטר, מאז 2005.</p>
-                <p>הכשיר בהצלחה מעל 2,500 מועמדים למבחני רשות ני”ע.</p>
-                <p>מייסד ומנכ”ל משותף של מכללת B&amp;B עם אחוזי הצלחה במבחני הרשות הגבוהים ביותר שהיו אי פעם.</p>
-                <p>מנהל אקדמי בשנים של גיבוש וכיבוש שוק של האקדמיה לפיננסים מגדל שוקי הון (היום האקדמיה לפיננסים של BDO).</p>
-                <p>מרצה אקדמי בתואריים BA ו-MBA המלמד כל סוגי קורסים בתחום מימון ושוק ההון.</p>
-                <p>בעל רישיון בייעוץ השקעות, יועץ בכיר בנק הפועלים מלפני מעל 15 שנה.</p>
-                <p>מתכנן פיננסי, יועץ השקעות פרטי, מנטור למשקעים פרטים.</p>
+            <div class="font-no-one color-black size-28">
+            <ul>
+                <li>אחד מ-2 המרצים הוותיקים בשוק הכנה למבחני רשות, בין המלמדים היום.</li>
+                <li>שותף לפעילות של יבגני אורין, עוד לפני הקמת מכללת אורין-שפלטר, מאז 2005.</li>
+                <li>הכשיר בהצלחה מעל 2,500 מועמדים למבחני רשות ני”ע.</li>
+                <li>מייסד ומנכ”ל משותף של מכללת B&amp;B עם אחוזי הצלחה, במבחני הרשות ני”ע,      הגבוהים ביותר שהיו אי פעם.</li>
+                <li>מנהל אקדמי בשנים של גיבוש וכיבוש שוק של האקדמיה לפיננסים מגדל שוקי הון        (היום האקדמיה לפיננסים של BDO).</li>
+                <li>מרצה אקדמי בתואריים BA ו-MBA, המלמד כל סוגי קורסים בתחום מימון ושוק ההון.</li>
+                <li>בעל רישיון בייעוץ השקעות, יועץ בכיר בבנק הפועלים מלפני מעל 15 שנה.</li>
+                <li>מתכנן פיננסי, יועץ השקעות פרטי, מנטור למשקעים פרטים.</li>
+            </ul>
             </div>
         </details>
 
         <details>
             <summary class="font-one color-blue size-60">מקומות בהם הרצתי ומרצה <span></span></summary>
-            <div class="font-no-one color-black size-29">
-                <p><span class="weight-bold">בנקים:</span> יהב, בינלאומי.</p>
-                <p><span class="weight-bold">חברות ביטוח:</span> הפניקס, מנורה – מבטחים, מגדל.</p>
-                <p><span class="weight-bold">חברות השקעות:</span> פריזמה, אקסלנס, מגדל שוק הון, פסגות.</p>
-                <p><span class="weight-bold">סוכנויות ביטוח:</span> קבוצת שקל, מבטח סימון, השיא פתרונות פיננסים.</p>
-                <p><span class="weight-bold">מכללות לא אקדמיות:</span> אורין-שפלטר השכלה פיננסית, מכללת B&amp;B, מכללת מיטב, המכללה לביטוח, האקדמיה לפיננסים מגדל שוקי הון, מכללת אתגר, אם פקולטי.</p>
-                <p><span class="weight-bold">יחידות לימודי חוץ:</span> אוני פתוחה, אונ’ בר-אילן, אוני העברית, מכללת נצרת עילית,  מכללת עמק ישראל, מכללת רמת גן.</p>
-                <p><span class="weight-bold">השכלה גבוהה:</span> הקריה האקדמית אונו, מסלול האקדמי המכללה למנהל.</p>
+            <div class="font-no-one color-black size-28">
+            <ul>
+                <li><span class="weight-bold">בנקים:</span> יהב, בינלאומי.</li>
+                <li><span class="weight-bold">חברות ביטוח:</span> הפניקס, מנורה – מבטחים, מגדל.</li>
+                <li><span class="weight-bold">חברות השקעות:</span> פריזמה, אקסלנס, מגדל שוק הון, פסגות.</li>
+                <li><span class="weight-bold">סוכנויות ביטוח:</span> קבוצת שקל, מבטח סימון, השיא פתרונות פיננסים.</li>
+                <li><span class="weight-bold">מכללות לא אקדמיות:</span> אורין-שפלטר השכלה פיננסית, מכללת B&amp;B, מכללת מיטב, המכללה לביטוח, האקדמיה לפיננסים מגדל שוקי הון, מכללת אתגר, אם פקולטי.</li>
+                <li><span class="weight-bold">יחידות לימודי חוץ:</span> אוני פתוחה, אונ’ בר-אילן, אוני העברית, מכללת נצרת עילית,  מכללת עמק ישראל, מכללת רמת גן.</li>
+                <li><span class="weight-bold">השכלה גבוהה:</span> הקריה האקדמית אונו, מסלול האקדמי המכללה למנהל.</li>
+            </ul>
             </div>
         </details>
 
     </div>
+
+
+
+<div class="wp-block-group course-a-intro-h1-line"><div class="wp-block-group__inner-container">
+<h1 class="font-one color-blue size-60">זאת דרך שלך להצלחה במבחן מקצועית א’</h1>
+
+
+
+<div style="height:13px" aria-hidden="true" class="wp-block-spacer line-spacer"></div>
+</div></div>
+
+
+
+<div class="wp-block-buttons contact-buttons course-a-intro-buttons">
+<div class="wp-block-button contact-button font-no-one size-40"><a class="wp-block-button__link">רכישת קורס</a></div>
+</div>
 </div></div>
 
 
@@ -1079,50 +1184,120 @@ https://www.youtube.com/
 
 
 
+<div class="students-tell-img-header block-box-level-2">
+    <div class="students-tell-bg"></div>
+    <div class="students-tell-img">
+        <img loading="lazy" src="index_files/course_a_banner_4-1-e1640529575985.jpg">
+    </div>
+</div>
+
 <div class="students-tell block-box-level-2">
 
-    <div class="videoslider-pointer pointer-to-right"><img src="course-a_files/pointoright.png"></div>
+    <div class="videoslider-pointer pointer-to-right"><img src="index_files/pointoright.png"></div>
 
     <div class="students-tell-slider">
 
-        <figure id="students_tell_video_1" class="students_tell_video wp-block-embed is-type-video is-provider-youtube wp-block-embed-youtube wp-embed-aspect-16-9 wp-has-aspect-ratio">
-            <div class="wp-block-embed__wrapper">
-                <video src="https://www.youtube.com/" width="300" poster="index_files/Group-29-1.png">
-                </video>
-            </div>
-        </figure>
+        <div id="students_tell_video_1" class="students_tell_video dk-video dk-video-main" style="display: grid;">
 
-        <figure id="students_tell_video_2" class="students_tell_video wp-block-embed is-type-video is-provider-youtube wp-block-embed-youtube wp-embed-aspect-16-9 wp-has-aspect-ratio">
-            <div class="wp-block-embed__wrapper">
-                <video src="https://www.youtube.com/" width="300" poster="index_files/Group-29-2.png">
-                </video>
-            </div>
-        </figure>
+            <!-- <div class="dk-video-blind" data-number="1"></div> -->
 
-        <figure id="students_tell_video_3" class="students_tell_video wp-block-embed is-type-video is-provider-youtube wp-block-embed-youtube wp-embed-aspect-16-9 wp-has-aspect-ratio">
-            <div class="wp-block-embed__wrapper">
-                <video src="https://www.youtube.com/" width="300" poster="index_files/Group-29-3.png">
-                </video>
-            </div>
-        </figure>
+            <div class="dk-video-youtube">
 
-        <figure id="students_tell_video_4" class="students_tell_video wp-block-embed is-type-video is-provider-youtube wp-block-embed-youtube wp-embed-aspect-16-9 wp-has-aspect-ratio">
-            <div class="wp-block-embed__wrapper">
-                <video src="https://www.youtube.com/" width="300" poster="index_files/Group-29-4.png">
-                </video>
-            </div>
-        </figure>
+                <!-- <div id="player_1" class="dk-player"></div> -->
+                <video id="students_tell_v_1" class="students_tell_v" src="index_files/איתי רשף.mp4" poster="index_files/איתי רשף - כותרת.jpg" muted="muted" width=""></video>
+                <!-- <div class="volume-body">
+                    <div class="volume"></div>
+                </div> -->
 
-        <figure id="students_tell_video_5" class="students_tell_video wp-block-embed is-type-video is-provider-youtube wp-block-embed-youtube wp-embed-aspect-16-9 wp-has-aspect-ratio">
-            <div class="wp-block-embed__wrapper">
-                <video src="https://www.youtube.com/" width="300" poster="index_files/Group-29-5.png">
-                </video>
             </div>
-        </figure>
+
+        </div>
+
+
+        <div id="students_tell_video_2" class="students_tell_video dk-video dk-video-main" style="display: grid;">
+
+            <!-- <div class="dk-video-blind" data-number="2"></div> -->
+
+            <div class="dk-video-youtube">
+
+                <!-- <div id="player_2" class="dk-player"></div> -->
+                <video id="students_tell_v_2" class="students_tell_v" src="index_files/גואי דרוויש.mp4" poster="index_files/גואי דרוויש - כותרת.jpg" muted="muted" width=""></video>
+
+            </div>
+
+        </div>
+
+
+        <div id="students_tell_video_3" class="students_tell_video dk-video dk-video-main" style="display: grid;">
+
+            <!-- <div class="dk-video-blind" data-number="3"></div> -->
+
+            <div class="dk-video-youtube">
+
+                <!-- <div id="player_3" class="dk-player"></div> -->
+                <video id="students_tell_v_3" class="students_tell_v" src="index_files/ליאת אסולין.mp4" poster="index_files/ליאת אסולין - כותרת.jpg" muted="muted" width=""></video>
+
+            </div>
+
+        </div>
+
+
+        <div id="students_tell_video_4" class="students_tell_video dk-video dk-video-main">
+
+            <!-- <div class="dk-video-blind" data-number="4"></div> -->
+
+            <div class="dk-video-youtube">
+
+                <!-- <div id="player_4" class="dk-player"></div> -->
+                <video id="students_tell_v_4" class="students_tell_v" src="index_files/מוטי ששון - כותרת.mp4" poster="index_files/מוטי ששון.jpg" muted="muted" width=""></video>
+
+            </div>
+
+        </div>
+
+
+        <div id="students_tell_video_5" class="students_tell_video dk-video dk-video-main">
+
+            <!-- <div class="dk-video-blind" data-number="5"></div> -->
+
+            <div class="dk-video-youtube">
+
+                <!-- <div id="player_5" class="dk-player"></div> -->
+                <video id="students_tell_v_5" class="students_tell_v" src="index_files/משה-עובדיה-כותרת.mp4" poster="index_files/משה עובדיה - כותרת.jpg" muted="muted" width=""></video>
+
+            </div>
+
+        </div>
+
+        <div id="students_tell_video_6" class="students_tell_video dk-video dk-video-main">
+
+            <!-- <div class="dk-video-blind" data-number="6"></div> -->
+
+            <div class="dk-video-youtube">
+
+                <!-- <div id="player_6" class="dk-player"></div> -->
+                <video id="students_tell_v_6" class="students_tell_v" src="index_files/שרי מרזן.mp4" poster="index_files/שרי מרזן - כותרת.jpg" muted="muted" width=""></video>
+
+            </div>
+
+        </div>
+
+        <div id="students_tell_video_7" class="students_tell_video dk-video dk-video-main">
+
+            <!-- <div class="dk-video-blind" data-number="7"></div> -->
+
+            <div class="dk-video-youtube">
+
+                <!-- <div id="player_7" class="dk-player"></div> -->
+                <video id="students_tell_v_7" class="students_tell_v" src="index_files/מוראל.mp4" poster="index_files/מוראל - כותרת.jpg" muted="muted" width=""></video>
+
+            </div>
+
+        </div>
 
     </div>
 
-    <div class="videoslider-pointer pointer-to-left"><img src="course-a_files/pointoleft.png"></div>
+    <div class="videoslider-pointer pointer-to-left"><img src="index_files/pointoleft.png"></div>
 
 </div>
 </div></div>
@@ -1131,66 +1306,66 @@ https://www.youtube.com/
 
 <div class="wp-block-group block-students-thanks block-box-level-1"><div class="wp-block-group__inner-container">
 <div class="block-box-level-2">
-<h1 id="students-thanks-h1" class="font-one color-blue size-60">מכתבי תודה וערכה של תלמדים:</h1><h1>
+<!-- <h1 id="students-thanks-h1" class="font-one color-blue size-60">מכתבי תודה וערכה של תלמדים:</h1> -->
 <div class="students-thanks">
-    <div class="thanksslider-pointer pointer-to-right"><img src="course-a_files/pointoright.png"></div>
+    <div class="thanksslider-pointer pointer-to-right"><img src="index_files/pointoright.png"></div>
 
     <div class="students-thanks-slider font-no-one color-black size-25">
 
         <div id="student_thanks_1" class="student-thanks">
             <p>שלום רב</p>
-            <p>ברצוני לציין לשבח את המרצה דימטרי קוטקין. זאת הפעם השנייה
- שאני עוברת קורס איתו. הקורס הקודם אופציות שהיה ממש מוצלח&nbsp;הפעם אני 
-לומדת אתו תורת ההשקעות.</p>
+            <p>ברצוני לציין לשבח את המרצה דימטרי קוטקין.&nbsp;
+זאת הפעם השנייה שאני עוברת קורס איתו. הקורס הקודם אופציות שהיה ממש מוצלח&nbsp;הפעם אני לומדת אתו תורת ההשקעות. </p>
             <p>אני חייבת לציין שאני נהנית בכל שיעור איתו. הוא יודע 
 להעביר את החומר בקלות ובצורה הומוריסטית להפליא,&nbsp;הוא לא מתקדם עד 
 שהחומר לא מובן לסטודנט.</p>
             <p>אני כל כך נהנית בשיעורים שאני שוקלת לעשות תואר שני רק 
-בגלל המרצה הזה! באמת כל הכבוד לו על הסבלנות ועל הרצון שלו שנצליח. כל מי 
-שנוכח בשיעורים יכול לומר פה אחד שאין כמוהו!</p>
-            <p>תודה רבה לדימה ולכם על המרצים המעולים.</p>
+בגלל המרצה הזה! באמת כל הכבוד לו על הסבלנות ועל הרצון שלו 
+שנצליח.&nbsp;כל מי שנוכח בשיעורים יכול לומר פה אחד שאין כמוהו!&nbsp;
+תודה רבה לדימה ולכם על המרצים המעולים.</p>
             <p>פניאל עדי (סטודנטית שנה שלישית ב- BA בקריה האקדמית אונו)</p>
-            <p>1/08/2021</p>
+            <p>19/08/2021</p>
         </div>
 
         <div id="student_thanks_2" class="student-thanks">
-            <p>שלום רב שלום רב</p>
-            <p>ברצוני לציין לשבח את המרצה דימטרי קוטקין. זאת הפעם השנייה
- שאני עוברת קורס איתו. הקורס הקודם אופציות שהיה ממש מוצלח&nbsp;הפעם אני 
-לומדת אתו תורת ההשקעות.</p>
-            <p>אני חייבת לציין שאני נהנית בכל שיעור איתו. הוא יודע 
-להעביר את החומר בקלות ובצורה הומוריסטית להפליא,&nbsp;הוא לא מתקדם עד 
-שהחומר לא מובן לסטודנט.</p>
-            <p>אני כל כך נהנית בשיעורים שאני שוקלת לעשות תואר שני רק 
-בגלל המרצה הזה! באמת כל הכבוד לו על הסבלנות ועל הרצון שלו שנצליח. כל מי 
-שנוכח בשיעורים יכול לומר פה אחד שאין כמוהו!</p>
-            <p>תודה רבה לדימה ולכם על המרצים המעולים.</p>
-            <p>פניאל עדי (סטודנטית שנה שלישית ב- BA בקריה האקדמית אונו)</p>
-            <p>2/08/2021</p>
+            <p>שלום רב,</p>
+            <p>רציתי להביע בפניכם באופן אישי את הערכתי ותודה למר דמיטרי קוטקין.</p>
+            <p>אני חושב שקורסים כמו הקורס «אופציות וחוזים עתידיים» שעברתי אצל דימה הם שעושים את ההבדל ויוצרים את החוויה.</p>
+            <p>דימה מרצה מצוין, שיודע להעביר רעיונות מורכבים בצורה פשוטה וציורית, ממש כמו ללמד שפה.</p>
+            <p>אף על פי שמדובר במקצוע חישובי, השיעורים איתו מעודדים למידה מתוך סקרנות והבנה ולא מתוך שינון.</p>
+            <p>נהנתי מכל רגע ולמדתי המון, שכן הקורס למעשה רחב יותר 
+מהכותרת שלו ומהווה מעין חשיפה נוספת לשוק ההון ונותן כלים בסיסיים ושונים 
+להבנת השפה המימונית.</p>
+            <p>אני כותב את הדברים האלה, מתוך רצון לשתף ולומר מילה טובה 
+ומתוך כוונה שגם לממונים על דימה תהיה תמונה מלאה יותר והבנה של גודל 
+ההשקעה שהוא משקיע.</p>
+            <p>בהערכה רבה,
+אביב רביד (סטודנטית שנה ב’ לתואר ראשון במנהל עסקים בהתמחות מימון בקריה האקדמית אונו)</p>
+            <p>23/02/2021</p>
         </div>
 
         <div id="student_thanks_3" class="student-thanks">
-            <p>שלום רב שלום רב</p>
-            <p>ברצוני לציין לשבח את המרצה דימטרי קוטקין. זאת הפעם השנייה
- שאני עוברת קורס איתו. הקורס הקודם אופציות שהיה ממש מוצלח&nbsp;הפעם אני 
-לומדת אתו תורת ההשקעות.</p>
-            <p>אני חייבת לציין שאני נהנית בכל שיעור איתו. הוא יודע 
-להעביר את החומר בקלות ובצורה הומוריסטית להפליא,&nbsp;הוא לא מתקדם עד 
-שהחומר לא מובן לסטודנט.</p>
-            <p>אני כל כך נהנית בשיעורים שאני שוקלת לעשות תואר שני רק 
-בגלל המרצה הזה! באמת כל הכבוד לו על הסבלנות ועל הרצון שלו שנצליח. כל מי 
-שנוכח בשיעורים יכול לומר פה אחד שאין כמוהו!</p>
-            <p>תודה רבה לדימה ולכם על המרצים המעולים.</p>
-            <p>פניאל עדי (סטודנטית שנה שלישית ב- BA בקריה האקדמית אונו)</p>
-            <p>3/08/2021</p>
+            <p>שלום רב&nbsp; .</p>
+            <p>אני רוצה לציין לשבח את המרצה דימה קוטקין על נמרצות יכולת 
+הבעה יוצאת מהכלל אני שמח שהייתה לי ההזדמנות לעשות כזה קורס (אופציות 
+וחוזים עתידיים) בעיקר בתקופה כזו ששוק ההון פעיל .</p>
+            <p>תודה רבה&nbsp;
+ששון פיני (סטודנט שנה ב’ בקריה האקדמית אונו)</p>
+            <p>22/02/2021</p>
         </div>
         
     </div>
 
-    <div class="thanksslider-pointer pointer-to-left"><img src="course-a_files/pointoleft.png"></div>
+    <div class="thanksslider-pointer pointer-to-left"><img src="index_files/pointoleft.png"></div>
 
 </div>
-</h1></div>
+</div>
+
+
+
+<div class="wp-block-buttons contact-buttons course-a-intro-buttons">
+<div class="wp-block-button contact-button font-no-one size-40"><a class="wp-block-button__link">רכישת קורס</a></div>
+</div>
 </div></div>
 
 
@@ -1224,12 +1399,18 @@ https://www.youtube.com/
 <p><input type="submit" value="שלח" class="wpcf7-form-control has-spinner wpcf7-submit"><span class="wpcf7-spinner"></span></p>
 <div class="wpcf7-response-output" aria-hidden="true"></div></form></div>
 </div></div>
+
+
+
+<div class="wp-block-group home-contacts-list font-no-one size-60 color-black"><div class="wp-block-group__inner-container">
+<ul><li>אמינות</li><li>מקצועיות</li><li>אדיבות</li><li>יסודיות</li><li>סודיות</li></ul>
+</div></div>
 </div></div>
 
 
 
-<!-- <div class="home-contacts-width-line">
-</div> -->
+<div class="home-contacts-width-line">
+</div>
 </div></div>
 	</div><!-- .entry-content -->
 
@@ -1243,7 +1424,7 @@ https://www.youtube.com/
 		         <div class="widget-area dktheme-footer" role="complementary">
         <section id="block-18" class="widget widget_block">
 <div class="wp-block-group footer-block-left"><div class="wp-block-group__inner-container">
-<figure class="wp-block-image size-full footer-logo"><img loading="lazy" src="course-a_files/logofooter.png" alt="" class="wp-image-1447" srcset="course-a_files/logofooter.png 192w, course-a_files/logofooter-150x150.png 150w" sizes="(max-width: 192px) 100vw, 192px" width="192" height="192"></figure>
+<figure class="wp-block-image size-full footer-logo"><img loading="lazy" src="index_files/logo_rings_f.png" alt="" class="wp-image-7694" width="143" height="142"></figure>
 
 
 
@@ -1309,14 +1490,14 @@ https://www.youtube.com/
 	</div></footer><!-- #colophon -->
 </div><!-- #page -->
 
-<script src="course-a_files/regenerator-runtime.js" id="regenerator-runtime-js"></script>
-<script src="course-a_files/wp-polyfill.js" id="wp-polyfill-js"></script>
+<script src="index_files/regenerator-runtime.js" id="regenerator-runtime-js"></script>
+<script src="index_files/wp-polyfill.js" id="wp-polyfill-js"></script>
 <script id="contact-form-7-js-extra">
 var wpcf7 = {"api":{"root":"http:\/\/dkotkin.com\/wp-json\/","namespace":"contact-form-7\/v1"}};
 </script>
-<script src="course-a_files/index.js" id="contact-form-7-js"></script>
-<script src="course-a_files/navigation.js" id="dktheme-navigation-js"></script>
-<script src="course-a_files/wp-embed.js" id="wp-embed-js"></script>
+<script src="index_files/index.js" id="contact-form-7-js"></script>
+<script src="index_files/navigation.js" id="dktheme-navigation-js"></script>
+<script src="index_files/wp-embed.js" id="wp-embed-js"></script>
 
 
 
